@@ -7,6 +7,7 @@ Team rigatoni, for the perfect al dente code!
 Name | eName | gitHub | email 
 ---- | ----- | ------ | ----- |
 Daniel Chavez | veez | chaveez | veez@rams.colostate.edu
+Carson Dobiash | cdobiash | carsondobiash | cdobiash@rams.colostate.edu
 
 
 ### Daniel Chavez
