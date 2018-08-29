@@ -1,3 +1,4 @@
 # t18 - rigatoni
-![Team Picture HELOOOOOOO](/images/rigatoni.png)
+![Team Picture](/images/rigatoni.png)
+
 Team rigatoni, for the perfect al dente code!
