@@ -1,1 +1,2 @@
-# t18
+# t18 - rigatoni
+![Team Picture](/images/rigatoni.png)
