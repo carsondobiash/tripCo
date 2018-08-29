@@ -15,4 +15,7 @@ Daniel Chavez is a Computer Science student attending Colorado State University.
 # Manifesto
 ### Friendliness 
   Team rigatoni emphasizes that workplace friendliness is a large factor in team moral as well as teamwork. Team rigatoni members should be as cohesize as each single noodle in a pasta dish. That means that members will embrace each others ideas and criticisms with maturity and compassion.
+ 
+# Expectations
+  Team rigatoni expects all members to be present in class as well as timely with all submissions and pull requests. The goal is to create ann efficient team that is coordinated, communative, and effective.
 
