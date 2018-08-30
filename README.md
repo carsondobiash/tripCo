@@ -18,4 +18,5 @@ Daniel Chavez is a Computer Science student attending Colorado State University.
  
 # Expectations
   Team rigatoni expects all members to be present in class as well as timely with all submissions and pull requests. The goal is to create ann efficient team that is coordinated, communative, and effective.
+  Team rigatoni will utilize communication in order to imporve our work. This means that we will use the communication methods that we think are appropriate, such as texting for when to meet up. Then also using slack to disscus the project and to ask for a review on a pull request. Through the use of communication we can stay connected and everyone will know what is going on with the project.
 
