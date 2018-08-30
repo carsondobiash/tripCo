@@ -35,5 +35,6 @@ Jacob Augustine is a Computer Science student currently in his junior year at CS
  
 # Expectations
   Team rigatoni expects all members to be present in class as well as timely with all submissions and pull requests. The goal is to create ann efficient team that is coordinated, communative, and effective.
-  Team rigatoni will utilize communication in order to imporve our work. This means that we will use the communication methods that we think are appropriate, such as texting for when to meet up. Then also using slack to disscus the project and to ask for a review on a pull request. Through the use of communication we can stay connected and everyone will know what is going on with the project.
+  Team rigatoni will utilize communication in order to imporve our work. This means that we will use the communication methods that we think are appropriate, such as texting for when to meet up. Then also using slack to disscus the project and to ask for a review on a pull request. Through the use of communication we can stay connected and everyone will know what is going on with the project. 
+  Along with communication, our team will also ensure that our code is clean and readable. Organized code is essential to a well functioning piece of software. This organization will be maintained through github, which we will all use properly to keep our code as professional and organized as possible.
 
