@@ -34,7 +34,7 @@ Jacob Augustine is a Computer Science student currently in his junior year at CS
   Our team stands by the principles of working as a team. During our projects we split up the work evenly in order to focus on our interests and get an even distribution of practice in each step of the development process. We cooperate, communicate, and collaborate in order to produce the best piece of code that we can.
   
 ### Communication
-  Team communication will be critical to the success of rigatoni's projects. We will use resources like slack and texting to make sure we are on the same page when not together.  When we are working in the lab with one another however, it is important that we make our ideas clear and express how we feel about the direction of the project.
+  Team communication will be critical to the success of rigatoni's projects. We will use resources like slack when not together, however in the lab with one another it is important that we make our ideas clear. It is also important that we express how we feel about the direction of the project. If one does not speak up and voice their opinion about how the project is going then the quality of the project will suffer.
  
 # Expectations
   Team rigatoni expects all members to be present in class as well as timely with all submissions and pull requests. The goal is to create ann efficient team that is coordinated, communative, and effective.
