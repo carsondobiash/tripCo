@@ -29,6 +29,9 @@ Jacob Augustine is a Computer Science student currently in his junior year at CS
   
 ### Readable Code
   Team rigatoni values readable code so that all team members know what the code is doing. Wether that is through line spacing or comments throughout the code to follow what the code is doing. This will allow for the teams to be able to pickup where others left off without having to comb over the entire code and trying to figure out what random things do.
+  
+### Teamwork
+  Our team stands by the principles of working as a team. During our projects we split up the work evenly in order to focus on our interests and get an even distribution of practice in each step of the development process. We cooperate, communicate, and collaborate in order to produce the best piece of code that we can.
  
 # Expectations
   Team rigatoni expects all members to be present in class as well as timely with all submissions and pull requests. The goal is to create ann efficient team that is coordinated, communative, and effective.
