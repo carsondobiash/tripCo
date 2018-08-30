@@ -7,10 +7,14 @@ Team rigatoni, for the perfect al dente code!
 Name | eName | gitHub | email 
 ---- | ----- | ------ | ----- |
 Daniel Chavez | veez | chaveez | veez@rams.colostate.edu
+Brandon Jungen | bjjungen | bjjungen135| bjjungen@colostate.edu
 
 
 ### Daniel Chavez
 Daniel Chavez is a Computer Science student attending Colorado State University. A new TripCo employee, he hopes to gradute in two years and begin work in the industry. He wants to focus on Artificial Intelegence as well as Virtual Reality. He is also an avid rock climber who loves the outdoors. 
+
+### Brandon Jungen
+Brandon Jungen is currently a student at Colorado State University where he is studying Computer Science. He is looking to graduate in the spring of 2020 and start a carrer in security. Rrecently hired to TripCo to work on a modern website, he is hoping to learn much from this experience. He also spends time at the gym and enjoys playing various sports.
 
 # Manifesto
 ### Friendliness 
