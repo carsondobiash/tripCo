@@ -9,6 +9,7 @@ Name | eName | gitHub | email
 Daniel Chavez | veez | chaveez | veez@rams.colostate.edu
 Brandon Jungen | bjjungen | bjjungen135| bjjungen@colostate.edu
 Carson Dobiash | cdobiash | carsondobiash | cdobiash@rams.colostate.edu
+Jacob Augustine | jtaugust | jtaugust | jtaugust@rams.colostate.edu
 
 ### Daniel Chavez
 Daniel Chavez is a Computer Science student attending Colorado State University. A new TripCo employee, he hopes to gradute in two years and begin work in the industry. He wants to focus on Artificial Intelegence as well as Virtual Reality. He is also an avid rock climber who loves the outdoors. 
@@ -18,6 +19,9 @@ Brandon Jungen is currently a student at Colorado State University where he is s
 
 ### Carson Dobiash
 Carson Dobiash is a junior computer science student at Colorado State University. He is interested in front end development and hopes to enter a career related to this after working at TripCo. Aside from programming, he loves to play video games and soccer as well as just enjoy the outdoors.
+
+### Jacob Augustine
+Jacob Augustine is a Computer Science student currently in his junior year at CSU. He has intrest working with both hardware and software related tasks. As a new TripCo employee, he hopes to learn how to work as a team to create a funtional website. In his past time he is either playing League of Legends or golfing.
 
 # Manifesto
 ### Friendliness 
