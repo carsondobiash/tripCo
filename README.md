@@ -16,6 +16,9 @@ Daniel Chavez is a Computer Science student attending Colorado State University.
 ### Brandon Jungen
 Brandon Jungen is currently a student at Colorado State University where he is studying Computer Science. He is looking to graduate in the spring of 2020 and start a carrer in security. Rrecently hired to TripCo to work on a modern website, he is hoping to learn much from this experience. He also spends time at the gym and enjoys playing various sports.
 
+### Carson Dobiash
+Carson Dobiash is a junior computer science student at Colorado State University. He is interested in front end development and hopes to enter a career related to this after working at TripCo. Aside from programming, he loves to play video games and soccer as well as just enjoy the outdoors.
+
 # Manifesto
 ### Friendliness 
   Team rigatoni emphasizes that workplace friendliness is a large factor in team moral as well as teamwork. Team rigatoni members should be as cohesize as each single noodle in a pasta dish. That means that members will embrace each others ideas and criticisms with maturity and compassion.
