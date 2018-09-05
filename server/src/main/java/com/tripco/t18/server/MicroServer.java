@@ -44,6 +44,7 @@ public class MicroServer {
     get("/team", this::team);
     // client is sending data, so a HTTP POST is used instead of a GET
     get("/config", this::config);
+    post("/distance", this::distance);
     post("/plan", this::plan);
 
     System.out.println("\n\nServer running on port: " + this.port + "\n\n");
@@ -131,5 +132,19 @@ public class MicroServer {
     response.header("Access-Control-Allow-Origin", "*");
 
     return name;
+  }
+
+  /** A REST API that .
+   *
+   * @param request
+   * @param response
+   * @return
+   */
+  private String distance(Request request, Response response) {
+
+    response.type("application/json");
+    response.header("Access-Control-Allow-Origin", "*");
+
+    return //wait untill calculate;
   }
 }
