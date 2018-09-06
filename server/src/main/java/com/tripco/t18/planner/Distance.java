@@ -1,5 +1,7 @@
 package com.tripco.t18.planner;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
+
 public class Distance {
 
     //Inisitalizing class variables
@@ -41,15 +43,25 @@ public class Distance {
             case "miles":
                 result = (int)(radius_miles * vincenty);
                 distance = result;
+                //System.out.println("got into miles");
+                break;
+
             case "nautical miles":
                 result = (int)(radius_nautical_miles * vincenty);
                 distance = result;
+                //System.out.println("got into NM");
+                break;
+
             case "kilometers":
                 result = (int)(radius_kilometers * vincenty);
                 distance = result;
+                //System.out.println("got into KM");
+                break;
             default:
                 result = (int)(radius_miles * vincenty);
-                distance = result;
+                distance = 1;
+                //System.out.println(units);
+
             }
         return distance;
     }
