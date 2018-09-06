@@ -1,5 +1,6 @@
 package com.tripco.t18.server;
 
+import com.tripco.t18.planner.Calculate;
 import com.tripco.t18.planner.Plan;
 
 import spark.Request;
@@ -117,7 +118,7 @@ public class MicroServer {
     response.type("application/json");
     response.header("Access-Control-Allow-Origin", "*");
 
-    return "{}";
+    return new Plan(request).getTrip();
   }
 
   /** A REST API that returns the team information associated with the server.
@@ -145,6 +146,6 @@ public class MicroServer {
     response.type("application/json");
     response.header("Access-Control-Allow-Origin", "*");
 
-    return //wait untill calculate;
+    return new Calculate(request).getDistance(); //wait untill calculate;
   }
 }
