@@ -146,6 +146,6 @@ public class MicroServer {
     response.type("application/json");
     response.header("Access-Control-Allow-Origin", "*");
 
-    return new Calculate(request).getDistance(); //wait untill calculate;
+    return new Calculate(request).getDistance();
   }
 }
