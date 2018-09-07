@@ -46,24 +46,24 @@ public class Distance {
         switch (units) { //Switch statement to determine units, right now it only has miles and defaults to miles
             case "miles":
                 result = (radius_miles * vincenty);
-                distance = (int) result;
+                distance = (int) Math.round(result);
                 //System.out.println("got into miles");
                 break;
 
             case "nautical miles":
                 result = (radius_nautical_miles * vincenty);
-                distance = (int) result;
+                distance = (int) Math.round(result);
                 //System.out.println("got into NM");
                 break;
 
             case "kilometers":
                 result = (radius_kilometers * vincenty);
-                distance = (int) result;
+                distance = (int) Math.round(result);
                 //System.out.println("got into KM");
                 break;
             default:
                 result = (radius_miles * vincenty);
-                distance = (int) result;
+                distance = (int) Math.round(result);
                 //System.out.println(units);
                 break;
 
