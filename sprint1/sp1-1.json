@@ -1,0 +1,8 @@
+{
+  "type"          : "distance",
+  "version"       : 1,
+  "origin"        : {"latitude":40.5853, "longitude":-105.0844, "name":"Fort Collins, Colorado, USA"},
+  "destination"   : {"latitude":-33.8688, "longitude":151.2093, "name":"Sydney, New South Wales, Australia"},
+  "units"         : "miles",
+  "distance"      : 0
+}
