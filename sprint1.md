@@ -3,7 +3,7 @@
 ## Goal
 
 ### Distance Calculator!
-### Sprint Leader: *Branodn Jungen*
+### Sprint Leader: *Brandon Jungen*
 
 ## Definition of Done
 
