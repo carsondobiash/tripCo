@@ -1,0 +1,7 @@
+{
+  "type"          : "distance",
+  "version"       : 1,
+  "origin"        : {"latitude":71.284868, "longitude":-156.766069, "name":"Point Barrow, Alaska"},
+  "destination"   : {"latitude":71.009688, "longitude":25.985000, "name":"Honningsvag, Norway"},
+  "units"         : "nautical miles"
+}
