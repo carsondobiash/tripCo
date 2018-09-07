@@ -1,0 +1,8 @@
+{
+  "type"          : "distance",
+  "version"       : 1,
+  "origin"        : {"latitude":51.505220, "longitude":0.053118, "name":"London, England"},
+  "destination"   : {"latitude":-43.811816, "longitude":-176.464764, "name":"Tuuta, Chatham Islands"},
+  "units"         : "kilometers",
+  "distance"      : 0
+}
