@@ -1,4 +1,4 @@
-# Sprint # - *18* - *Rigatoni*
+# Sprint 1 - *18* - *Rigatoni*
 
 ## Goal
 
@@ -21,28 +21,28 @@
 
 Epics planned for this release.
 
-* *## title*
-*
+* *## RESTful Service for distance*
+* *##Responsive Client for distance calculator*
 
-*Include a discussion of planning decisions the team made.*
+*As a team we agreed to split up the work between all of us and then bring it together in order to deploy the final version for this sprint*
+
 
 ## Review
 
 #### Completed epics in Sprint Backlog 
-* *user story*:  *comments*
-* 
+* *RESTful Service for distance*
+* *Responsive Client for distance calculator*
 
 #### Incomplete epics in Sprint Backlog 
-* *user story*: *explanation...*
-*
+* *none*
 
 #### What went well
-* *something*
-*
+* *Spliting up the work is something that worked well because then one person wasn't swampped with work*
+* *Meeting up to try and run through everything we had was very helpful*
 
 #### Problems encountered and resolutions
-* *something*
-*
+* *How to create pull requests via IntelliJ was a issue for many of us. So we ended up looking on piazza and using google in order to figure out how to commit and then make pull requests*
+* *Learned that we would need to call functions from other peoples classes and that the classes had to be made before some could start their work. The solution to this was to make sure those that were making the classes would at least make the class and merge it to the master so others could work on it.*
 
 ## Retrospective
 
