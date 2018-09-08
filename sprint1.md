@@ -16,6 +16,7 @@
 
 * All commits include a task/issue number.
 * No commits to master
+* Pull requests must be merged by teammates
 
 ## Plan
 
@@ -24,7 +25,7 @@ Epics planned for this release.
 * *## RESTful Service for distance*
 * *##Responsive Client for distance calculator*
 
-*As a team we agreed to split up the work between all of us and then bring it together in order to deploy the final version for this sprint*
+*As a team we agreed to split up the work between all of us and then bring it together in order to deploy the final version for this sprint. We also agreed that we would all meet up again after the final release so we could check that all the code worked together.*
 
 
 ## Review
@@ -41,12 +42,14 @@ Epics planned for this release.
 * *We did a resonably good job on keeping up on eachothers merge requests through github and slack.*
 * *Inspecting elements on the localhost site provided a good way to inspect what was going on where.*
 * *Everyone's sense of responsibility was good and got the things they needed to do done on time.*
+* *Everyone coded evenly and cleanly so most merges didn't need to be corrected*
 
 #### Problems encountered and resolutions
 * *How to create pull requests via IntelliJ was a issue for many of us. So we ended up looking on piazza and using google in order to figure out how to commit and then make pull requests*
 * *Learned that we would need to call functions from other peoples classes and that the classes had to be made before some could start their work. The solution to this was to make sure those that were making the classes would at least make the class and merge it to the master so others could work on it.*
 * *Finding where to edit code in the repo and what needed to be added.*
 * *We encountered a strange error while updating the version to v1.0 that caused the ./run command to fail. For some reason, the 1.0 jar was being created to early, so deleting that file and then running again fixed it.*
+* *During the demo, we weren't testing the file input right. We had to use file contents instead of file for the API testing.*
 
 ## Retrospective
 
@@ -64,3 +67,4 @@ Epics planned for this release.
 #### What we will change next time
 * *Create a designated meet time that is not the day of the assignment being due.*
 * *We will start earlier on the project.*
+* *Making sure each one of us still understands the other's code chunks instead of just writing our own files.*
