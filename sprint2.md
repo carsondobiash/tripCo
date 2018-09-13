@@ -3,7 +3,7 @@
 ## Goal
 
 ### A mobile, responsive map and itinerary!
-### Sprint Leader: *firstname lastname*
+### Sprint Leader: Daniel Chavez
 
 ## Definition of Done
 
@@ -35,18 +35,18 @@
 
 *An introductory paragraph describing what you expect to accomplish this sprint with a list of epics that will achieve the goal.*
 
-* *## epic title: description*
-*
+* *## TripCo: The solution must be responsive for mobile devices.*
+* *## All code shall be clean!*
 
-*Include a discussion of planning decisions.*
+*Each of us will start the project with two tasks, and if we find that more tasks need to be created during the project they will be divided up equally.*
 
 
 ## Metrics
 
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
-| Epics | *value* | *value* |
-| Tasks |  *value*   | *value* | 
+| Epics | *5* | *value* |
+| Tasks |  *8*   | *value* | 
 | Story Points |  *value*  | *value* | 
 
 *Enter the `# Planned` at the beginning of the sprint, `# Completed` at the end of the sprint.*
