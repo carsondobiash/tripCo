@@ -35,10 +35,10 @@
 
 *An introductory paragraph describing what you expect to accomplish this sprint with a list of epics that will achieve the goal.*
 
-* # TripCo: The solution must be responsive for mobile devices.
-* # All code shall be clean!
-* # User: I want to supply my own units for distances
-* # User: I want a map and itenerary for my trip
+* *TripCo: The solution must be responsive for mobile devices.*
+* *All code shall be clean!*
+* *User: I want to supply my own units for distances*
+* *User: I want a map and itenerary for my trip*
 
 *Each of us will start the project with two tasks, and if we find that more tasks need to be created during the project they will be divided up equally. Even though we all have seperate tasks we will collaborate and help each other out with the tasks.*
 
@@ -49,7 +49,7 @@
 | --- | ---: | ---: |
 | Epics | *5* | *value* |
 | Tasks |  *8*   | *value* | 
-| Story Points |  *value*  | *value* | 
+| Story Points |  *16*  | *value* | 
 
 *Enter the `# Planned` at the beginning of the sprint, `# Completed` at the end of the sprint.*
 
