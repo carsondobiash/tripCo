@@ -43,7 +43,7 @@ In this sprint we plan to build onto our existing distance calculator by adding 
 * *All servers and clients must interoperate!*
 
 
-*Each of us will start the project with two tasks, and if we find that more tasks need to be created during the project they will be divided up equally. Even though we all have seperate tasks we will collaborate and help each other out with the tasks. Most importantly, communication will be constant and consistent in order to adress impediments as quickly and effieciently as possible.*
+*Each of us will start the project with two tasks, and if we find that more tasks need to be created during the project they will be divided up equally. Even though we all have seperate tasks we will collaborate and help each other out with the tasks. We will also split up any tasks that are bigger than orginally thought in order to keep the time estimates between 1 to 2 hours. Most importantly, communication will be constant and consistent in order to adress impediments as quickly and effieciently as possible.*
 
 
 ## Metrics
