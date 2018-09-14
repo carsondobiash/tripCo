@@ -36,11 +36,11 @@
 In this sprint we plan to build onto our existing distance calculator by adding a mobile and responsive map itinerary. We will do this by completing the following epics:
 
 
-* * TripCo: The solution must be responsive for mobile devices.
-* * All code shall be clean!
-* * User: I want to supply my own units for distances.
-* * User: I want a map and itenerary for my trip.
-* * All servers and clients must interoperate!
+* *TripCo: The solution must be responsive for mobile devices.*
+* *All code shall be clean!*
+* *User: I want to supply my own units for distances.*
+* *User: I want a map and itenerary for my trip.*
+* *All servers and clients must interoperate!*
 
 
 *Each of us will start the project with two tasks, and if we find that more tasks need to be created during the project they will be divided up equally. Even though we all have seperate tasks we will collaborate and help each other out with the tasks. Most importantly, communication will be constant and consistent in order to adress impediments as quickly and effieciently as possible.*
