@@ -31,40 +31,28 @@ public class Distance {
                 Math.sin(latitude_origin) * Math.cos(latitude_destination) * Math.cos(difflon), 2))), (Math.sin(latitude_origin) * Math.sin(latitude_destination) + Math.cos(latitude_origin) *
                 Math.cos(latitude_destination) * Math.cos(difflon)));
 
-        //Creates top half of the vincenty formula
-        //double top_half = Math.sqrt(Math.pow(2, (Math.cos(latitude_destination) * Math.sin(difflon))) +
-        //Math.pow(2, (Math.cos(latitude_origin) * Math.sin(latitude_destination) - (Math.sin(latitude_origin) * Math.cos(latitude_destination) * Math.cos(difflon)))));
-
-        //Creates bottom half of the vincenty formula
-        //double bot_half = (Math.sin(latitude_origin) * Math.sin(latitude_destination)) + (Math.cos(latitude_origin) * Math.cos(latitude_destination) * Math.cos(difflon));
-
-        //Gets the vincenty number to be multiplied by the radius of the earth
-        //double vincenty = Math.atan2(top_half, bot_half);
-
         //Result will store the value before going into the class variable distance
         double result;
-        switch (units) { //Switch statement to determine units, right now it only has miles and defaults to miles
+
+        //Switch statement to determine units, right now it only has miles and defaults to miles
+        switch (units) {
             case "miles":
                 result = (radius_miles * vincenty);
                 distance = (int) Math.round(result);
-                //System.out.println("got into miles");
                 break;
 
             case "nautical miles":
                 result = (radius_nautical_miles * vincenty);
                 distance = (int) Math.round(result);
-                //System.out.println("got into NM");
                 break;
 
             case "kilometers":
                 result = (radius_kilometers * vincenty);
                 distance = (int) Math.round(result);
-                //System.out.println("got into KM");
                 break;
             default:
                 result = (radius_miles * vincenty);
                 distance = (int) Math.round(result);
-                //System.out.println(units);
                 break;
 
             }
