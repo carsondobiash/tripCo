@@ -62,6 +62,7 @@ In this sprint we plan to build onto our existing distance calculator by adding 
 | Date | Tasks closed  | Tasks in progress | Impediments |
 | :--- | :--- | :--- | :--- |
 | *9/14/18* | *none* | *none* | *none* | 
+| *9/17/18* | *none* | *#87* | *none*|
 
 *Add a new row for each scrum session.*
 
