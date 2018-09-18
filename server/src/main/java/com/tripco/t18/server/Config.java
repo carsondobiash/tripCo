@@ -11,8 +11,6 @@ public class Config {
   private String type = "config";
 
   private List<String> units = Arrays.asList("miles","nautical miles","kilometers", "user defined" );
-  private String unitName;
-  private int unitRadius;
 
   static String getConfig() {
     Config conf = new Config();
