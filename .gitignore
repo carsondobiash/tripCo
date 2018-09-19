@@ -10,3 +10,5 @@ target/
 
 # Client Jest coverage reports
 /client/coverage/
+
+/client/dist/
