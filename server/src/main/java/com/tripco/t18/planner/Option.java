@@ -11,7 +11,7 @@ public class Option {
 
   public String distance;
   public String optimization;
-  public List<String> units = Arrays.asList("miles","nautical miles","kilometers", "user defined" );
+  public String units;
   public String unitName;
   public int unitRadius;
 
