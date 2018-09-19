@@ -10,6 +10,8 @@ public class Distance {
     private String type;
     private int version;
     private String units;
+    private String unitName;
+    private int unitRadius;
     public int distance;
 
     public int  calculatedistance() {
@@ -48,6 +50,10 @@ public class Distance {
 
             case "kilometers":
                 result = (radius_kilometers * vincenty);
+                distance = (int) Math.round(result);
+                break;
+            case "user defined":
+                result = (unitRadius * vincenty);
                 distance = (int) Math.round(result);
                 break;
             default:
