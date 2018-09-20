@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Trip extends Distance {
   // The variables in this class should reflect TFFI.
-  private String type;
+  public transient String type;
   public String title;
   public Option options;
   public ArrayList<Place> places = new ArrayList<>();
