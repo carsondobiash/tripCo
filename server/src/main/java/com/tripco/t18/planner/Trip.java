@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Trip extends Distance {
   // The variables in this class should reflect TFFI.
   private String type;
-  private String title;
+  public String title;
   private Option options;
   private ArrayList<Place> places = new ArrayList<>();
   private ArrayList<Integer> distances = new ArrayList<>();
