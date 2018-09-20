@@ -56,7 +56,8 @@ public class Trip extends Distance {
     Place destination;
     System.out.println(places.size());
     for(int i = 0; i < places.size(); i++){
-      System.out.println("in for loop");
+      System.out.println(i % places.size());
+      System.out.println(places.size());
       origin = places.get(Math.abs(i % places.size()));
       destination = places.get((i - 1) % places.size());
       store = this.calculatedistance(origin, destination, options.units);
