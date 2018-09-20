@@ -13,12 +13,12 @@ import java.util.ArrayList;
  */
 public class Trip extends Distance {
   // The variables in this class should reflect TFFI.
-  public String type;
-  public String title;
-  public Option options;
-  public ArrayList<Place> places = new ArrayList<>();
-  public ArrayList<Integer> distances = new ArrayList<>();
-  public String map;
+  private String type;
+  private String title;
+  private Option options;
+  private ArrayList<Place> places = new ArrayList<>();
+  private ArrayList<Integer> distances = new ArrayList<>();
+  private String map;
 
   /** The top level method that does planning.
    * At this point it just adds the map and distances for the places in order.
