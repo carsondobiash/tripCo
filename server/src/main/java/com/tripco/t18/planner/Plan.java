@@ -33,7 +33,6 @@ public class Plan {
 
     // convert the body of the request to a Java class.
     Gson gson = new Gson();
-    System.out.println("getting here");
     trip = gson.fromJson(requestBody, Trip.class);
 
     // plan the trip.
