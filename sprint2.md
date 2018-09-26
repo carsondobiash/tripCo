@@ -66,6 +66,7 @@ In this sprint we plan to build onto our existing distance calculator by adding 
 | *9/19/18* | *none* | *#129 # 88 #124 # 118 #122 #114 # 112 # 116 #105 #111 #87* | *Learning the new stuff* |
 | *9/21/18* | *#129 #88 #124 #118 #122 #114 #112 #116 #105 #111 #87 #109* | *None* | *Maven stuff* |
 | *9/24/18* | *none* | *none* | *none*|
+| *9/26/18* | *none* | *#Draw lines #96 #93* | *Time*|
 
 *Add a new row for each scrum session.*
 
