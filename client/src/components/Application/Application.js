@@ -30,7 +30,6 @@ class Application extends Component {
     this.updateTrip = this.updateTrip.bind(this);
     this.updateBasedOnResponse = this.updateBasedOnResponse.bind(this);
     this.updateOptions = this.updateOptions.bind(this);
-    this.updateMap = this.updateMap.bind(this);
   }
 
   componentWillMount() {
@@ -59,11 +58,6 @@ class Application extends Component {
     this.setState(trip);
   }
 
-  updateMap(field, value){
-    let trip = this.state.trip;
-    trip.map = value;
-    this.setState(trip);
-  }
 
   render() {
     if(!this.state.config) { return <div/> }

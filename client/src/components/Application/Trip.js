@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Card, CardHeader, CardBody } from 'reactstrap'
-import { ButtonGroup, Button } from 'reactstrap'
+import LoadTrip from "./LoadTrip";
 
 /* Options allows the user to change the parameters for planning
  * and rendering the trip map and itinerary.
@@ -17,10 +17,7 @@ class Trip extends Component{
             <Card>
                 <CardBody>
                     <p>Trip</p>
-                    <div>
-                        <input type="text"/>
-                        <button type="button">Load</button>
-                    </div>
+                    <LoadTrip/>
                 </CardBody>
             </Card>
         )
