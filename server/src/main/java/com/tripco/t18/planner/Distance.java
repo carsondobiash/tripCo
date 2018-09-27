@@ -5,16 +5,29 @@ import com.sun.org.apache.xpath.internal.SourceTree;
 public class Distance {
 
     //Inisitalizing class variables
-    public Place origin;
-    public Place destination;
     public String type;
     public int version;
+    public Place origin;
+    public Place destination;
     public String units;
+    public int distance;
     public String unitName;
-    public static int unitRadius;
-    public static int distance;
+    public int unitRadius;
 
+    public Distance(){};
 
+    public Distance(Place origin, Place destination, String units){
+        this.origin = origin;
+        this.destination = destination;
+        this.units = units;
+    }
+
+    public Distance(Place origin, Place destination, String unitName, int unitRadius){
+        this.origin = origin;
+        this.destination = destination;
+        this.unitRadius = unitRadius;
+        this.unitName = unitName;
+    }
 
     public int  calculatedistance() {
         //Seting up latitude and longitude in radians
@@ -32,23 +45,8 @@ public class Distance {
         return distance;
     }
 
-    public static int  calculatedistance(Place origin, Place destination, String units) {
-        //Setting up latitude and longitude in radians
-        double latitude_origin = Math.toRadians(origin.latitude);
-        double longitdue_origin = Math.toRadians(origin.longitude);
-        double latitude_destination = Math.toRadians(destination.latitude);
-        double longitude_destination = Math.toRadians(destination.longitude);
 
-        //Vincenty formula
-        double vincenty = vincenty(latitude_origin, longitdue_origin, latitude_destination, longitude_destination);
-
-        //Calling unitChoice to assign the units and unitChoice will also update distance
-        unitChoice(units, vincenty);
-
-        return distance;
-    }
-
-    public static double vincenty(double latitude_origin, double longitude_origin, double latitude_destination, double longitude_destination){
+    public double vincenty(double latitude_origin, double longitude_origin, double latitude_destination, double longitude_destination){
         //Set up the difference in longitude
         double difflon = Math.abs(longitude_origin - longitude_destination);
 
@@ -61,7 +59,7 @@ public class Distance {
         return vincenty;
     }
 
-    public static void unitChoice(String units, double vincenty){
+    public void unitChoice(String units, double vincenty){
         //Variables created for calculation
         int radius_miles = 3959;
         int radius_nautical_miles = 3440;
