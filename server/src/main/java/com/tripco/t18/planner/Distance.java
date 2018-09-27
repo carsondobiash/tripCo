@@ -5,14 +5,16 @@ import com.sun.org.apache.xpath.internal.SourceTree;
 public class Distance {
 
     //Inisitalizing class variables
-    private Place origin;
-    private Place destination;
-    private String type;
-    private int version;
-    private String units;
-    private String unitName;
-    private static int unitRadius;
+    public Place origin;
+    public Place destination;
+    public String type;
+    public int version;
+    public String units;
+    public String unitName;
+    public static int unitRadius;
     public static int distance;
+
+
 
     public int  calculatedistance() {
         //Seting up latitude and longitude in radians
