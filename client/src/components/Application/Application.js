@@ -2,8 +2,11 @@ import React, {Component} from 'react';
 import { Container } from 'reactstrap';
 import Info from './Info'
 import Options from './Options';
+import Map from './Map';
+import Trip from './Trip';
 
 import { get_config } from '../../api/api';
+import Itinerary from "./Itinerary";
 
 /* Renders the application.
  * Holds the destinations and options state shared with the trip.
@@ -27,6 +30,7 @@ class Application extends Component {
     this.updateTrip = this.updateTrip.bind(this);
     this.updateBasedOnResponse = this.updateBasedOnResponse.bind(this);
     this.updateOptions = this.updateOptions.bind(this);
+    this.updateMap = this.updateMap.bind(this);
   }
 
   componentWillMount() {
@@ -55,6 +59,12 @@ class Application extends Component {
     this.setState(trip);
   }
 
+  updateMap(field, value){
+    let trip = this.state.trip;
+    trip.map = value;
+    this.setState(trip);
+  }
+
   render() {
     if(!this.state.config) { return <div/> }
 
@@ -62,6 +72,9 @@ class Application extends Component {
       <Container id="Application">
         <Info/>
         <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
+          <Trip/>
+          <Map svg={this.state.trip.map}/>
+          <Itinerary/>
       </Container>
     )
   }
