@@ -13,12 +13,13 @@ import java.util.ArrayList;
 /**
  * The Trip class supports TFFI so it can easily be converted to/from Json by Gson.
  */
-public class Trip extends Distance {
+public class Trip {
     // The variables in this class should reflect TFFI.
-    public transient String type;
+    public int version;
+    public String type;
     public String title;
-    public Option options;
     public ArrayList<Place> places = new ArrayList<>();
+    public Option options;
     public ArrayList<Integer> distances = new ArrayList<>();
     public String map;
 
@@ -99,7 +100,15 @@ public class Trip extends Distance {
         for (int i = 0; i < places.size(); i++) {
             origin = places.get(i % places.size());
             destination = places.get((i + 1) % places.size());
-            store = this.calculatedistance(origin, destination, options.units);
+
+            if(options.units.equals("user defined")) {
+                Distance distance = new Distance(origin, destination, options.unitName, options.unitRadius);
+                store = distance.calculatedistance();
+            }
+            else {
+                Distance distance = new Distance(origin, destination, options.units);
+                store = distance.calculatedistance();
+            }
             dist.add(store);
         }
 
