@@ -65,4 +65,18 @@ public class TestDistance {
         assertEquals(expectedDistance, distance.distance);
     }
 
+    @Test
+    public void testCalculateDistanceMile(){
+        Place origin = new Place();
+        Place destination = new Place();
+        origin.latitude = 40.5853;
+        origin.longitude = -105.0844;
+        destination.latitude = -33.8688;
+        destination.longitude = 151.2093;
+
+        distance = new Distance(origin, destination, "nautical miles");
+        int expectedDistance = 8347;
+        distance.calculatedistance();
+        assertEquals(expectedDistance, distance.distance);
+    }
 }
