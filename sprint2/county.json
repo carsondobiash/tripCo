@@ -1,0 +1,457 @@
+{
+  "type":"trip",
+  "title":"Colorado County Seats",
+  "version":2,
+  "options":{"units":"nautical miles"},
+  "places":
+  [
+    {
+      "id": 1,
+      "county": "Adams County",
+      "name": "Brighton",
+      "latitude": 39.87,
+      "longitude": -104.33
+    },
+    {
+      "id": 2,
+      "county": "Alamosa County",
+      "name": "Alamosa",
+      "latitude": 37.57,
+      "longitude": -105.79
+    },
+    {
+      "id": 3,
+      "county": "Arapahoe County",
+      "name": "Littleton",
+      "latitude": 39.64,
+      "longitude": -104.33
+    },
+    {
+      "id": 4,
+      "county": "Archuleta County",
+      "name": "Pagosa Springs",
+      "latitude": 37.2,
+      "longitude": -107.05
+    },
+    {
+      "id": 5,
+      "county": "Baca County",
+      "name": "Springfield",
+      "latitude": 37.3,
+      "longitude": -102.54
+    },
+    {
+      "id": 6,
+      "county": "Bent County",
+      "name": "Las Animas",
+      "latitude": 37.93,
+      "longitude": -103.08
+    },
+    {
+      "id": 7,
+      "county": "Boulder County",
+      "name": "Boulder",
+      "latitude": 40.09,
+      "longitude": -105.4
+    },
+    {
+      "id": 8,
+      "county": "County of Broomfield",
+      "name": "Broomfield",
+      "latitude": 39.95,
+      "longitude": -105.05
+    },
+    {
+      "id": 9,
+      "county": "Chaffee County",
+      "name": "Salida",
+      "latitude": 38.74,
+      "longitude": -106.32
+    },
+    {
+      "id": 10,
+      "county": "Cheyenne County",
+      "name": "Cheyenne Wells",
+      "latitude": 38.84,
+      "longitude": -102.6
+    },
+    {
+      "id": 11,
+      "county": "Clear Creek County",
+      "name": "Georgetown",
+      "latitude": 39.69,
+      "longitude": -105.67
+    },
+    {
+      "id": 12,
+      "county": "Conejos County",
+      "name": "Conejos",
+      "latitude": 37.21,
+      "longitude": -106.18
+    },
+    {
+      "id": 13,
+      "county": "Costilla County",
+      "name": "San Luis",
+      "latitude": 37.28,
+      "longitude": -105.43
+    },
+    {
+      "id": 14,
+      "county": "Crowley County",
+      "name": "Ordway",
+      "latitude": 38.32,
+      "longitude": -103.79
+    },
+    {
+      "id": 15,
+      "county": "Custer County",
+      "name": "Westcliffe",
+      "latitude": 38.1,
+      "longitude": -105.37
+    },
+    {
+      "id": 16,
+      "county": "Delta County",
+      "name": "Delta",
+      "latitude": 38.86,
+      "longitude": -107.86
+    },
+    {
+      "id": 17,
+      "county": "County of Denver",
+      "name": "Denver",
+      "latitude": 39.76,
+      "longitude": -104.88
+    },
+    {
+      "id": 18,
+      "county": "Dolores County",
+      "name": "Dove Creek",
+      "latitude": 37.75,
+      "longitude": -108.53
+    },
+    {
+      "id": 19,
+      "county": "Douglas County",
+      "name": "Castle Rock",
+      "latitude": 39.33,
+      "longitude": -104.93
+    },
+    {
+      "id": 20,
+      "county": "Eagle County",
+      "name": "Eagle",
+      "latitude": 39.63,
+      "longitude": -106.69
+    },
+    {
+      "id": 21,
+      "county": "Elbert County",
+      "name": "Kiowa",
+      "latitude": 39.31,
+      "longitude": -104.12
+    },
+    {
+      "id": 22,
+      "county": "El Paso County",
+      "name": "Colorado Springs",
+      "latitude": 38.83,
+      "longitude": -104.53
+    },
+    {
+      "id": 23,
+      "county": "Fremont County",
+      "name": "Canon City",
+      "latitude": 38.46,
+      "longitude": -105.42
+    },
+    {
+      "id": 24,
+      "county": "Garfield County",
+      "name": "Glenwood Springs",
+      "latitude": 39.6,
+      "longitude": -107.91
+    },
+    {
+      "id": 25,
+      "county": "Gilpin County",
+      "name": "Central City",
+      "latitude": 39.86,
+      "longitude": -105.53
+    },
+    {
+      "id": 26,
+      "county": "Grand County",
+      "name": "Hot Sulphur Springs",
+      "latitude": 40.12,
+      "longitude": -106.1
+    },
+    {
+      "id": 27,
+      "county": "Gunnison County",
+      "name": "Gunnison",
+      "latitude": 38.67,
+      "longitude": -107.08
+    },
+    {
+      "id": 28,
+      "county": "Hinsdale County",
+      "name": "Lake City",
+      "latitude": 37.81,
+      "longitude": -107.38
+    },
+    {
+      "id": 29,
+      "county": "Huerfano County",
+      "name": "Walsenburg",
+      "latitude": 37.69,
+      "longitude": -104.96
+    },
+    {
+      "id": 30,
+      "county": "Jackson County",
+      "name": "Walden",
+      "latitude": 40.66,
+      "longitude": -106.33
+    },
+    {
+      "id": 31,
+      "county": "Jefferson County",
+      "name": "Golden",
+      "latitude": 39.59,
+      "longitude": -105.25
+    },
+    {
+      "id": 32,
+      "county": "Kiowa County",
+      "name": "Eads",
+      "latitude": 38.39,
+      "longitude": -102.76
+    },
+    {
+      "id": 33,
+      "county": "Kit Carson County",
+      "name": "Burlington",
+      "latitude": 39.31,
+      "longitude": -102.6
+    },
+    {
+      "id": 34,
+      "county": "Lake County",
+      "name": "Leadville",
+      "latitude": 39.2,
+      "longitude": -106.35
+    },
+    {
+      "id": 35,
+      "county": "La Plata County",
+      "name": "Durango",
+      "latitude": 37.29,
+      "longitude": -107.84
+    },
+    {
+      "id": 36,
+      "county": "Larimer County",
+      "name": "Fort Collins",
+      "latitude": 40.66,
+      "longitude": -105.48
+    },
+    {
+      "id": 37,
+      "county": "Las Animas County",
+      "name": "Trinidad",
+      "latitude": 37.32,
+      "longitude": -104.04
+    },
+    {
+      "id": 38,
+      "county": "Lincoln County",
+      "name": "Hugo",
+      "latitude": 38.99,
+      "longitude": -103.51
+    },
+    {
+      "id": 39,
+      "county": "Logan County",
+      "name": "Sterling",
+      "latitude": 40.73,
+      "longitude": -103.09
+    },
+    {
+      "id": 40,
+      "county": "Mesa County",
+      "name": "Grand Junction",
+      "latitude": 39.02,
+      "longitude": -108.46
+    },
+    {
+      "id": 41,
+      "county": "Mineral County",
+      "name": "Creede",
+      "latitude": 37.65,
+      "longitude": -106.93
+    },
+    {
+      "id": 42,
+      "county": "Moffat County",
+      "name": "Craig",
+      "latitude": 40.57,
+      "longitude": -108.2
+    },
+    {
+      "id": 43,
+      "county": "Montezuma County",
+      "name": "Cortez",
+      "latitude": 37.34,
+      "longitude": -108.6
+    },
+    {
+      "id": 44,
+      "county": "Montrose County",
+      "name": "Montrose",
+      "latitude": 38.41,
+      "longitude": -108.26
+    },
+    {
+      "id": 45,
+      "county": "Morgan County",
+      "name": "Fort Morgan",
+      "latitude": 40.26,
+      "longitude": -103.81
+    },
+    {
+      "id": 46,
+      "county": "Otero County",
+      "name": "La Junta",
+      "latitude": 37.88,
+      "longitude": -103.72
+    },
+    {
+      "id": 47,
+      "county": "Ouray County",
+      "name": "Ouray",
+      "latitude": 38.15,
+      "longitude": -107.77
+    },
+    {
+      "id": 48,
+      "county": "Park County",
+      "name": "Fairplay",
+      "latitude": 39.12,
+      "longitude": -105.72
+    },
+    {
+      "id": 49,
+      "county": "Phillips County",
+      "name": "Holyoke",
+      "latitude": 40.59,
+      "longitude": -102.35
+    },
+    {
+      "id": 50,
+      "county": "Pitkin County",
+      "name": "Aspen",
+      "latitude": 39.22,
+      "longitude": -106.92
+    },
+    {
+      "id": 51,
+      "county": "Prowers County",
+      "name": "Lamar",
+      "latitude": 37.96,
+      "longitude": -102.39
+    },
+    {
+      "id": 52,
+      "county": "Pueblo County",
+      "name": "Pueblo",
+      "latitude": 38.17,
+      "longitude": -104.49
+    },
+    {
+      "id": 53,
+      "county": "Rio Blanco County",
+      "name": "Meeker",
+      "latitude": 39.97,
+      "longitude": -108.2
+    },
+    {
+      "id": 54,
+      "county": "Rio Grande County",
+      "name": "Del Norte",
+      "latitude": 37.49,
+      "longitude": -106.45
+    },
+    {
+      "id": 55,
+      "county": "Routt County",
+      "name": "Steamboat Springs",
+      "latitude": 40.48,
+      "longitude": -106.99
+    },
+    {
+      "id": 56,
+      "county": "Saguache County",
+      "name": "Saguache",
+      "latitude": 38.03,
+      "longitude": -106.25
+    },
+    {
+      "id": 57,
+      "county": "San Juan County",
+      "name": "Silverton",
+      "latitude": 37.78,
+      "longitude": -107.67
+    },
+    {
+      "id": 58,
+      "county": "San Miguel County",
+      "name": "Telluride",
+      "latitude": 38.01,
+      "longitude": -108.43
+    },
+    {
+      "id": 59,
+      "county": "Sedgwick County",
+      "name": "Julesburg",
+      "latitude": 40.87,
+      "longitude": -102.36
+    },
+    {
+      "id": 60,
+      "county": "Summit County",
+      "name": "Breckenridge",
+      "latitude": 39.62,
+      "longitude": -106.14
+    },
+    {
+      "id": 61,
+      "county": "Teller County",
+      "name": "Cripple Creek",
+      "latitude": 38.87,
+      "longitude": -105.18
+    },
+    {
+      "id": 62,
+      "county": "Washington County",
+      "name": "Akron",
+      "latitude": 39.97,
+      "longitude": -103.21
+    },
+    {
+      "id": 63,
+      "county": "Weld County",
+      "name": "Greeley",
+      "latitude": 40.56,
+      "longitude": -104.38
+    },
+    {
+      "id": 64,
+      "county": "Yuma County",
+      "name": "Wray",
+      "latitude": 40,
+      "longitude": -102.42
+    }
+  ]
+}
