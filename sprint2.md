@@ -50,9 +50,9 @@ In this sprint we plan to build onto our existing distance calculator by adding 
 
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
-| Epics | *5* | *value* |
-| Tasks |  *8*   | *value* | 
-| Story Points |  *16*  | *value* | 
+| Epics | *5* | *1* |
+| Tasks |  *8*   | *22* | 
+| Story Points |  *16*  | *32* | 
 
 *Enter the `# Planned` at the beginning of the sprint, `# Completed` at the end of the sprint.*
 
