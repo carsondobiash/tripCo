@@ -79,14 +79,15 @@ In this sprint we plan to build onto our existing distance calculator by adding 
 *Describe the solution based on the completed epics and list the epics below.*
 
 * *## epic title: comments*
-* 
+* *None: We didn't finish an epic fully.*
 
 #### Incomplete epics in Sprint Backlog 
 
 *Describe capabilities not included in the release and list the epics below with an explanation.*
 
 * *## epic title: explanation*
-*
+* *User:I want a map and itinerary for my trip: We did not get the picture to populate, instead it is just a string. Then also we didn't get the itinerary to populate from the json.*
+* *TripCo: The solution must be responsive for mobile devices.: We did not get to this epic because we couldn't get the map to load, so this means that we couldn't test the mobile responsivenes.*
 
 #### What went well
 
