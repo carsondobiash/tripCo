@@ -49,7 +49,7 @@ public class TestDistance {
 
     @Test
     public void testCalculateDistanceKm(){
-        int expectedDistance = 0;
+        int expectedDistance = 13432;
         distance.calculatedistance();
         assertEquals(expectedDistance, distance.distance);
     }
