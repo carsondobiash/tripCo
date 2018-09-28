@@ -42,8 +42,6 @@ public class Trip {
      */
     private String svg() {
 
-        // hardcoded example
-        //return "<svg width=\"1920\" height=\"960\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:svg=\"http://www.w3.org/2000/svg\"><!-- Created with SVG-edit - http://svg-edit.googlecode.com/ --> <g> <g id=\"svg_4\"> <svg id=\"svg_1\" height=\"960\" width=\"1920\" xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns=\"http://www.w3.org/2000/svg\"> <g id=\"svg_2\"> <title>Layer 1</title> <rect fill=\"rgb(119, 204, 119)\" stroke=\"black\" x=\"0\" y=\"0\" width=\"1920\" height=\"960\" id=\"svg_3\"/> </g> </svg> </g> <g id=\"svg_9\"> <svg id=\"svg_5\" height=\"480\" width=\"960\" y=\"240\" x=\"480\" xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns=\"http://www.w3.org/2000/svg\"> <g id=\"svg_6\"> <title>Layer 2</title> <polygon points=\"0,0 960,0 960,480 0,480\" stroke-width=\"12\" stroke=\"brown\" fill=\"none\" id=\"svg_8\"/> <polyline points=\"0,0 960,480 480,0 0,480 960,0 480,480 0,0\" fill=\"none\" stroke-width=\"4\" stroke=\"blue\" id=\"svg_7\"/> </g> </svg> </g> </g> </svg>";
 
         String SVG_as_String = "";
 
@@ -68,6 +66,11 @@ public class Trip {
 
                 SVG_as_String += line_of_SVGfile;
 
+                if(line_of_SVGfile.equals("                    id=\"path181\"/>")){
+                    String splice_add = spliceSVG();
+                    SVG_as_String += splice_add;
+                }
+
             }
 
         } catch (Exception e){
@@ -76,9 +79,64 @@ public class Trip {
 
         //Return String of the SVG File
 
-        //System.out.println("THIS IS THE START OF THE FILE STRING:   " + SVG_as_String);
-
         return SVG_as_String;
+
+    }
+
+    private String spliceSVG(){
+
+        String polygon = "<polyline points=\"";
+
+        String splice_add = "\n<svg\n" +
+                "        xmlns:svg=\"http://www.w3.org/2000/svg\"\n" +
+                "        xmlns=\"http://www.w3.org/2000/svg\"\n" +
+                "        version=\"1.0\"\n" +
+                "        width=\"1066.6073\"\n" +
+                "        height=\"783.0824\"\n" +
+                "        id=\"svg2339\">";
+
+        Place origin;
+        Place destination;
+
+        ArrayList<Integer> originList_latitude = new ArrayList<>();
+        ArrayList<Integer> originList_longitude = new ArrayList<>();
+        ArrayList<Integer> destinationList_latitude = new ArrayList<>();
+        ArrayList<Integer> destinationList_longitude = new ArrayList<>();
+
+        for (int i = 0; i < places.size(); i++){
+
+            origin = places.get(i % places.size());
+            destination = places.get((i+1) % places.size());
+            originList_latitude.add(degreesToPixel(origin.latitude, "latitude"));
+            originList_longitude.add(degreesToPixel(origin.longitude, "longitude"));
+            destinationList_latitude.add(degreesToPixel(destination.latitude, "latitude"));
+            destinationList_longitude.add(degreesToPixel(destination.longitude, "longitude"));
+
+        }
+
+        for (int i = 0; i < places.size(); i++){
+            polygon += originList_latitude.get(i).toString() + "," + originList_longitude.get(i).toString() + " ";
+            polygon += destinationList_latitude.get(i).toString() + "," + destinationList_latitude.get(i).toString() + " ";
+        }
+
+        polygon += "\"\nfill=\"none\" stroke-width=\"4\" stroke=\"blue\" id=\"s7\"/>";
+
+        return splice_add + polygon + "</svg>";
+    }
+
+    private int degreesToPixel(double deg, String type){
+
+        if(type.equals("latitude")){
+
+            return (int)Math.abs((1067/7.5)*(-109.3-deg));
+        }
+        else if(type.equals("longitude")){
+
+            return (int)Math.abs((783/4.4)*(41.2-deg));
+        }
+        else{
+            return -1;
+        }
 
     }
 
