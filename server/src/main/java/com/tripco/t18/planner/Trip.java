@@ -29,10 +29,8 @@ public class Trip {
      * It might need to reorder the places in the future.
      */
     public void plan() {
-
         this.map = svg();
         this.distances = legDistances();
-
     }
 
     /**
