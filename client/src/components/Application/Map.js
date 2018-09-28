@@ -16,9 +16,9 @@ class Map extends Component{
         return(
             <Card>
                 <CardBody>
-                    <span>Map</span>
+                    <p>Map</p>
                     <div>
-                        {this.props.svg}
+                        {this.props.trip.map}
                     </div>
                 </CardBody>
             </Card>
