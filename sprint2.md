@@ -113,7 +113,7 @@ In this sprint we plan to build onto our existing distance calculator by adding 
 
 #### What we did well
 
-*Articulate what went well at the end of the sprint.*
+*Our communication throughout the sprint was actually very good, which benefited our efficency. Also, our gitHub proficiency increased considerably as a team this sprint and there was no issues with gitHub at all, unlike last sprint. While our planning was not on par with what it should have been, when we actually got together, we got quite a bit done, almost finishing the whole project, but almost only counts in horseshoes and handgrenades.*
 
 #### What we need to work on
 
