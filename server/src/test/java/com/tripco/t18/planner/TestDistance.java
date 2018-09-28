@@ -1,5 +1,6 @@
 package com.tripco.t18.planner;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,6 +35,8 @@ public class TestDistance {
         distance.calculatedistance();
         assertEquals(expectedDistance, distance.distance);
     }
+
+    @After
 
     @Before
     public void initializeKm(){
