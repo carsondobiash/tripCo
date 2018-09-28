@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Card, CardHeader, CardBody, Button} from 'reactstrap'
+import {Card, CardBody, Button, Form, Input, FormGroup} from 'reactstrap'
 
 /* Options allows the user to change the parameters for planning
  * and rendering the trip map and itinerary.
@@ -11,9 +11,7 @@ class Trip extends Component{
         super(props);
         this.upload = this.upload.bind(this);
         this.fileOnChange = this.fileOnChange.bind(this);
-
         this.state = {file: null}
-
     }
 
     fileOnChange(event){
@@ -42,10 +40,12 @@ class Trip extends Component{
             <Card>
                 <CardBody>
                     <p>Trip</p>
-                    <form>
-                        <input type="file" title="input" onChange={this.fileOnChange}/>
-                        <button type="submit" onClick={this.upload}>Load</button>
-                    </form>
+                    <Form>
+                        <FormGroup>
+                            <Input type="file" title="input" onChange={this.fileOnChange}/>
+                            <Button type="submit" onClick={this.upload}>Load</Button>
+                        </FormGroup>
+                    </Form>
                 </CardBody>
             </Card>
         )
