@@ -92,14 +92,14 @@ In this sprint we plan to build onto our existing distance calculator by adding 
 
 *Describe what went well during the sprint in general terms followed by a more detailed list.*
 
-* *something*
+* Our communication throughout the sprint was very good, and everyone knew what was going on, even if it wasn't ideal exactly what was going on.
 *
 
 #### Problems encountered and resolutions
 
 *Describe what problems occurred during the sprint in general terms followed by a more detailed list.*
 
-* *something*
+* Some group members started late into the sprint, which caused some stress and things to be potentially left unimplemented
 *
 
 ## Retrospective
@@ -116,7 +116,7 @@ In this sprint we plan to build onto our existing distance calculator by adding 
 
 #### What we need to work on
 
-*Articulate things you could improve at the end of the sprint.*
+*We absolutely need to work on our time management for tasks and epics. Its too volitile to continue working towards the end of the due date.*
 
 #### What we will change next sprint 
 
