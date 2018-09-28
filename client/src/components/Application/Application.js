@@ -50,6 +50,7 @@ class Application extends Component {
 
   updateBasedOnResponse(value) {
     this.setState({'trip': value});
+    console.log(value);
   }
 
   updateOptions(option, value){
@@ -68,7 +69,7 @@ class Application extends Component {
         <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
           <Trip updateBasedOnResponse={this.updateBasedOnResponse}/>
           <Map trip={this.state.trip}/>
-          <Itinerary trip={this.state.trip} updateTrip={this.updateTrip}/>
+          <Itinerary trip={this.state.trip} updateTrip={this.updateBasedOnResponse}/>
       </Container>
     )
   }

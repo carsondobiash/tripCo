@@ -18,7 +18,7 @@ class Map extends Component{
                 <CardBody>
                     <p>Map</p>
                     <div>
-                        {this.props.trip.map}
+                        <img src={this.props.trip.map}/>
                     </div>
                 </CardBody>
             </Card>
