@@ -109,7 +109,7 @@ In this sprint we plan to build onto our existing distance calculator by adding 
 
 #### What we changed this sprint
 
-*Articulate specifically what you will do differently based on the retrospective from the previous sprint before the sprint starts.*
+*This sprint we tried to meet more together as a group in order to help all of us understand what was going on and to work on bits a pieces with each other if someone was confused. We also changed our work habits, but not for the better, started later than was probably a good time to start.*
 
 #### What we did well
 
