@@ -35,5 +35,22 @@ public class TestDistance {
         assertEquals(expectedDistance, distance.distance);
     }
 
+    @Before
+    public void initializeKm(){
+        Place origin = new Place();
+        Place destination = new Place();
+        origin.latitude = 40.5853;
+        origin.longitude = -105.0844;
+        destination.latitude = -33.8688;
+        destination.longitude = 151.2093;
 
+        distance = new Distance(origin, destination, "kilometers");
+    }
+
+    @Test
+    public  void testCalculateDistanceKm(){
+        int expectedDistance = 13432;
+        distance.calculatedistance();
+        assertEquals(expectedDistance, distance.distance);
+    }
 }
