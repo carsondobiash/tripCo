@@ -66,9 +66,9 @@ class Application extends Component {
       <Container id="Application">
         <Info/>
         <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
-          <Trip/>
-          <Map svg={this.state.trip.map}/>
-          <Itinerary/>
+          <Trip updateBasedOnResponse={this.updateBasedOnResponse}/>
+          <Map trip={this.state.trip}/>
+          <Itinerary trip={this.state.trip} updateTrip={this.updateTrip}/>
       </Container>
     )
   }
