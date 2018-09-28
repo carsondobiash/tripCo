@@ -102,7 +102,7 @@ public class Trip {
             destination = places.get((i + 1) % places.size());
 
             if(options.units.equals("user defined")) {
-                Distance distance = new Distance(origin, destination, options.unitName, options.unitRadius);
+                Distance distance = new Distance(origin, destination, options.units, options.unitName, options.unitRadius);
                 store = distance.calculatedistance();
             }
             else {
