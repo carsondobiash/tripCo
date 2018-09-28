@@ -54,6 +54,7 @@ public class TestDistance {
     public  void testCalculateDistanceKm(){
         int expectedDistance = 13432;
         distance.calculatedistance();
+        System.out.println(distance.calculatedistance());
         assertEquals(expectedDistance, distance.distance);
     }
 }
