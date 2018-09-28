@@ -74,7 +74,7 @@ public class TestDistance {
         destination.latitude = -33.8688;
         destination.longitude = 151.2093;
 
-        distance = new Distance(origin, destination, "nautical miles");
+        distance = new Distance(origin, destination, "miles");
         int expectedDistance = 8347;
         distance.calculatedistance();
         assertEquals(expectedDistance, distance.distance);
