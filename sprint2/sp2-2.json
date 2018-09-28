@@ -1,0 +1,15 @@
+{
+  "type" : "trip",
+  "version" : 2,
+  "title" : "Shopping loop",
+  "options" : {
+    "units": "user defined",
+    "unitName": "accurate miles",
+    "unitRadius": 3958.7613
+  },
+  "places" : [
+    {"id":"dnvr", "name":"Denver", "latitude":39.7392, "longitude":-104.9903},
+    {"id":"bldr", "name":"Boulder", "latitude":40.01499, "longitude":-105.27055},
+    {"id":"foco", "name":"Fort Collins", "latitude":40.585258, "longitude":-105.084419}
+  ]
+}

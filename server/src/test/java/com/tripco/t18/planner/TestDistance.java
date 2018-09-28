@@ -1,5 +1,6 @@
 package com.tripco.t18.planner;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,24 +36,47 @@ public class TestDistance {
         assertEquals(expectedDistance, distance.distance);
     }
 
-//    @Before
-//    public void initializeKm(){
-//        Place origin = new Place();
-//        Place destination = new Place();
-//        origin.latitude = 40.5853;
-//        origin.longitude = -105.0844;
-//        destination.latitude = -33.8688;
-//        destination.longitude = 151.2093;
-//
-//        distance = new Distance(origin, destination, "kilometers");
-//    }
-//
-//    @Test
-//    public void testCalculateDistanceKm(){
-//        int expectedDistance = 13432;
-//        distance.calculatedistance();
-//        assertEquals(expectedDistance, distance.distance);
-//    }
+    @Test
+    public void testCalculateDistanceKm(){
+        Place origin = new Place();
+        Place destination = new Place();
+        origin.latitude = 40.5853;
+        origin.longitude = -105.0844;
+        destination.latitude = -33.8688;
+        destination.longitude = 151.2093;
 
+        distance = new Distance(origin, destination, "kilometers");
+        int expectedDistance = 13432;
+        distance.calculatedistance();
+        assertEquals(expectedDistance, distance.distance);
+    }
+    @Test
+    public void testCalculateDistanceNm(){
+        Place origin = new Place();
+        Place destination = new Place();
+        origin.latitude = 40.5853;
+        origin.longitude = -105.0844;
+        destination.latitude = -33.8688;
+        destination.longitude = 151.2093;
 
+        distance = new Distance(origin, destination, "nautical miles");
+        int expectedDistance = 7252;
+        distance.calculatedistance();
+        assertEquals(expectedDistance, distance.distance);
+    }
+
+    @Test
+    public void testCalculateDistanceMile(){
+        Place origin = new Place();
+        Place destination = new Place();
+        origin.latitude = 40.5853;
+        origin.longitude = -105.0844;
+        destination.latitude = -33.8688;
+        destination.longitude = 151.2093;
+
+        distance = new Distance(origin, destination, "miles");
+        int expectedDistance = 8347;
+        distance.calculatedistance();
+        assertEquals(expectedDistance, distance.distance);
+    }
 }
