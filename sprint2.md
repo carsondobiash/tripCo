@@ -72,7 +72,7 @@ In this sprint we plan to build onto our existing distance calculator by adding 
 
 ## Review
 
-*An introductory paragraph describing the overall results of the sprint.*
+*This sprint had some good points, as well as some not-so-good points. Our team communicated well and effectively; however, learning new languages and types of programming can be challenging. Because of this, we didn't fully complete an epic although we made good progress toward completing them. More details follows:*
 
 #### Completed epics in Sprint Backlog 
 
@@ -94,14 +94,14 @@ In this sprint we plan to build onto our existing distance calculator by adding 
 *Describe what went well during the sprint in general terms followed by a more detailed list.*
 
 * Our communication throughout the sprint was very good, and everyone knew what was going on, even if it wasn't ideal exactly what was going on.
-*
+* Everyone was very helpful trying to work through problems that our other teammates were having.
 
 #### Problems encountered and resolutions
 
 *Describe what problems occurred during the sprint in general terms followed by a more detailed list.*
 
 * Some group members started late into the sprint, which caused some stress and things to be potentially left unimplemented
-*
+* A couple issues occured while trying to understand the client to server interactions, took a lot of research and teammwork to figure out.
 
 ## Retrospective
 
@@ -121,4 +121,4 @@ In this sprint we plan to build onto our existing distance calculator by adding 
 
 #### What we will change next sprint 
 
-*Articulate at the end of the sprint.  Focus on one of things you need to work on.*
+*Next sprint, our team will focus on trying to meet more often before the sprint deadline. We will also try to divide the work up more evenly. Focusing on previously unfinished epics early on in the next sprint will be crucial to implementing future changes to our project.*
