@@ -22,9 +22,10 @@ public class Distance {
         this.units = units;
     }
 
-    public Distance(Place origin, Place destination, String unitName, int unitRadius){
+    public Distance(Place origin, Place destination, String units, String unitName, int unitRadius){
         this.origin = origin;
         this.destination = destination;
+        this.units = units;
         this.unitRadius = unitRadius;
         this.unitName = unitName;
     }
