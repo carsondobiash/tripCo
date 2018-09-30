@@ -112,12 +112,6 @@ public class Trip {
 
         }
 
-        System.out.println(originList_latitude);
-        System.out.println(originList_longitude);
-        System.out.println(destinationList_latitude);
-        System.out.println(destinationList_longitude);
-
-
 
         for (int i = 0; i < places.size(); i++){
             polygon += originList_longitude.get(i).toString() + "," + originList_latitude.get(i).toString() + " ";
