@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-import {Card, CardBody, Button, Form, Input, FormGroup} from 'reactstrap'
+import {Card, CardBody, Button, ButtonGroup, Input} from 'reactstrap'
+import {request} from "../../api/api";
 
 /* Options allows the user to change the parameters for planning
  * and rendering the trip map and itinerary.
@@ -11,6 +12,7 @@ class Trip extends Component{
         super(props);
         this.upload = this.upload.bind(this);
         this.fileOnChange = this.fileOnChange.bind(this);
+        this.plan = this.plan.bind(this);
         this.state = {file: null}
     }
 
@@ -32,22 +34,23 @@ class Trip extends Component{
         }
     }
 
-
+    plan(){
+        let response = request(this.props.trip, 'plan').then(
+            res => {this.props.updateBasedOnResponse(res);}
+        )
+    }
 
 
     render() {
         return(
-            <Card>
-                <CardBody>
-                    <p>Trip</p>
-                    <Form>
-                        <FormGroup>
-                            <Input type="file" title="input" onChange={this.fileOnChange}/>
-                            <Button type="submit" onClick={this.upload}>Load</Button>
-                        </FormGroup>
-                    </Form>
-                </CardBody>
-            </Card>
+            <CardBody>
+                <p>Trip</p>
+                <Input type="file" title="input" onChange={this.fileOnChange}/>
+                <ButtonGroup>
+                    <Button type="submit" onClick={this.upload}>Load</Button>
+                    <Button onClick={this.plan} type="button">Plan</Button>
+                </ButtonGroup>
+            </CardBody>
         )
     }
 }

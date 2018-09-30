@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Container } from 'reactstrap';
+import { Card, CardHeader, CardBody } from 'reactstrap'
 import Info from './Info'
 import Options from './Options';
 import Map from './Map';
@@ -54,10 +55,10 @@ class Application extends Component {
   }
 
   updateOptions(option, value){
-    let trip = this.state.trip;
-    trip.options[option] = value;
-    this.setState(trip);
-  }
+        let trip = this.state.trip;
+        trip.options[option] = value;
+        this.setState(trip);
+    }
 
 
   render() {
@@ -67,9 +68,11 @@ class Application extends Component {
       <Container id="Application">
         <Info/>
         <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
-          <Trip updateBasedOnResponse={this.updateBasedOnResponse}/>
-          <Map trip={this.state.trip}/>
-          <Itinerary trip={this.state.trip} updateTrip={this.updateBasedOnResponse}/>
+        <Card>
+          <Trip trip={this.state.trip} updateBasedOnResponse={this.updateBasedOnResponse}/>
+          <Itinerary trip={this.state.trip}/>
+          <Map trip={this.state.trip} updateTrip={this.updateBasedOnResponse}/>
+        </Card>
       </Container>
     )
   }
