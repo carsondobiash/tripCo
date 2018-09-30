@@ -96,10 +96,10 @@ public class Trip {
         Place origin;
         Place destination;
 
-        ArrayList<Integer> originList_latitude = new ArrayList<>();
-        ArrayList<Integer> originList_longitude = new ArrayList<>();
-        ArrayList<Integer> destinationList_latitude = new ArrayList<>();
-        ArrayList<Integer> destinationList_longitude = new ArrayList<>();
+        ArrayList<Double> originList_latitude = new ArrayList<>();
+        ArrayList<Double> originList_longitude = new ArrayList<>();
+        ArrayList<Double> destinationList_latitude = new ArrayList<>();
+        ArrayList<Double> destinationList_longitude = new ArrayList<>();
 
         for (int i = 0; i < places.size(); i++){
 
@@ -112,9 +112,10 @@ public class Trip {
 
         }
 
+
         for (int i = 0; i < places.size(); i++){
-            polygon += originList_latitude.get(i).toString() + "," + originList_longitude.get(i).toString() + " ";
-            polygon += destinationList_latitude.get(i).toString() + "," + destinationList_latitude.get(i).toString() + " ";
+            polygon += originList_longitude.get(i).toString() + "," + originList_latitude.get(i).toString() + " ";
+            polygon += destinationList_longitude.get(i).toString() + "," + destinationList_latitude.get(i).toString() + " ";
         }
 
         polygon += "\"\nfill=\"none\" stroke-width=\"4\" stroke=\"blue\" id=\"s7\"/>";
@@ -122,15 +123,15 @@ public class Trip {
         return splice_add + polygon + "</svg>";
     }
 
-    private int degreesToPixel(double deg, String type){
+    private double degreesToPixel(double deg, String type){
 
-        if(type.equals("latitude")){
+        if(type.equals("longitude")){
 
-            return (int)Math.abs((1067/7.5)*(-109.3-deg));
+            return Math.abs((1066.6073/7.5)*(-109.3-deg));
         }
-        else if(type.equals("longitude")){
+        else if(type.equals("latitude")){
 
-            return (int)Math.abs((783/4.4)*(41.2-deg));
+            return Math.abs((783.0824/4.4)*(41.2-deg));
         }
         else{
             return -1;
