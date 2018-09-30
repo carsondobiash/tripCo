@@ -14,15 +14,26 @@ class Options extends Component{
 
   render() {
     const buttons = this.props.config.units.map((unit) =>
-      <Button
+    {if(unit==='user defined'){
+        return(<Button
         key={'distance_button_' + unit}
         className='btn-outline-dark unit-button'
         active={this.props.options.unit === unit}
         value={unit}
-        onClick={(event) => this.props.updateOptions('distance', event.target.value)}
+        onClick={(event) => this.props.updateOptions('unit', event.target.value)}
       >
         {unit.charAt(0).toUpperCase() + unit.slice(1)}
-      </Button>
+      </Button>)}
+    else {
+        return(<Button
+        key={'distance_button_' + unit}
+        className='btn-outline-dark unit-button'
+        active={this.props.options.unit === unit}
+        value={unit}
+        onClick={(event) => this.props.updateOptions('unit', event.target.value)}
+    >
+        {unit.charAt(0).toUpperCase() + unit.slice(1)}
+    </Button>)}}
     );
 
     return(
