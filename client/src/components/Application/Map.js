@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Card, CardHeader, CardBody } from 'reactstrap'
+import { Card, CardHeader, CardBody, CardImg } from 'reactstrap'
 import { ButtonGroup, Button } from 'reactstrap'
 
 /* Options allows the user to change the parameters for planning
@@ -13,15 +13,11 @@ class Map extends Component{
     }
 
     render() {
+        console.log(this.props.trip.map);
         return(
-            <Card>
                 <CardBody>
-                    <p>Map</p>
-                    <div>
-                        <img src={this.props.trip.map}/>
-                    </div>
+                <CardImg src={"data:image/svg+xml;utf8," + this.props.trip.map}/>
                 </CardBody>
-            </Card>
         )
     }
 }
