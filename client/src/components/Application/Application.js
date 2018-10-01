@@ -23,7 +23,7 @@ class Application extends Component {
         options : {
           units: "miles",
           unitName: "",
-          unitRadius:"",
+          unitRadius: 0,
         },
         places: [],
         distances: [],
