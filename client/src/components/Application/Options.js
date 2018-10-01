@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Card, CardHeader, CardBody } from 'reactstrap'
-import { ButtonGroup, Button } from 'reactstrap'
+import { ButtonGroup, Button, Form, FormGroup} from 'reactstrap'
 
 /* Options allows the user to change the parameters for planning
  * and rendering the trip map and itinerary.
@@ -10,6 +10,7 @@ import { ButtonGroup, Button } from 'reactstrap'
 class Options extends Component{
   constructor(props) {
     super(props);
+
   }
 
   render() {
@@ -25,13 +26,25 @@ class Options extends Component{
       </Button>
     );
 
-    return(
+    const forms = <Form inline>
+      <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+        <Input type="text" name="unitName" id="unitname" placeholder="Enter unit name" />
+      </FormGroup>
+      <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+        <Input type="text" name="unitRadius" id="unitradius" placeholder="Enter units radius of the Earth" />
+      </FormGroup>
+    </Form>;
+
+        return(
       <Card>
         <CardBody>
           <p>Select the options you wish to use.</p>
           <ButtonGroup>
             {buttons}
           </ButtonGroup>
+          <FormGroup>
+              {forms}
+          </FormGroup>
         </CardBody>
       </Card>
     )
