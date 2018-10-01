@@ -26,15 +26,6 @@ class Options extends Component{
       </Button>
     );
 
-    const forms = <Form inline>
-      <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-        <Input type="text" name="unitName" id="unitname" placeholder="Enter unit name" />
-      </FormGroup>
-      <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-        <Input type="text" name="unitRadius" id="unitradius" placeholder="Enter units radius of the Earth" />
-      </FormGroup>
-    </Form>;
-
         return(
       <Card>
         <CardBody>
