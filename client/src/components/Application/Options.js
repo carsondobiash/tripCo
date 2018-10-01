@@ -26,13 +26,30 @@ class Options extends Component{
       </Button>
     );
 
+    let customUI;
+    if(this.props.options.unit === 'user defined'){
+     customUI =
+         <div>
+            <Form inline>
+                <br />
+                <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+                    <input type="text" placeholder="Enter unit name" value={this.props.options.unitName} onChange={(event)=> this.props.updateOptions('unitName', event.target.value) }/>
+                    <input type="number" name="password" placeholder="Enter unit radius" value={this.props.options.unitRadius} onChange={(event)=> this.props.updateOptions('unitRadius', event.target.value) }/>
+                </FormGroup>
+            </Form>
+        </div>
+    }
+
+
         return(
       <Card>
         <CardBody>
           <p>Select the options you wish to use.</p>
           <ButtonGroup>
-            {buttons}
+              {buttons}
+
           </ButtonGroup>
+            {customUI}
         </CardBody>
       </Card>
     )
