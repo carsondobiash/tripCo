@@ -13,7 +13,6 @@ class Map extends Component{
     }
 
     render() {
-        console.log(this.props.trip.map);
         return(
                 <CardBody>
                 <CardImg src={"data:image/svg+xml;utf8," + this.props.trip.map}/>

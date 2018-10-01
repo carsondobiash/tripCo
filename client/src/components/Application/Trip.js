@@ -26,7 +26,7 @@ class Trip extends Component{
         if(file){
             let reader = new FileReader();
             reader.onload =  function(event){
-                //console.log(event.target.result);
+                console.log(event.target.result);
                 let parsed = JSON.parse(event.target.result);
                 this.props.updateBasedOnResponse(parsed);
             }.bind(this);
@@ -37,7 +37,7 @@ class Trip extends Component{
     plan(){
         let response = request(this.props.trip, 'plan').then(
             res => {this.props.updateBasedOnResponse(res);}
-        )
+        );
     }
 
 
