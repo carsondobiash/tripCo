@@ -42,9 +42,7 @@ class Options extends Component{
           <ButtonGroup>
             {buttons}
           </ButtonGroup>
-          <Form>
-              {forms}
-          </Form>
+            {forms}
         </CardBody>
       </Card>
     )
