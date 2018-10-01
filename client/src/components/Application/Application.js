@@ -21,9 +21,9 @@ class Application extends Component {
         type: "trip",
         title: "",
         options : {
-          unit: "miles",
+          units: "miles",
           unitName: "",
-          unitRadius:"",
+          unitRadius: null,
         },
         places: [],
         distances: [],
