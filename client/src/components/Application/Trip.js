@@ -10,7 +10,6 @@ import {request} from "../../api/api";
 class Trip extends Component{
     constructor(props) {
         super(props);
-        this.upload = this.upload.bind(this);
         this.fileOnChange = this.fileOnChange.bind(this);
         this.plan = this.plan.bind(this);
         this.state = {file: null}
