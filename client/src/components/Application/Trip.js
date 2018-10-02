@@ -19,6 +19,7 @@ class Trip extends Component{
     fileOnChange(event){
         let f = event.target.files[0];
         this.setState({'file': f})
+        this.upload();
     }
 
     upload(){
@@ -47,7 +48,6 @@ class Trip extends Component{
                 <p>Trip</p>
                 <Input type="file" title="input" onChange={this.fileOnChange}/>
                 <ButtonGroup>
-                    <Button type="submit" onClick={this.upload}>Load</Button>
                     <Button onClick={this.plan} type="button">Plan</Button>
                 </ButtonGroup>
             </CardBody>
