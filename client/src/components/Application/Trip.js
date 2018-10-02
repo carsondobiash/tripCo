@@ -30,19 +30,6 @@ class Trip extends Component{
         }
     }
 
-    upload(){
-        let file = this.state.file;
-        if(file){
-            let reader = new FileReader();
-            reader.onload =  function(event){
-                console.log(event.target.result);
-                let parsed = JSON.parse(event.target.result);
-                this.props.updateBasedOnResponse(parsed);
-            }.bind(this);
-            reader.readAsText(file);
-        }
-    }
-
     plan(){
         let response = request(this.props.trip, 'plan').then(
             res => {this.props.updateBasedOnResponse(res);}
