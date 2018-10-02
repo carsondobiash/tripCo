@@ -42,7 +42,9 @@
 
 Epics planned for this sprint.
 
-* *## epic title: description*
+1. User: I want to make and save changes to the trip:
+  The user wants to be able to add or remove destinations, as well as choose different starting locations. In addition to this, the user also wants to be able to reverse the trip, find new destinations and save all changes made to the trip.
+ 
 *
 
 
