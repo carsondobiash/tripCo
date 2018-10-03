@@ -10,7 +10,6 @@ import {request} from "../../api/api";
 class Trip extends Component{
     constructor(props) {
         super(props);
-        this.upload = this.upload.bind(this);
         this.fileOnChange = this.fileOnChange.bind(this);
         this.plan = this.plan.bind(this);
         this.state = {file: null}
@@ -19,18 +18,14 @@ class Trip extends Component{
     fileOnChange(event){
         let f = event.target.files[0];
         this.setState({'file': f})
-    }
-
-    upload(){
-        let file = this.state.file;
-        if(file){
+        if(f){
             let reader = new FileReader();
             reader.onload =  function(event){
                 console.log(event.target.result);
                 let parsed = JSON.parse(event.target.result);
                 this.props.updateBasedOnResponse(parsed);
             }.bind(this);
-            reader.readAsText(file);
+            reader.readAsText(f);
         }
     }
 
@@ -47,7 +42,6 @@ class Trip extends Component{
                 <p>Trip</p>
                 <Input type="file" title="input" onChange={this.fileOnChange}/>
                 <ButtonGroup>
-                    <Button type="submit" onClick={this.upload}>Load</Button>
                     <Button onClick={this.plan} type="button">Plan</Button>
                 </ButtonGroup>
             </CardBody>

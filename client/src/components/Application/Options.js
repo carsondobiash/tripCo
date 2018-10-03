@@ -33,8 +33,8 @@ class Options extends Component{
             <Form inline>
                 <br />
                 <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-                    <input type="text" placeholder="Enter unit name" value={this.props.options.unitName} onChange={(event)=> this.props.updateOptions('unitName', event.target.value) }/>
-                    <input type="number" name="password" placeholder="Enter unit radius" value={this.props.options.unitRadius} onChange={(event)=> this.props.updateOptions('unitRadius', event.target.value) }/>
+                    <input type="text" placeholder="Enter unit name" value={null} onChange={(event)=> this.props.updateOptions('unitName', event.target.value) }/>
+                    <input type="number" name="password" placeholder="Enter unit radius" value={null} onChange={(event)=> this.props.updateOptions('unitRadius', event.target.value) }/>
                 </FormGroup>
             </Form>
         </div>
