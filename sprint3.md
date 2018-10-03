@@ -3,7 +3,7 @@
 ## Goal
 
 ### Build shorter trips!
-### Sprint Leader: *firstname lastname*
+### Sprint Leader: *Jacob Augustine*
 
 ## Definition of Done
 
@@ -37,15 +37,16 @@
 ## Plan
 
 *An introductory paragraph describing what you expect to accomplish this sprint that will achieve the goal.*
+At the beginning of this sprint, our team will focus on finishing up some lingering epics from previous sprints. 
+
 
 *Include any design diagrams prepared during sprint planning (user interface, component diagram, component/state/hierarchy, etc.) with a short paragraph or each.
 
 Epics planned for this sprint.
 
-1. User: I want to determine the distance between a pair of destinations
+1. User: I want to determine the distance between a pair of destinations.
 2. All clients and servers must interoperate!
-3. User: I want to make and save changes to the trip:
-  The user wants to be able to add or remove destinations, as well as choose different starting locations. In addition to this, the user also wants to be able to reverse the trip, find new destinations and save all changes made to the trip.
+3. User: I want to make and save changes to the trip.
 4. User: I want to design a trip from scratch so I can stop using the other tool. 
 5. User: I want to choose what information is displayed in the itinerary and map.
 6. User: I want my trips to be shorter.
@@ -57,9 +58,9 @@ Epics planned for this sprint.
 
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
-| Epics | *5* | *value* |
-| Tasks |  *15*   | *value* | 
-| Story Points |  *28*  | *value* | 
+| Epics | *7* | *value* |
+| Tasks |  *17*   | *value* | 
+| Story Points |  *33*  | *value* | 
 
 *Enter the `# Planned` at the beginning of the sprint.  Include a discussion of planning decisions based on the planned number of story points versus how many were completed in previous sprints.*
 
@@ -70,7 +71,7 @@ Epics planned for this sprint.
 
 | Date | Tasks closed  | Tasks in progress | Impediments |
 | :--- | :--- | :--- | :--- |
-| *date* | *#task, ...* | *#task, ...* | *none* | 
+| *10/3/18* | *none* | *#86* | *none* | 
 
 *Add a new row for the scrum session after each lecture. *
 
