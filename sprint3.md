@@ -42,8 +42,14 @@
 
 Epics planned for this sprint.
 
-1. User: I want to make and save changes to the trip:
+1. User: I want to determine the distance between a pair of destinations
+2. All clients and servers must interoperate!
+3. User: I want to make and save changes to the trip:
   The user wants to be able to add or remove destinations, as well as choose different starting locations. In addition to this, the user also wants to be able to reverse the trip, find new destinations and save all changes made to the trip.
+4. User: I want to design a trip from scratch so I can stop using the other tool. 
+5. User: I want to choose what information is displayed in the itinerary and map.
+6. User: I want my trips to be shorter.
+7. User: I'd like even shorter trips.
  
 *
 
