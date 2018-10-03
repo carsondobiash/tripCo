@@ -51,16 +51,15 @@ Epics planned for this sprint.
 6. User: I want my trips to be shorter.
 7. User: I'd like even shorter trips.
  
-*
 
 
 ## Metrics
 
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
-| Epics | *value* | *value* |
-| Tasks |  *value*   | *value* | 
-| Story Points |  *value*  | *value* | 
+| Epics | *5* | *value* |
+| Tasks |  *15*   | *value* | 
+| Story Points |  *28*  | *value* | 
 
 *Enter the `# Planned` at the beginning of the sprint.  Include a discussion of planning decisions based on the planned number of story points versus how many were completed in previous sprints.*
 
