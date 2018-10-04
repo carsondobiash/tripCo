@@ -36,8 +36,7 @@
 
 ## Plan
 
-*An introductory paragraph describing what you expect to accomplish this sprint that will achieve the goal.*
-At the beginning of this sprint, our team will focus on finishing up some lingering epics from previous sprints. 
+At the beginning of this sprint, our team will focus on finishing up some lingering epics from previous sprints. Among finishing the lingering epics, it is also a good idea that we meet up earlier and work on tasks in order to have more time to finish everything.
 
 
 *Include any design diagrams prepared during sprint planning (user interface, component diagram, component/state/hierarchy, etc.) with a short paragraph or each.
