@@ -61,6 +61,8 @@ class Application extends Component {
       this.setState(trip);
     }
 
+  updatePlaces(places){};
+
 
   render() {
     if(!this.state.config) { return <div/> }
