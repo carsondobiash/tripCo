@@ -26,9 +26,9 @@ class Options extends Component{
       </Button>
     );
 
-    let customUI;
+    let customUnits;
     if(this.props.options.units === 'user defined'){
-     customUI =
+     customUnits =
          <div>
             <Form inline>
                 <br />
@@ -49,7 +49,7 @@ class Options extends Component{
               {buttons}
 
           </ButtonGroup>
-            {customUI}
+            {customUnits}
         </CardBody>
       </Card>
     )
