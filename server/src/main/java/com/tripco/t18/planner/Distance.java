@@ -14,7 +14,7 @@ public class Distance {
     public String unitName;
     public int unitRadius;
 
-    public Distance(){};
+    public Distance(){}
 
     public Distance(Place origin, Place destination, String units){
         this.origin = origin;
