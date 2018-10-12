@@ -8,6 +8,7 @@ import Trip from './Trip';
 
 import { get_config } from '../../api/api';
 import Itinerary from "./Itinerary";
+import Distance from "./Distance";
 
 /* Renders the application.
  * Holds the destinations and options state shared with the trip.
@@ -74,8 +75,9 @@ class Application extends Component {
         <Card>
           <Trip trip={this.state.trip} updateBasedOnResponse={this.updateBasedOnResponse}/>
           <Map trip={this.state.trip} updateTrip={this.updateBasedOnResponse}/>
-            <Itinerary trip={this.state.trip}/>
+          <Itinerary trip={this.state.trip}/>
         </Card>
+        <Distance/>
       </Container>
     )
   }
