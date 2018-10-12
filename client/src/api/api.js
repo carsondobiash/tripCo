@@ -8,6 +8,15 @@ export async function request(body, type, port=get_port(), host = location.hostn
   if(port === null){
     port = location.port;
   }
+  if(host === null){
+    host = location.hostname;
+  }
+  if(port === ""){
+    port = location.port;
+  }
+  if(host === ""){
+    host = location.hostname;
+  }
   return fetch('http://' + host + ":" + port + '/' + type, {
     method:"POST",
     body: JSON.stringify(body)

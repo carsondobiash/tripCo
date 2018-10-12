@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Card, CardHeader, CardBody } from 'reactstrap'
+import {Card, CardHeader, CardBody, Label, Input} from 'reactstrap'
 import { ButtonGroup, Button, Form, FormGroup} from 'reactstrap'
 
 /* Options allows the user to change the parameters for planning
@@ -49,6 +49,12 @@ class Options extends Component{
               {buttons}
           </ButtonGroup>
             {customUnits}
+            <div>
+                <Label>Enter Port Number</Label>
+                <Input type="text" placeholder="Enter Port Number" value={null} onChange={this.props.updatePort}/>
+                <Label>Enter Hostname</Label>
+                <Input type="text" placeholder="Enter Hostname" value={null} onChange={this.props.updateHost}/>
+            </div>
         </CardBody>
       </Card>
     )

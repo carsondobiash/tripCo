@@ -29,13 +29,17 @@ class Application extends Component {
         },
         places: [],
         distances: [],
-        map: '<svg width="1920" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g></g></svg>'
+        map: '<svg width="1920" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g></g></svg>',
+          port: location.port,
+          host: location.hostname
       }
     };
     this.updateTrip = this.updateTrip.bind(this);
     this.updateBasedOnResponse = this.updateBasedOnResponse.bind(this);
     this.updateOptions = this.updateOptions.bind(this);
     this.updatePlaces = this.updatePlaces.bind(this);
+    this.updatePort = this.updatePort.bind(this);
+    this.updateHost = this.updateHost.bind(this);
   }
 
   componentWillMount() {
@@ -68,7 +72,17 @@ class Application extends Component {
     let trip = this.state.trip;
     trip.places = places;
     this.setState(trip);
-  };
+  }
+
+    updatePort(event){
+        let portValue = event.target.value;
+        this.setState({'port': portValue});
+    }
+
+    updateHost(event){
+        let hostName = event.target.value;
+        this.setState({'host': hostName});
+    }
 
 
   render() {
@@ -77,10 +91,10 @@ class Application extends Component {
     return(
       <Container id="Application">
         <Info/>
-        <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
+        <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions} port={this.state.port} host={this.state.host} updatePort={this.updatePort} updateHost={this.updateHost}/>
         <Customize trip={this.state.trip} updatePlaces={this.updatePlaces}/>
         <Card>
-          <Trip trip={this.state.trip} updateBasedOnResponse={this.updateBasedOnResponse}/>
+          <Trip trip={this.state.trip} updateBasedOnResponse={this.updateBasedOnResponse} port={this.state.port} host={this.state.host}/>
           <Map trip={this.state.trip} updateTrip={this.updateBasedOnResponse}/>
           <Itinerary trip={this.state.trip}/>
         </Card>
