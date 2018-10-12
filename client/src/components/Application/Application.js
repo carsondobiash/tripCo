@@ -5,6 +5,7 @@ import Info from './Info'
 import Options from './Options';
 import Map from './Map';
 import Trip from './Trip';
+import Customize from './Customize'
 
 import { get_config } from '../../api/api';
 import Itinerary from "./Itinerary";
@@ -71,6 +72,7 @@ class Application extends Component {
       <Container id="Application">
         <Info/>
         <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
+        <Customize trip={this.state.trip}/>
         <Card>
           <Trip trip={this.state.trip} updateBasedOnResponse={this.updateBasedOnResponse}/>
           <Map trip={this.state.trip} updateTrip={this.updateBasedOnResponse}/>
