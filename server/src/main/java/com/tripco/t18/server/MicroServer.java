@@ -3,6 +3,7 @@ package com.tripco.t18.server;
 import com.tripco.t18.planner.Calculate;
 import com.tripco.t18.planner.Plan;
 
+import com.tripco.t18.planner.Search;
 import spark.Request;
 import spark.Response;
 import spark.Spark;
@@ -47,6 +48,7 @@ public class MicroServer {
     get("/config", this::config);
     post("/distance", this::distance);
     post("/plan", this::plan);
+    post("/search", this::search);
 
     System.out.println("\n\nServer running on port: " + this.port + "\n\n");
   }
@@ -147,5 +149,13 @@ public class MicroServer {
     response.header("Access-Control-Allow-Origin", "*");
 
     return new Calculate(request).getDistance();//fix
+  }
+
+  private String search(Request request, Response response) {
+
+    response.type("application/json");
+    response.header("Access-Control-Allow-Origin", "*");
+
+    return new Search(request).getSearch();
   }
 }
