@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { Card, CardHeader, CardBody } from 'reactstrap'
 import {ListGroup, ListGroupItem} from 'reactstrap'
+import {Button, ButtonGroup} from 'reactstrap'
 
 /* Options allows the user to change the parameters for planning
  * and rendering the trip map and itinerary.
@@ -10,16 +11,24 @@ import {ListGroup, ListGroupItem} from 'reactstrap'
 class Customize extends Component{
     constructor(props) {
         super(props);
-        this.state={current:"null"}
+        this.state={current:"null"};
+        this.reversePlaces = this.reversePlaces.bind(this);
+    }
+
+
+    reversePlaces(places){
+        return places.reverse();
     }
 
     render() {
 
         let currentPlaces;
+        let reverseButton;
+
         if(this.props.trip.places.length > 0){
             currentPlaces =
                 <div>
-                    <ListGroup flush>
+                    <ListGroup>
                         {this.props.trip.places.map((place) =>
                             <ListGroupItem
                                 tag="button"
@@ -31,16 +40,23 @@ class Customize extends Component{
                             </ListGroupItem>
                         )}
                     </ListGroup>
+                </div>;
+
+            reverseButton =
+                <div>
+                    <Button
+                        onClick={((event) => this.props.updatePlaces(this.reversePlaces(this.props.trip.places)))}
+                    >{"Reverse"}
+                    </Button>
                 </div>
         }
-
-
-
-
         return(
             <Card>
                 <CardBody>
                     {currentPlaces}
+                    <ButtonGroup>
+                    {reverseButton}
+                    </ButtonGroup>
                 </CardBody>
             </Card>
         )

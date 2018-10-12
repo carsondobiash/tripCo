@@ -35,6 +35,7 @@ class Application extends Component {
     this.updateTrip = this.updateTrip.bind(this);
     this.updateBasedOnResponse = this.updateBasedOnResponse.bind(this);
     this.updateOptions = this.updateOptions.bind(this);
+    this.updatePlaces = this.updatePlaces.bind(this);
   }
 
   componentWillMount() {
@@ -63,7 +64,11 @@ class Application extends Component {
       this.setState(trip);
     }
 
-  updatePlaces(places){};
+  updatePlaces(places){
+    let trip = this.state.trip;
+    trip.places = places;
+    this.setState(trip);
+  };
 
 
   render() {
@@ -73,7 +78,7 @@ class Application extends Component {
       <Container id="Application">
         <Info/>
         <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
-        <Customize trip={this.state.trip}/>
+        <Customize trip={this.state.trip} updatePlaces={this.updatePlaces}/>
         <Card>
           <Trip trip={this.state.trip} updateBasedOnResponse={this.updateBasedOnResponse}/>
           <Map trip={this.state.trip} updateTrip={this.updateBasedOnResponse}/>
