@@ -24,7 +24,7 @@ public class Database {
     public void databaseSearch(){
         remoteDatabase();
         count = Integer.toString(limit);
-        search = ("SELECT id,name,latitude,longitude FROM airports LIMIT " + count + ";");
+        search = ("SELECT id,name,latitude,longitude FROM airports WHERE NAME LIKE '%" + match + "%' LIMIT " + count + ";");
         System.out.println(search);
         try {
             Class.forName(myDriver);
