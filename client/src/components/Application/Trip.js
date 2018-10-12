@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Card, CardBody, Button, ButtonGroup, Input} from 'reactstrap'
 import {request} from "../../api/api";
-import {Form, FormGroup, Label} from 'reactstrap'
+import {Form, FormGroup, Label, Row, Col} from 'reactstrap'
 
 /* Options allows the user to change the parameters for planning
  * and rendering the trip map and itinerary.
@@ -14,12 +14,15 @@ class Trip extends Component{
         this.fileOnChange = this.fileOnChange.bind(this);
         this.plan = this.plan.bind(this);
         this.updatePort = this.updatePort.bind(this);
-        this.state = {file: null, port: null}
+
+        this.state = {
+            port: null,
+            trip: this.props.trip,
+        }
     }
 
     fileOnChange(event){
         let f = event.target.files[0];
-        this.setState({'file': f})
         if(f){
             let reader = new FileReader();
             reader.onload =  function(event){
@@ -43,10 +46,11 @@ class Trip extends Component{
     }
 
 
+
     render() {
         return(
-            <CardBody>
-                <FormGroup>
+            <Card>
+                <CardBody>
                     <Label>Select Port Number</Label>
                     <Input type="select" onChange={this.updatePort}>
                         <option></option>
@@ -76,13 +80,48 @@ class Trip extends Component{
                         <option value="31423">31423</option>
                         <option value="31424">31424</option>
                     </Input>
-                </FormGroup>
-                <p>Trip</p>
-                <Input type="file" title="input" onChange={this.fileOnChange}/>
-                <ButtonGroup>
-                    <Button onClick={this.plan} type="button">Plan</Button>
-                </ButtonGroup>
+                <h3>Trip</h3>
+                <Row>
+                    <Col>
+                        <div>
+                            <Label>Trip File</Label>
+                            <Input type="file" title="input" onChange={this.fileOnChange}/>
+                        </div>
+                        <div>
+                            <Form>
+                                <FormGroup>
+                                    <Label>Create Your Own Trip</Label>
+                                    <Input type="text"
+                                           placeholder="Title"/>
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label>Add New Place</Label>
+                                    <Input type="text"
+                                           placeholder="County"/>
+                                    <Input type="text"
+                                           placeholder="Name"/>
+                                    <Input type="number"
+                                           placeholder="Latitude"/>
+                                    <Input type="number"
+                                           placeholder="Longitude"/>
+                                </FormGroup>
+                                <ButtonGroup>
+                                    <Button className="btn">Add Place</Button>
+                                    <Button type="submit">Create Trip</Button>
+                                </ButtonGroup>
+                            </Form>
+                        </div>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <div className="text-center">
+                            <Button onClick={this.plan} className="btn">Plan</Button>
+                        </div>
+                    </Col>
+                </Row>
             </CardBody>
+        </Card>
         )
     }
 }
