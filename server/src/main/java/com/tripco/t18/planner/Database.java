@@ -24,8 +24,10 @@ public class Database {
     public void databaseSearch(){
         remoteDatabase();
         count = Integer.toString(limit);
-        search = ("select id,name,latitude,longitude from airports where name like '%" + match + "%' limit " + count + ";");
-        System.out.println(search);
+        search = ("select id,name,latitude,longitude from airports where name like '%" + match + "%'");
+        if(limit != 0){
+            search += (" LIMIT " + count + ";");
+        }
         try {
             Class.forName(myDriver);
             // connect to the database and query
@@ -47,6 +49,8 @@ public class Database {
         String name;
         String lat;
         String lon;
+        //count.next();
+        //int results = count.getInt(1);
         while(query.next()) {
             Place tempPlace = new Place();
             id = query.getString("id");
