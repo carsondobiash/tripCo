@@ -24,20 +24,16 @@ public class Database {
     public void databaseSearch(){
         remoteDatabase();
         count = Integer.toString(limit);
-        search = ("SELECT id,name,latitude,longitude FROM airports WHERE NAME LIKE '%" + match + "%'");
+        search = ("select id,name,latitude,longitude from airports where name like '%" + match + "%'");
         if(limit != 0){
             search += (" LIMIT " + count + ";");
         }
-        search = ("select id,name,latitude,longitude from airports where name like '%" + match + "%' limit " + count + ";");
-        System.out.println(search);
         try {
             Class.forName(myDriver);
             // connect to the database and query
             System.out.println(myUrl + " " + user + " " + pass);
             try (Connection conn = DriverManager.getConnection(myUrl, user, pass);
-                 Statement stCount = conn.createStatement();
                  Statement stQuery = conn.createStatement();
-                 //ResultSet rsCount = stCount.executeQuery(count);
                  ResultSet rsQuery = stQuery.executeQuery(search)
             ) {
                 dbSearch(rsQuery);
@@ -67,8 +63,6 @@ public class Database {
             tempPlace.latitude = Double.parseDouble(lat);
             tempPlace.longitude = Double.parseDouble(lon);
             places.add(tempPlace);
-            //if (--results == 0)
-                //break;
         }
     }
 
