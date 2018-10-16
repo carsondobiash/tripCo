@@ -113,6 +113,8 @@ class Application extends Component {
     updateLimit(limit){
       let search = this.state.search;
       search.limit = limit;
+      if(search.limit === "")
+        search.limit = 0;
       this.setState();
     }
 
