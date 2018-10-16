@@ -12,7 +12,8 @@ class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            search: this.props.search
+            search: this.props.search,
+            current: "null"
         }
         this.search = this.search.bind(this);
     }
@@ -29,6 +30,9 @@ class Search extends Component {
                     <ListGroupItem
                         tag="button"
                         id={place.name}
+                        className='btn-outline-dark unit-button'
+                        active={this.state.current === place.name}
+                        onClick={((event) => this.setState({"current": event.target.innerText}))}
                     >
                         {place.name}
                     </ListGroupItem>
