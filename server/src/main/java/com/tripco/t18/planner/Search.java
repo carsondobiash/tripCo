@@ -24,9 +24,6 @@ public class Search {
 
         //Calling the database
         database.databaseSearch();
-
-        // log something.
-        System.out.println();
     }
 
     public String getSearch () {
