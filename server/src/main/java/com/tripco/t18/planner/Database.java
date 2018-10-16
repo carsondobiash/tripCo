@@ -54,9 +54,7 @@ public class Database {
         String lon;
         //count.next();
         //int results = count.getInt(1);
-        System.out.println("getting here 1");
         while(query.next()) {
-            System.out.println("getting here 2");
             Place tempPlace = new Place();
             id = query.getString("id");
             System.out.println(query.getString("id"));
@@ -68,7 +66,6 @@ public class Database {
             tempPlace.latitude = Double.parseDouble(lat);
             tempPlace.longitude = Double.parseDouble(lon);
             places.add(tempPlace);
-            System.out.println(places);
         }
     }
 
