@@ -6,10 +6,10 @@ import Options from './Options';
 import Map from './Map';
 import Trip from './Trip';
 import Customize from './Customize'
-
 import { get_config } from '../../api/api';
 import Itinerary from "./Itinerary";
 import Distance from "./Distance";
+import Search from "./Search";
 
 /* Renders the application.
  * Holds the destinations and options state shared with the trip.
@@ -30,16 +30,26 @@ class Application extends Component {
         places: [],
         distances: [],
         map: '<svg width="1920" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g></g></svg>',
-          port: location.port,
-          host: location.hostname
-      }
-    };
+      },
+      search: {
+          type: "search",
+          match: "",
+          limit: 0,
+          places: []
+      },
+      port: location.port,
+      host: location.hostname
+    }
     this.updateTrip = this.updateTrip.bind(this);
     this.updateBasedOnResponse = this.updateBasedOnResponse.bind(this);
     this.updateOptions = this.updateOptions.bind(this);
     this.updatePlaces = this.updatePlaces.bind(this);
     this.updatePort = this.updatePort.bind(this);
     this.updateHost = this.updateHost.bind(this);
+    this.updateBasedOnSearch = this.updateBasedOnSearch.bind(this);
+    this.updateName = this.updateName.bind(this);
+    this.updateLimit = this.updateLimit.bind(this);
+    this.updateID = this.updateID.bind(this);
   }
 
   componentWillMount() {
@@ -84,6 +94,28 @@ class Application extends Component {
         this.setState({'host': hostName});
     }
 
+    updateBasedOnSearch(value){
+      this.setState({'search': value});
+    }
+
+    updateID(id){
+      let newID = this.state.search;
+      newID.id = id;
+      this.setState(newID);
+    }
+
+    updateName(name){
+      let search = this.state.search;
+      search.match = name;
+      this.setState();
+    }
+
+    updateLimit(limit){
+      let search = this.state.search;
+      search.limit = limit;
+      this.setState();
+    }
+
 
   render() {
     if(!this.state.config) { return <div/> }
@@ -95,6 +127,7 @@ class Application extends Component {
         <Customize trip={this.state.trip} updatePlaces={this.updatePlaces}/>
         <Card>
           <Trip trip={this.state.trip} updateBasedOnResponse={this.updateBasedOnResponse} port={this.state.port} host={this.state.host}/>
+          <Search search={this.state.search} updateBasedOnSearch={this.updateBasedOnSearch} port={this.state.port} host={this.state.host} updateName={this.updateName} updateLimit={this.updateLimit} updateID={this.updateID}/>
           <Map trip={this.state.trip} updateTrip={this.updateBasedOnResponse}/>
           <Itinerary trip={this.state.trip}/>
         </Card>
