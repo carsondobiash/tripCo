@@ -28,6 +28,7 @@ public class Database {
         if(limit != 0){
             search += (" LIMIT " + count + ";");
         }
+        search = ("select id,name,latitude,longitude from airports where name like '%" + match + "%' limit " + count + ";");
         System.out.println(search);
         try {
             Class.forName(myDriver);
@@ -66,6 +67,8 @@ public class Database {
             tempPlace.latitude = Double.parseDouble(lat);
             tempPlace.longitude = Double.parseDouble(lon);
             places.add(tempPlace);
+            //if (--results == 0)
+                //break;
         }
     }
 
