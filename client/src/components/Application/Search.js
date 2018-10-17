@@ -59,14 +59,11 @@ class Search extends Component {
                                 </div>
                             </Col>
                         </Row>
-                        <p/>
                       <Row>
                             <Col>
-                                <p>
-                                    <div className="text-center">
-                                        <Button onClick={this.search} className="btn">Search</Button>
-                                    </div>
-                                </p>
+                                <div className="text-center">
+                                    <Button onClick={this.search} className="btn">Search</Button>
+                                </div>
                             </Col>
                         </Row>
                         <Row>
