@@ -33,8 +33,7 @@ public class TestDatabase {
     @Test
     public void testSearchString(){
         database.databaseSearch();
-        System.out.println(database.places.get(0).id);
-        System.out.println(testPlaces.id);
+        System.out.println(System.getenv("TRAVIS"));
         assertEquals(true, database.places.get(0).id.equals(testPlaces.id));
         assertEquals(true, database.places.get(0).name.equals(testPlaces.name));
         assertEquals(true, database.places.get(0).latitude == testPlaces.latitude);
