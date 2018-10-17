@@ -34,7 +34,6 @@ class Customize extends Component{
     }
 
     save(){
-        //lots of help from stackoverflow usr: Rafal Luzynski
         let name =(this.props.trip.title.replace(/ /g,'')+".json");
         let data = JSON.stringify(this.props.trip);
         let downloader = document.createElement("a");
