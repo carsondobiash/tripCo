@@ -36,10 +36,12 @@ class Customize extends Component{
     save(){
         //lots of help from stackoverflow usr: Rafal Luzynski
         let name =(this.props.trip.title.replace(/ /g,'')+".json");
-
-        let fs = require('fs');
-        fs.writeFile(name, JSON.stringify(this.props.trip), function(err){
-            if(err){console.log(err);}});
+        let data = JSON.stringify(this.props.trip);
+        let downloader = document.createElement("a");
+        let file = new Blob([data], {type: 'json'});
+        downloader.href = URL.createObjectURL(file);
+        downloader.download = name;
+        downloader.click();
     }
 
     trickleSwap(stopIndex, places){
@@ -128,8 +130,7 @@ class Customize extends Component{
     renderSaveButton(){
         let saveButton =
             <Button
-                type="submit"
-                onClick={((event) => this.props.updatePlaces(this.save()))}
+                onClick={((event) => this.save())}
             >{"Save"}
             </Button>;
 
