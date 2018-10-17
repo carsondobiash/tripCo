@@ -2,6 +2,9 @@ import React, {Component} from 'react'
 import { Card, CardHeader, CardBody } from 'reactstrap'
 import {ListGroup, ListGroupItem} from 'reactstrap'
 import {Button, ButtonGroup} from 'reactstrap'
+import {Form, FormGroup, Label, Input} from 'reactstrap'
+import Info from "./Info";
+
 
 /* Options allows the user to change the parameters for planning
  * and rendering the trip map and itinerary.
@@ -11,11 +14,17 @@ import {Button, ButtonGroup} from 'reactstrap'
 class Customize extends Component{
     constructor(props) {
         super(props);
-        this.state={current:"null"};
+        this.state= {
+            current:"null",
+            name: "",
+            lat: null,
+            long: null
+        };
         this.reversePlaces = this.reversePlaces.bind(this);
         this.deletePlace = this.deletePlace.bind(this);
         this.makeFirst = this.makeFirst.bind(this);
         this.trickleSwap = this.trickleSwap.bind(this);
+        this.renderAdd = this.renderAdd.bind(this);
         this.renderDeleteButton = this.renderDeleteButton.bind(this);
         this.renderReverseButton = this.renderReverseButton.bind(this);
         this.renderCurrentPlaces = this.renderCurrentPlaces.bind(this);
@@ -52,6 +61,35 @@ class Customize extends Component{
         return places.reverse();
     }
 
+    addPlace(){
+        let temp;
+        let newPlaces = new Array(this.props.trip.places.length+1);
+        console.log(this.props.trip.places.length);
+        console.log(newPlaces.length);
+        for(let index = 0; index < (newPlaces.length); index++){
+            if(index === this.props.trip.places.length) {
+                newPlaces[index] = JSON.parse(JSON.stringify(this.props.trip.places[0]));
+                temp = this.props.trip.places[0];
+            }
+            else
+                newPlaces[index] = this.props.trip.places[index];
+        }
+
+
+        newPlaces[newPlaces.length-1].name = this.state.name;
+        newPlaces[newPlaces.length-1].latitude = this.state.lat;
+        newPlaces[newPlaces.length-1].longitude = this.state.long;
+        newPlaces[newPlaces.length-1].id = newPlaces.length;
+        newPlaces[0] = temp;
+
+        console.log(newPlaces);
+
+
+
+        return newPlaces;
+
+    }
+
     deletePlace(placeToDelete) {
         let newIndex = 0;
         let afterRemove = [this.props.trip.places.length-1];
@@ -64,6 +102,27 @@ class Customize extends Component{
         return afterRemove;
     }
 
+    renderAdd(){
+        let Add =
+
+            <div>
+                <Form>
+                    <br />
+                    <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+                        <Label for="addNew">Add a new destination!</Label>
+                        <Input id="addNew" type="text" placeholder="Enter name" value={null} onChange={(event)=> this.setState({"name": event.target.value})}/>
+                        <Input type="number" placeholder="Enter latitude" value={null} onChange={(event)=> this.setState({"lat": event.target.value})}/>
+                        <Input type="number" placeholder="Enter longitude" value={null} onChange={(event)=> this.setState({"long": event.target.value})}/>
+                    </FormGroup>
+                </Form>
+                <Button
+                    onClick={((event) => this.props.updatePlaces(this.addPlace()))}
+                >{"Add"}
+                </Button>
+            </div>;
+
+        return Add;
+    }
     renderMakeFirstButton(){
         let makeFirstButton =
             <Button
@@ -125,12 +184,14 @@ class Customize extends Component{
         let reverseButton;
         let deleteButton;
         let makeFirstButton;
+        let addGroup;
 
         if(this.props.trip.places.length > 0) {
             currentPlaces = this.renderCurrentPlaces();
             reverseButton = this.renderReverseButton();
             deleteButton = this.renderDeleteButton();
             makeFirstButton = this.renderMakeFirstButton();
+            addGroup = this.renderAdd();
         }
         return(
             <Card>
@@ -141,6 +202,9 @@ class Customize extends Component{
                         {deleteButton}
                         {makeFirstButton}
                     </ButtonGroup>
+                    <br />
+                    <br />
+                    {addGroup}
                 </CardBody>
             </Card>
         )
