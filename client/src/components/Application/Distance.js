@@ -98,7 +98,7 @@ class Distance extends Component{
                                    value = {this.state.distance.destination.longitude}
                                    onChange = {this.updateDestinLong}/>
                         </FormGroup>
-                        <Button>Submit</Button>
+                        <Button>Calculate</Button>
                     </Form>
                     {distance}
                 </CardBody>
