@@ -13,9 +13,9 @@ public class Database {
 
     //Class variable for database configuration information
     private final static String myDriver = "com.mysql.jdbc.Driver";
-    private static String myUrl = "jdbc:mysql://faure.cs.colostate.edu/cs314";
-    private static String user = "cs314-db";
-    private static String pass = "eiK5liet1uej";
+    public static String myUrl = "jdbc:mysql://faure.cs.colostate.edu/cs314";
+    public static String user = "cs314-db";
+    public static String pass = "eiK5liet1uej";
     //fill in SQL queries to count the number of records and to retrieve the data
     private static String count = "";
     private static String search = "";
@@ -72,11 +72,6 @@ public class Database {
         }
         if(isDevelopment != null && isDevelopment.equals("development")){
             myUrl = "jdbc:mysql://127.0.0.1:56247/cs314";
-            user = "cs314-db";
-            pass = "eiK5liet1uej";
-        }
-        else{
-            myUrl = "jdbc:mysql://faure.cs.colostate.edu/cs314";
             user = "cs314-db";
             pass = "eiK5liet1uej";
         }

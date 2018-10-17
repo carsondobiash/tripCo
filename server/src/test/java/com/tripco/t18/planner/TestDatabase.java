@@ -17,10 +17,19 @@ import static org.junit.Assert.*;
 public class TestDatabase {
     Database database;
     Place testPlaces;
+    String myUrl;
+    String user;
+    String pass;
 
     @Before
     public void initialize(){
         database = new Database();
+        String isTravis = System.getenv("TRAVIS");
+        if(isTravis != null && isTravis.equals("true")){
+            database.myUrl = "jdbc:mysql://127.0.0.1/cs314";
+            database.user = "travis";
+            database.pass = null;
+        }
         database.limit = 1;
         database.match = "Denver";
         testPlaces = new Place();
