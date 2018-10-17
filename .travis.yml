@@ -27,7 +27,3 @@ after_script:
 
 addons:
     mariadb: 10.2
-
-env:
-    global:
-        -TRAVIS="true"
