@@ -161,6 +161,7 @@ class Customize extends Component{
                     {this.props.trip.places.map((place) =>
                         <ListGroupItem
                             tag="button"
+                            className='btn-outline-dark unit-button'
                             id={place.name}
                             active={this.state.current === place.name}
                             onClick={((event) => this.setState({"current": event.target.innerText}))}
