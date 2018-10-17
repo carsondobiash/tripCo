@@ -51,9 +51,9 @@ class Options extends Component{
             {customUnits}
             <div>
                 <Label>Enter Port Number</Label>
-                <Input type="text" placeholder="Enter Port Number" value={null} onChange={this.props.updatePort}/>
+                <Input type="text" placeholder="Enter Port Number" onChange={this.props.updatePort}/>
                 <Label>Enter Hostname</Label>
-                <Input type="text" placeholder="Enter Hostname" value={null} onChange={this.props.updateHost}/>
+                <Input type="text" placeholder="Enter Hostname" onChange={this.props.updateHost}/>
             </div>
         </CardBody>
       </Card>
