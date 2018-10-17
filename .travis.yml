@@ -25,5 +25,5 @@ after_script:
   - ./cc-test-reporter sum-coverage --output "codeclimate.combined.json" codeclimate.*.json
   - ./cc-test-reporter upload-coverage --input "codeclimate.combined.json"
 
-  addons:
+addons:
     mariadb: 10.2
