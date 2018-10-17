@@ -24,13 +24,24 @@ class Customize extends Component{
         this.deletePlace = this.deletePlace.bind(this);
         this.makeFirst = this.makeFirst.bind(this);
         this.trickleSwap = this.trickleSwap.bind(this);
+        this.save = this.save.bind(this);
         this.renderAdd = this.renderAdd.bind(this);
         this.renderDeleteButton = this.renderDeleteButton.bind(this);
         this.renderReverseButton = this.renderReverseButton.bind(this);
         this.renderCurrentPlaces = this.renderCurrentPlaces.bind(this);
         this.renderMakeFirstButton = this.renderMakeFirstButton.bind(this);
+        this.renderSaveButton = this.renderSaveButton.bind(this);
     }
 
+    save(){
+        let name =(this.props.trip.title.replace(/ /g,'')+".json");
+        let data = JSON.stringify(this.props.trip);
+        let downloader = document.createElement("a");
+        let file = new Blob([data], {type: 'json'});
+        downloader.href = URL.createObjectURL(file);
+        downloader.download = name;
+        downloader.click();
+    }
 
     trickleSwap(stopIndex, places){
         let tempPlace;
@@ -62,14 +73,10 @@ class Customize extends Component{
     }
 
     addPlace(){
-        let temp;
         let newPlaces = new Array(this.props.trip.places.length+1);
-        console.log(this.props.trip.places.length);
-        console.log(newPlaces.length);
         for(let index = 0; index < (newPlaces.length); index++){
             if(index === this.props.trip.places.length) {
                 newPlaces[index] = JSON.parse(JSON.stringify(this.props.trip.places[0]));
-                temp = this.props.trip.places[0];
             }
             else
                 newPlaces[index] = this.props.trip.places[index];
@@ -80,11 +87,6 @@ class Customize extends Component{
         newPlaces[newPlaces.length-1].latitude = this.state.lat;
         newPlaces[newPlaces.length-1].longitude = this.state.long;
         newPlaces[newPlaces.length-1].id = newPlaces.length;
-        newPlaces[0] = temp;
-
-        console.log(newPlaces);
-
-
 
         return newPlaces;
 
@@ -122,6 +124,17 @@ class Customize extends Component{
             </div>;
 
         return Add;
+    }
+
+    renderSaveButton(){
+        let saveButton =
+            <Button
+                onClick={((event) => this.save())}
+            >{"Save"}
+            </Button>;
+
+        return saveButton;
+
     }
     renderMakeFirstButton(){
         let makeFirstButton =
@@ -161,6 +174,7 @@ class Customize extends Component{
                     {this.props.trip.places.map((place) =>
                         <ListGroupItem
                             tag="button"
+                            className='btn-outline-dark unit-button'
                             id={place.name}
                             active={this.state.current === place.name}
                             onClick={((event) => this.setState({"current": event.target.innerText}))}
@@ -185,6 +199,7 @@ class Customize extends Component{
         let deleteButton;
         let makeFirstButton;
         let addGroup;
+        let saveButton;
 
         if(this.props.trip.places.length > 0) {
             currentPlaces = this.renderCurrentPlaces();
@@ -192,22 +207,19 @@ class Customize extends Component{
             deleteButton = this.renderDeleteButton();
             makeFirstButton = this.renderMakeFirstButton();
             addGroup = this.renderAdd();
+            saveButton = this.renderSaveButton();
         }
         return(
             <Card>
                 <CardBody>
                     {currentPlaces}
                     <ButtonGroup>
-                        {reverseButton}
-                        {deleteButton}
-                        {makeFirstButton}
+                        {reverseButton}{deleteButton}{makeFirstButton}{saveButton}
                     </ButtonGroup>
-                    <br />
-                    <br />
+                    <br /><br />
                     {addGroup}
                 </CardBody>
-            </Card>
-        )
+            </Card>)
     }
 }
 
