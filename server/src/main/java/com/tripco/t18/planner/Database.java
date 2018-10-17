@@ -31,7 +31,6 @@ public class Database {
         try {
             Class.forName(myDriver);
             // connect to the database and query
-            System.out.println(myUrl + " " + user + " " + pass);
             try (Connection conn = DriverManager.getConnection(myUrl, user, pass);
                  Statement stQuery = conn.createStatement();
                  ResultSet rsQuery = stQuery.executeQuery(search)
@@ -49,12 +48,9 @@ public class Database {
         String name;
         String lat;
         String lon;
-        //count.next();
-        //int results = count.getInt(1);
         while(query.next()) {
             Place tempPlace = new Place();
             id = query.getString("id");
-            System.out.println(query.getString("id"));
             name = query.getString("name");
             lat = query.getString("latitude");
             lon = query.getString("longitude");
