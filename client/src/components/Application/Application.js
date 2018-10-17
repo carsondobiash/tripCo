@@ -128,12 +128,12 @@ class Application extends Component {
         <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions} port={this.state.port} host={this.state.host} updatePort={this.updatePort} updateHost={this.updateHost}/>
         <Customize trip={this.state.trip} updatePlaces={this.updatePlaces}/>
         <Card>
-          <Trip trip={this.state.trip} updateBasedOnResponse={this.updateBasedOnResponse} port={this.state.port} host={this.state.host}/>
+          <Trip trip={this.state.trip} updateTrip={this.updateTrip} updateBasedOnResponse={this.updateBasedOnResponse} port={this.state.port} host={this.state.host}/>
           <Search search={this.state.search} updateBasedOnSearch={this.updateBasedOnSearch} port={this.state.port} host={this.state.host} updateName={this.updateName} updateLimit={this.updateLimit} updateID={this.updateID}/>
           <Map trip={this.state.trip} updateTrip={this.updateBasedOnResponse}/>
           <Itinerary trip={this.state.trip}/>
         </Card>
-        <Distance/>
+        <Distance port={this.state.port} host={this.state.host}/>
       </Container>
     )
   }

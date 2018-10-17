@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Card, CardBody, CardTitle, Button, ButtonGroup, Input} from 'reactstrap'
+import {Card, CardBody, CardTitle, Button, Input} from 'reactstrap'
 import {request} from "../../api/api";
 import {Form, FormGroup, Label} from 'reactstrap'
 
@@ -15,13 +15,13 @@ class Distance extends Component{
             distance:{
                 type: "distance",
                 origin: {
-                    latitude: null,
-                    longitude: null,
+                    latitude: '',
+                    longitude: '',
                     name: "Origin"
                 },
                 destination: {
-                    latitude: null,
-                    longitude: null,
+                    latitude: '',
+                    longitude: '',
                     name: "Destination"
                 },
                 units: "miles",
@@ -31,8 +31,8 @@ class Distance extends Component{
     }
 
     distance(){
-        let response = request(this.props.distance, 'distance', this.state.port).then(
-            res => {this.props.updateBasedOnResponse(res);}
+        let response = request(this.state.distance, 'distance', this.props.port, this.props.host).then(
+            res => {this.setState({distance: res})}
         );
     }
 
@@ -63,36 +63,45 @@ class Distance extends Component{
 
 
     render(){
+
+        let distance = (<div>
+            <h6>Total Distance: {this.state.distance.distance}</h6>
+        </div>);
+
+
         return(
             <Card>
-                <Label>Find Distance Between Two Points Below</Label>
-                <Form onSubmit={this.distance}>
-                    <FormGroup>
-                        <Input type = "number"
-                               placeholder = "Origin Latitude"
-                               value = {this.state.distance.origin.latitude}
-                               onChange = {this.updateOriginLat}/>
-                    </FormGroup>
-                    <FormGroup>
-                        <Input type = "number"
-                               placeholder = "Origin Longitude"
-                               value = {this.state.distance.origin.longitude}
-                               onChange = {this.updateOriginLong}/>
-                    </FormGroup>
-                    <FormGroup>
-                        <Input type = "number"
-                               placeholder = "Destination Latitude"
-                               value = {this.state.distance.destination.latitude}
-                               onChange = {this.updateDestinLat}/>
-                    </FormGroup>
-                    <FormGroup>
-                        <Input type = "number"
-                               placeholder = "Destination Longitude"
-                               value = {this.state.distance.destination.longitude}
-                               onChange = {this.updateDestinLong}/>
-                    </FormGroup>
-                    <Button>Submit</Button>
-                </Form>
+                <CardBody>
+                    <CardTitle>Find Distance Between Two Points</CardTitle>
+                    <Form onSubmit={this.distance}>
+                        <FormGroup>
+                            <Input type = "number"
+                                   placeholder = "Origin Latitude"
+                                   value = {this.state.distance.origin.latitude}
+                                   onChange = {this.updateOriginLat}/>
+                        </FormGroup>
+                        <FormGroup>
+                            <Input type = "number"
+                                   placeholder = "Origin Longitude"
+                                   value = {this.state.distance.origin.longitude}
+                                   onChange = {this.updateOriginLong}/>
+                        </FormGroup>
+                        <FormGroup>
+                            <Input type = "number"
+                                   placeholder = "Destination Latitude"
+                                   value = {this.state.distance.destination.latitude}
+                                   onChange = {this.updateDestinLat}/>
+                        </FormGroup>
+                        <FormGroup>
+                            <Input type = "number"
+                                   placeholder = "Destination Longitude"
+                                   value = {this.state.distance.destination.longitude}
+                                   onChange = {this.updateDestinLong}/>
+                        </FormGroup>
+                        <Button>Submit</Button>
+                    </Form>
+                    {distance}
+                </CardBody>
             </Card>
         )
     }
