@@ -14,11 +14,39 @@ class Customize extends Component{
         this.state={current:"null"};
         this.reversePlaces = this.reversePlaces.bind(this);
         this.deletePlace = this.deletePlace.bind(this);
+        this.makeFirst = this.makeFirst.bind(this);
+        this.trickleSwap = this.trickleSwap.bind(this);
         this.renderDeleteButton = this.renderDeleteButton.bind(this);
         this.renderReverseButton = this.renderReverseButton.bind(this);
         this.renderCurrentPlaces = this.renderCurrentPlaces.bind(this);
+        this.renderMakeFirstButton = this.renderMakeFirstButton.bind(this);
     }
 
+
+    trickleSwap(stopIndex, places){
+        let tempPlace;
+        for(let afterIndex = 1; afterIndex < stopIndex; afterIndex++){
+            tempPlace = places[afterIndex];
+            places[afterIndex] = places[stopIndex];
+            places[stopIndex] = tempPlace;
+        }
+        return places;
+    }
+
+    makeFirst(place){
+        let updatedPlaces = this.props.trip.places;
+
+        for (let index = 0; index < updatedPlaces.length; index++) {
+            if (updatedPlaces[index].name === place) {
+                place = updatedPlaces[0];
+                updatedPlaces[0] = updatedPlaces[index];
+                updatedPlaces[index] = place;
+                this.trickleSwap(index, updatedPlaces);
+            }
+        }
+
+        return updatedPlaces;
+    }
 
     reversePlaces(places){
         return places.reverse();
@@ -34,6 +62,17 @@ class Customize extends Component{
             }
         }
         return afterRemove;
+    }
+
+    renderMakeFirstButton(){
+        let makeFirstButton =
+            <Button
+                onClick={((event) => this.props.updatePlaces(this.makeFirst(this.state.current)))}
+            >{"Make First"}
+            </Button>;
+
+        return makeFirstButton;
+
     }
 
     renderDeleteButton(){
@@ -85,11 +124,13 @@ class Customize extends Component{
         let currentPlaces;
         let reverseButton;
         let deleteButton;
+        let makeFirstButton;
 
         if(this.props.trip.places.length > 0) {
             currentPlaces = this.renderCurrentPlaces();
             reverseButton = this.renderReverseButton();
             deleteButton = this.renderDeleteButton();
+            makeFirstButton = this.renderMakeFirstButton();
         }
         return(
             <Card>
@@ -98,6 +139,7 @@ class Customize extends Component{
                     <ButtonGroup>
                         {reverseButton}
                         {deleteButton}
+                        {makeFirstButton}
                     </ButtonGroup>
                 </CardBody>
             </Card>
