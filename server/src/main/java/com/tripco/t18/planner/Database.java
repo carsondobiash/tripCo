@@ -14,8 +14,8 @@ public class Database {
     //Class variable for database configuration information
     private final static String myDriver = "com.mysql.jdbc.Driver";
     private static String myUrl = "jdbc:mysql://faure.cs.colostate.edu/cs314";
-    private final static String user = "cs314-db";
-    private final static String pass = "eiK5liet1uej";
+    private static String user = "cs314-db";
+    private static String pass = "eiK5liet1uej";
     //fill in SQL queries to count the number of records and to retrieve the data
     private static String count = "";
     private static String search = "";
@@ -63,12 +63,22 @@ public class Database {
     }
 
     public void remoteDatabase(){
+        String isTravis = System.getenv("TRAVIS");
         String isDevelopment = System.getenv("CS314_ENV");
+        if(isTravis != null && isTravis.equals("true")){
+            myUrl = "jdbc:mysql://127.0.0.1/cs314";
+            user = "travis";
+            pass = null;
+        }
         if(isDevelopment != null && isDevelopment.equals("development")){
             myUrl = "jdbc:mysql://127.0.0.1:56247/cs314";
+            user = "cs314-db";
+            pass = "eiK5liet1uej";
         }
         else{
             myUrl = "jdbc:mysql://faure.cs.colostate.edu/cs314";
+            user = "cs314-db";
+            pass = "eiK5liet1uej";
         }
     }
 }
