@@ -17,24 +17,24 @@ import static org.junit.Assert.*;
 public class TestDatabase {
     Database database;
     Place testPlaces;
-    ArrayList<Place> test = new ArrayList<>();
 
     @Before
     public void initialize(){
         database = new Database();
         database.limit = 1;
-        database.match = "International";
+        database.match = "Denver";
         testPlaces = new Place();
-        testPlaces.id = "6CO3";
-        testPlaces.name = "Wine Glass International Airport";
-        testPlaces.latitude = 37.63639831542969;
-        testPlaces.longitude = -103.65799713134766;
-        test.add(testPlaces);
+        testPlaces.id = "CO35";
+        testPlaces.name = "Denver Health Heliport";
+        testPlaces.latitude = 39.727500915527344;
+        testPlaces.longitude = -104.99099731445312;
     }
 
     @Test
     public void testSearchString(){
         database.databaseSearch();
+        System.out.println(database.places.get(0).id);
+        System.out.println(testPlaces.id);
         assertEquals(true, database.places.get(0).id.equals(testPlaces.id));
         assertEquals(true, database.places.get(0).name.equals(testPlaces.name));
         assertEquals(true, database.places.get(0).latitude == testPlaces.latitude);
