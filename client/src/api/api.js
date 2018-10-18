@@ -5,12 +5,6 @@ function get_port() {
 }
 
 export async function request(body, type, port=get_port(), host = location.hostname){
-  if(port === null){
-    port = location.port;
-  }
-  if(host === null){
-    host = location.hostname;
-  }
   if(port === ""){
     port = location.port;
   }
