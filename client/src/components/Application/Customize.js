@@ -2,6 +2,9 @@ import React, {Component} from 'react'
 import { Card, CardHeader, CardBody } from 'reactstrap'
 import {ListGroup, ListGroupItem} from 'reactstrap'
 import {Button, ButtonGroup} from 'reactstrap'
+import {Form, FormGroup, Label, Input} from 'reactstrap'
+import Info from "./Info";
+
 
 /* Options allows the user to change the parameters for planning
  * and rendering the trip map and itinerary.
@@ -11,17 +14,34 @@ import {Button, ButtonGroup} from 'reactstrap'
 class Customize extends Component{
     constructor(props) {
         super(props);
-        this.state={current:"null"};
+        this.state= {
+            current:"null",
+            name: "",
+            lat: null,
+            long: null
+        };
         this.reversePlaces = this.reversePlaces.bind(this);
         this.deletePlace = this.deletePlace.bind(this);
         this.makeFirst = this.makeFirst.bind(this);
         this.trickleSwap = this.trickleSwap.bind(this);
+        this.save = this.save.bind(this);
+        this.renderAdd = this.renderAdd.bind(this);
         this.renderDeleteButton = this.renderDeleteButton.bind(this);
         this.renderReverseButton = this.renderReverseButton.bind(this);
         this.renderCurrentPlaces = this.renderCurrentPlaces.bind(this);
         this.renderMakeFirstButton = this.renderMakeFirstButton.bind(this);
+        this.renderSaveButton = this.renderSaveButton.bind(this);
     }
 
+    save(){
+        let name =(this.props.trip.title.replace(/ /g,'')+".json");
+        let data = JSON.stringify(this.props.trip);
+        let downloader = document.createElement("a");
+        let file = new Blob([data], {type: 'json'});
+        downloader.href = URL.createObjectURL(file);
+        downloader.download = name;
+        downloader.click();
+    }
 
     trickleSwap(stopIndex, places){
         let tempPlace;
@@ -52,6 +72,26 @@ class Customize extends Component{
         return places.reverse();
     }
 
+    addPlace(){
+        let newPlaces = new Array(this.props.trip.places.length+1);
+        for(let index = 0; index < (newPlaces.length); index++){
+            if(index === this.props.trip.places.length) {
+                newPlaces[index] = JSON.parse(JSON.stringify(this.props.trip.places[0]));
+            }
+            else
+                newPlaces[index] = this.props.trip.places[index];
+        }
+
+
+        newPlaces[newPlaces.length-1].name = this.state.name;
+        newPlaces[newPlaces.length-1].latitude = this.state.lat;
+        newPlaces[newPlaces.length-1].longitude = this.state.long;
+        newPlaces[newPlaces.length-1].id = newPlaces.length;
+
+        return newPlaces;
+
+    }
+
     deletePlace(placeToDelete) {
         let newIndex = 0;
         let afterRemove = [this.props.trip.places.length-1];
@@ -64,6 +104,38 @@ class Customize extends Component{
         return afterRemove;
     }
 
+    renderAdd(){
+        let Add =
+
+            <div>
+                <Form>
+                    <br />
+                    <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+                        <Label for="addNew">Add a new destination!</Label>
+                        <Input id="addNew" type="text" placeholder="Enter name" value={null} onChange={(event)=> this.setState({"name": event.target.value})}/>
+                        <Input type="number" placeholder="Enter latitude" value={null} onChange={(event)=> this.setState({"lat": event.target.value})}/>
+                        <Input type="number" placeholder="Enter longitude" value={null} onChange={(event)=> this.setState({"long": event.target.value})}/>
+                    </FormGroup>
+                </Form>
+                <Button
+                    onClick={((event) => this.props.updatePlaces(this.addPlace()))}
+                >{"Add"}
+                </Button>
+            </div>;
+
+        return Add;
+    }
+
+    renderSaveButton(){
+        let saveButton =
+            <Button
+                onClick={((event) => this.save())}
+            >{"Save"}
+            </Button>;
+
+        return saveButton;
+
+    }
     renderMakeFirstButton(){
         let makeFirstButton =
             <Button
@@ -102,6 +174,7 @@ class Customize extends Component{
                     {this.props.trip.places.map((place) =>
                         <ListGroupItem
                             tag="button"
+                            className='btn-outline-dark unit-button'
                             id={place.name}
                             active={this.state.current === place.name}
                             onClick={((event) => this.setState({"current": event.target.innerText}))}
@@ -125,25 +198,28 @@ class Customize extends Component{
         let reverseButton;
         let deleteButton;
         let makeFirstButton;
+        let addGroup;
+        let saveButton;
 
         if(this.props.trip.places.length > 0) {
             currentPlaces = this.renderCurrentPlaces();
             reverseButton = this.renderReverseButton();
             deleteButton = this.renderDeleteButton();
             makeFirstButton = this.renderMakeFirstButton();
+            addGroup = this.renderAdd();
+            saveButton = this.renderSaveButton();
         }
         return(
             <Card>
                 <CardBody>
                     {currentPlaces}
                     <ButtonGroup>
-                        {reverseButton}
-                        {deleteButton}
-                        {makeFirstButton}
+                        {reverseButton}{deleteButton}{makeFirstButton}{saveButton}
                     </ButtonGroup>
+                    <br /><br />
+                    {addGroup}
                 </CardBody>
-            </Card>
-        )
+            </Card>)
     }
 }
 
