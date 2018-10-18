@@ -49,9 +49,11 @@ class Options extends Component{
               {buttons}
           </ButtonGroup>
             {customUnits}
+            <p/>
             <div>
                 <Label>Enter Port Number</Label>
                 <Input type="text" placeholder="Enter Port Number" onChange={this.props.updatePort}/>
+                <p/>
                 <Label>Enter Hostname</Label>
                 <Input type="text" placeholder="Enter Hostname" onChange={this.props.updateHost}/>
             </div>
