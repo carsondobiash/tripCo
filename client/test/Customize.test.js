@@ -2,6 +2,8 @@ import './enzyme.config.js'                   // (1)
 import React from 'react'
 import { mount } from 'enzyme'              // (2)
 import Customize from '../src/components/Application/Customize'
+import Application from '../src/components/Application/Application'
+
 
 /* Both of these tests are functionally identical although the standard way
  *  of writing tests uses lambda or anonymous functions. These are useful
@@ -45,26 +47,45 @@ const startProps = {
     }
 };
 
+
 const custom = mount((   // (1)
-    <Customize trip={startProps.trip}/>
+
+    <Customize trip={startProps.trip} updatePlaces={(places) => startProps.trip.places = places}/>
+
 ));
+
+let ListGroup = [];
+let Buttons = [];
+custom.find('ListGroupItem').map((element) => ListGroup.push(element));
+custom.find('Button').map((element) => Buttons.push(element));
 
 /* Test example using an anonymous function */
 test('Check to see if current places get made correctly (Lambda)', () => {
+
     let actual = [];
-    custom.find('ListGroupItem').map((element) => actual.push(element.prop('id')));
+    ListGroup.map((element) => actual.push(element.prop('id')));
     expect(actual).toEqual(["Mount Elbert","Mount Massive"]);
 });
 
 test('Check to see if current places groups click works (Lambda)', () => {
-    let actual = [];
-    custom.find('ListGroupItem').map((element) => actual.push(element));
-    actual[0].simulate('click');
+
+    ListGroup[0].simulate('click');
     expect(custom.state().current).toEqual("Mount Elbert");
 });
-test('Check to see if current places groups click works (Lambda)', () => {
-    let actual = [];
-    custom.find('Button').map((element) => actual.push(element));
-    console.log(actual[0])
-    expect(custom.state().current).toEqual("Mount Elbert");
+
+test('Check to see if reversebutton onclick works (Lambda)', () => {
+    Buttons[0].simulate('click');
+    expect(startProps.trip.places[0].name).toEqual("Mount Massive");
+});
+
+test('Check to see if deletebutton onclick works (Lambda)', () => {
+
+    Buttons[1].simulate('click');
+    expect(startProps.trip.places.length).toEqual(1);
+});
+
+test('Check to see if MFbutton onclick works (Lambda)', () => {
+
+    Buttons[2].simulate('click');
+    expect(startProps.trip.places[0].name).toEqual("Mount Massive");
 });

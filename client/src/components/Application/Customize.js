@@ -118,7 +118,6 @@ class Customize extends Component{
                     </FormGroup>
                 </Form>
                 <Button
-                    id={"Add"}
                     onClick={((event) => this.props.updatePlaces(this.addPlace()))}
                 >{"Add"}
                 </Button>
@@ -130,7 +129,6 @@ class Customize extends Component{
     renderSaveButton(){
         let saveButton =
             <Button
-                id={"Save"}
                 onClick={((event) => this.save())}
             >{"Save"}
             </Button>;
@@ -141,7 +139,6 @@ class Customize extends Component{
     renderMakeFirstButton(){
         let makeFirstButton =
             <Button
-                id={"MF"}
                 onClick={((event) => this.props.updatePlaces(this.makeFirst(this.state.current)))}
             >{"Make First"}
             </Button>;
@@ -153,7 +150,6 @@ class Customize extends Component{
     renderDeleteButton(){
         let deleteButton =
             <Button
-                id={"Delete"}
                 onClick={((event) => this.props.updatePlaces(this.deletePlace(this.state.current)))}
             >{"Delete"}
             </Button>;
@@ -164,7 +160,6 @@ class Customize extends Component{
     renderReverseButton(){
         let reverseButton =
             <Button
-                id={"Reverse"}
                 onClick={((event) => this.props.updatePlaces(this.reversePlaces(this.props.trip.places)))}
             >{"Reverse"}
             </Button>;
