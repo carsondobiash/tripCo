@@ -13,8 +13,10 @@ class Trip extends Component{
         super(props);
         this.fileOnChange = this.fileOnChange.bind(this);
         this.plan = this.plan.bind(this);
+        this.addPlace = this.addPlace.bind(this);
+        this.updateTitle = this.updateTitle.bind(this);
         this.state = {
-            trip: this.props.trip,
+            places: []
         }
     }
 
@@ -37,6 +39,33 @@ class Trip extends Component{
         );
     }
 
+    updateTitle(event){
+        this.props.updateTrip("title", event.target.value);
+    }
+
+    addPlace(event){
+        event.preventDefault()
+        let place = {
+            id: "",
+            name: "",
+            county: "",
+            latitude: "",
+            longitude: ""
+        };
+
+        place.id = event.target.id.value;
+        place.name = event.target.name.value;
+        place.county = event.target.county.value;
+        place.latitude = event.target.latitude.value;
+        place.longitude = event.target.longitude.value;
+
+
+        //this.setState({places: this.props.trip.places.concat(place)});
+        //console.log(this.state.places);
+
+        this.props.updateTrip("places", this.props.trip.places.concat(place));
+    }
+
 
     render() {
         return(
@@ -50,27 +79,28 @@ class Trip extends Component{
                             <Input type="file" title="input" onChange={this.fileOnChange}/>
                         </div>
                         <div>
-                            <Form>
-                                <FormGroup>
-                                    <Label>Create Your Own Trip</Label>
-                                    <Input type="text"
-                                           placeholder="Title"/>
-                                </FormGroup>
-                                <FormGroup>
-                                    <Label>Add New Place</Label>
-                                    <Input type="text"
-                                           placeholder="County"/>
-                                    <Input type="text"
-                                           placeholder="Name"/>
-                                    <Input type="number"
-                                           placeholder="Latitude"/>
-                                    <Input type="number"
-                                           placeholder="Longitude"/>
-                                </FormGroup>
-                                <ButtonGroup>
-                                    <Button className="btn">Add Place</Button>
-                                    <Button type="submit">Create Trip</Button>
-                                </ButtonGroup>
+                            <Label>Create Your Own Trip</Label>
+                            <Input type="text"
+                                   onChange={this.updateTitle}
+                                   placeholder="Title"/>
+                            <Form onSubmit={this.addPlace}>
+                                <Label>Add New Place</Label>
+                                <Input type="text"
+                                       name="name"
+                                       placeholder="Name"/>
+                                <Input type="text"
+                                       name="county"
+                                       placeholder="County (optional)"/>
+                                <Input type="number"
+                                       name="id"
+                                       placeholder="Id"/>
+                                <Input type="number"
+                                       name="latitude"
+                                       placeholder="Latitude"/>
+                                <Input type="number"
+                                       name="longitude"
+                                       placeholder="Longitude"/>
+                                <Button className="btn" type="submit">Add Place</Button>
                             </Form>
                         </div>
                     </Col>

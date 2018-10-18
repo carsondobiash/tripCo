@@ -125,7 +125,6 @@ class Application extends Component {
     return(
       <Container id="Application">
         <Info/>
-        <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions} port={this.state.port} host={this.state.host} updatePort={this.updatePort} updateHost={this.updateHost}/>
         <Customize trip={this.state.trip} updatePlaces={this.updatePlaces}/>
         <Card>
           <Trip trip={this.state.trip} updateTrip={this.updateTrip} updateBasedOnResponse={this.updateBasedOnResponse} port={this.state.port} host={this.state.host}/>
@@ -134,6 +133,7 @@ class Application extends Component {
           <Itinerary trip={this.state.trip}/>
         </Card>
         <Distance port={this.state.port} host={this.state.host}/>
+          <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions} port={this.state.port} host={this.state.host} updatePort={this.updatePort} updateHost={this.updateHost}/>
       </Container>
     )
   }
