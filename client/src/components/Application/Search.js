@@ -16,6 +16,7 @@ class Search extends Component {
             current: "null"
         }
         this.search = this.search.bind(this);
+        this.addPlace = this.addPlace.bind(this);
     }
 
     search(){
@@ -23,16 +24,34 @@ class Search extends Component {
         request(this.props.search, 'search', this.props.port, this.props.host).then(res => {this.props.updateBasedOnSearch(res);});
     }
 
+    addPlace(place){
+        let newPlaces = new Array(this.props.trip.places.length+1);
+        for(let index = 0; index < (newPlaces.length); index++){
+            if(index === this.props.trip.places.length) {
+                newPlaces[index] = JSON.parse(JSON.stringify(this.props.trip.places[0]));
+            }
+            else
+                newPlaces[index] = this.props.trip.places[index];
+        }
+        newPlaces[newPlaces.length-1].name = place.name;
+        newPlaces[newPlaces.length-1].latitude = place.latitude;
+        newPlaces[newPlaces.length-1].longitude = place.longitude;
+        newPlaces[newPlaces.length-1].id = place.id;
+        return newPlaces;
+
+    }
+
     render(){
         let data =
             <ListGroup>
+                <Label>Click on a result to add the result to the trip</Label>
                 {this.props.search.places.map((place) =>
                     <ListGroupItem
                         tag="button"
                         id={place.name}
                         className='btn-outline-dark unit-button'
                         active={this.state.current === place.name}
-                        onClick={((event) => this.setState({"current": event.target.innerText}))}
+                        onClick={((event) => {this.setState({"current": event.target.innerText}); this.props.updatePlaces(this.addPlace(place))})}
                     >
                         {place.name}
                     </ListGroupItem>
