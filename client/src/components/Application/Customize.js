@@ -15,7 +15,7 @@ class Customize extends Component{
     constructor(props) {
         super(props);
         this.state= {
-            current:"null",
+            current:"",
             name: "",
             lat: null,
             long: null
@@ -177,7 +177,7 @@ class Customize extends Component{
                             className='btn-outline-dark unit-button'
                             id={place.name}
                             active={this.state.current === place.name}
-                            onClick={((event) => this.setState({"current": event.target.innerText}))}
+                            onClick={((event) => this.setState({"current": place.name}))}
                         >
                             {place.name}
                         </ListGroupItem>
