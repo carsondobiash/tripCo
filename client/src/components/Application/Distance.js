@@ -37,24 +37,28 @@ class Distance extends Component{
     }
 
     updateOriginLat(value){
+        value.preventDefault();
         let lat = this.state.distance.origin;
         lat.latitude = value.target.value;
         this.setState(lat);
     }
 
     updateOriginLong(value){
+        value.preventDefault();
         let long = this.state.distance.origin;
         long.longitude = value.target.value;
         this.setState(long);
     }
 
     updateDestinLat(value){
+        value.preventDefault();
         let lat = this.state.distance.destination;
         lat.latitude = value.target.value;
         this.setState(lat);
     }
 
     updateDestinLong(value){
+        value.preventDefault();
         let long = this.state.distance.destination;
         long.longitude = value.target.value;
         this.setState(long);
