@@ -88,7 +88,7 @@ Epics planned for this sprint.
 
 *Describe the solution based on the completed epics and list the epics below.*
 
-* *## epic title: comments*
+* *## User: I want to make and save changes to the trip: implemented a new UI for the user to add, delete, reverse, make first, and save the current trip they are viewing*
 * 
 
 #### Incomplete Epics in Sprint Backlog 
@@ -102,15 +102,15 @@ Epics planned for this sprint.
 
 *Describe what went well during the sprint in general terms followed by a more detailed list.*
 
-* *something*
+* *This sprint proficincies in javascript shot through the rough. It is a much more comfortable environment to be developing in now.*
 *
 
 #### Problems Encountered and Resolutions
 
 *Describe what problems occurred during the sprint in general terms followed by a more detailed list.*
 
-* *something*
-*
+* *Once again, time seems to be a relative weakness of the teams, as a majority of the work was left till the last minute.*
+* *Also, one group member was doing the same work as another, it might be useful to constantly check the pipelines, especially the in-progress one.*
 
 ## Retrospective
 
@@ -118,7 +118,7 @@ Epics planned for this sprint.
 
 #### What we changed this sprint
 
-*Articulate specifically what you will do differently based on the retrospective from the previous sprint before the sprint starts.*
+*Although groupmembers did start a little earlier, most of the work was left till the last minute, so not much changed*
 
 #### What we did well
 
