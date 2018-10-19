@@ -90,6 +90,7 @@ Epics planned for this sprint.
 
 * *## User: I want to make and save changes to the trip: implemented a new UI for the user to add, delete, reverse, make first, and save the current trip they are viewing*
 * *## User: I want to determine the distance between a pair of destinations: Created a UI for the user to input two sets of latitude and longitude and calculate the distance between the two.*
+* *## User: I want to design a trip from scratch so I can stop using the other tool.
 
 #### Incomplete Epics in Sprint Backlog 
 
@@ -105,6 +106,7 @@ Epics planned for this sprint.
 * *This sprint proficincies in javascript shot through the rough. It is a much more comfortable environment to be developing in now.*
 * *We had good communication through slack, any issues we had we could help eachother work through them.*
 * *Github pull requests were merged in a timely manner so we could continue our work.*
+* *Starting on the code earlier allowed for more trouble shooting through out the spritn.*
 
 #### Problems Encountered and Resolutions
 
@@ -123,7 +125,7 @@ Epics planned for this sprint.
 
 #### What we did well
 
-*Articulate what went well at the end of the sprint.*
+*Communication was agian good this sprint. If there was something someone was struggling on then they would let everyone know that they were struggling there. Also the proficiency of our reactstrap greatly increased this sprint.*
 
 #### What we need to work on
 
