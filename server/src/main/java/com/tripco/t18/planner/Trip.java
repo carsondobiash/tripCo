@@ -29,8 +29,9 @@ public class Trip {
      * It might need to reorder the places in the future.
      */
     public void plan() {
-        this.map = svg();
+        this.places = optimized();
         this.distances = legDistances();
+        this.map = svg();
     }
 
     /**
@@ -50,7 +51,7 @@ public class Trip {
 
             reader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/CObackground.svg")));
 
-        } catch(Exception e){
+        } catch (Exception e) {
 
             return "";
 
@@ -58,20 +59,20 @@ public class Trip {
 
         String line_of_SVGfile = "";
 
-        try{
+        try {
 
-            while((line_of_SVGfile = reader.readLine()) != null) {
+            while ((line_of_SVGfile = reader.readLine()) != null) {
 
                 SVG_as_String += line_of_SVGfile;
 
-                if(line_of_SVGfile.equals("                    id=\"path181\"/>")){
+                if (line_of_SVGfile.equals("                    id=\"path181\"/>")) {
                     String splice_add = spliceSVG();
                     SVG_as_String += splice_add;
                 }
 
             }
 
-        } catch (Exception e){
+        } catch (Exception e) {
             // TODO
         }
 
@@ -81,7 +82,7 @@ public class Trip {
 
     }
 
-    private String spliceSVG(){
+    private String spliceSVG() {
 
         String polygon = "<polyline points=\"";
 
@@ -101,10 +102,10 @@ public class Trip {
         ArrayList<Double> destinationList_latitude = new ArrayList<>();
         ArrayList<Double> destinationList_longitude = new ArrayList<>();
 
-        for (int i = 0; i < places.size(); i++){
+        for (int i = 0; i < places.size(); i++) {
 
             origin = places.get(i % places.size());
-            destination = places.get((i+1) % places.size());
+            destination = places.get((i + 1) % places.size());
             originList_latitude.add(degreesToPixel(origin.latitude, "latitude"));
             originList_longitude.add(degreesToPixel(origin.longitude, "longitude"));
             destinationList_latitude.add(degreesToPixel(destination.latitude, "latitude"));
@@ -113,7 +114,7 @@ public class Trip {
         }
 
 
-        for (int i = 0; i < places.size(); i++){
+        for (int i = 0; i < places.size(); i++) {
             polygon += originList_longitude.get(i).toString() + "," + originList_latitude.get(i).toString() + " ";
             polygon += destinationList_longitude.get(i).toString() + "," + destinationList_latitude.get(i).toString() + " ";
         }
@@ -123,17 +124,15 @@ public class Trip {
         return splice_add + polygon + "</svg>";
     }
 
-    private double degreesToPixel(double deg, String type){
+    private double degreesToPixel(double deg, String type) {
 
-        if(type.equals("longitude")){
+        if (type.equals("longitude")) {
 
-            return Math.abs((1066.6073/7.5)*(-109.3-deg));
-        }
-        else if(type.equals("latitude")){
+            return Math.abs((1066.6073 / 7.5) * (-109.3 - deg));
+        } else if (type.equals("latitude")) {
 
-            return Math.abs((783.0824/4.4)*(41.2-deg));
-        }
-        else{
+            return Math.abs((783.0824 / 4.4) * (41.2 - deg));
+        } else {
             return -1;
         }
 
@@ -158,18 +157,101 @@ public class Trip {
             origin = places.get(i % places.size());
             destination = places.get((i + 1) % places.size());
 
-            if(options.units.equals("user defined")) {
-                Distance distance = new Distance(origin, destination, options.units, options.unitName, options.unitRadius);
-                store = distance.calculatedistance();
-            }
-            else {
-                Distance distance = new Distance(origin, destination, options.units);
-                store = distance.calculatedistance();
-            }
+            store = calcLeg(origin,destination);
             dist.add(store);
         }
 
         return dist;
     }
 
+    private int calcLeg(Place origin, Place destination) {
+
+        int store;
+
+        if (options.units.equals("user defined")) {
+            Distance distance = new Distance(origin, destination, options.units, options.unitName, options.unitRadius);
+            store = distance.calculatedistance();
+        } else {
+            Distance distance = new Distance(origin, destination, options.units);
+            store = distance.calculatedistance();
+        }
+
+        return store;
+
+    }
+
+    private ArrayList<Place> optimized() {
+        
+
+        //Just returns places as is.
+        if (options.optimization.equals("none")) {
+            return this.places;
+        }
+
+        //Nearest Neighbor algorithm.
+        else if (options.optimization.equals("short")) {
+            ArrayList<Place> update = nearestNeighbor();
+
+            return update;
+        }
+        else{
+            return this.places;
+        }
+
+    }
+
+    private ArrayList<Place> nearestNeighbor() {
+
+        int shortestPath = Integer.MAX_VALUE;
+        ArrayList<Place> optPlace = new ArrayList<>();
+
+        for (int i = 0; i < places.size(); i++) {
+
+            Place start = places.get(i);
+            ArrayList<Place> visited = new ArrayList<>();
+            visited.add(start);
+            int legTotal = 0;
+
+            while (visited.size() != places.size()) {
+
+                Place origin = visited.get(visited.size()-1);
+                int shortestLeg = Integer.MAX_VALUE;
+                Place next = new Place();
+
+
+                for (int j = 0; j < places.size(); j++) {
+
+                    if (visited.contains(places.get(j))) {
+
+                    } else {
+
+                        Place destination = places.get(j);
+                        int storeLeg = calcLeg(origin,destination);
+
+                        if (storeLeg < shortestLeg){
+
+                            next = destination;
+                            shortestLeg = storeLeg;
+
+                        }
+                    }
+                }
+
+                legTotal += shortestLeg;
+                visited.add(next);
+
+            }
+
+            if (legTotal < shortestPath){
+
+                shortestPath = legTotal;
+                optPlace = visited;
+
+            }
+
+        }
+
+        return optPlace;
+
+    }
 }

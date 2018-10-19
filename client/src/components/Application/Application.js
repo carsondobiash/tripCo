@@ -24,6 +24,7 @@ class Application extends Component {
         title: "",
         options : {
           units: "miles",
+          optimization : "none",
           unitName: "",
           unitRadius: null,
         },
