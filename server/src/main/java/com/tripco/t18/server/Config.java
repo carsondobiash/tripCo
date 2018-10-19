@@ -9,8 +9,8 @@ public class Config {
 
   private short version = 3;
   private String type = "config";
-
-  private List<String> units = Arrays.asList("miles","nautical miles","kilometers", "user defined" );
+  private List<String> units = Arrays.asList("miles","nautical miles","kilometers", "user defined");
+  private List<String> optimization = Arrays.asList("none", "short", "shorter");
 
   static String getConfig() {
     Config conf = new Config();
