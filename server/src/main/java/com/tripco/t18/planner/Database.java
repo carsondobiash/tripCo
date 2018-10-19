@@ -24,7 +24,7 @@ public class Database {
     public void databaseSearch(){
         remoteDatabase();
         count = Integer.toString(limit);
-        search = ("select id,name,latitude,longitude from airports where name like '%" + match + "%'");
+        search = ("select id,name,latitude,longitude from airports where name like '%" + match + "%' or municipality like '%" + match + "%' or id like '%" + match +"%' order by name");
         if(limit != 0){
             search += (" LIMIT " + count + ";");
         }

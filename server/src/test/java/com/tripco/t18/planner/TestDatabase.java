@@ -27,15 +27,19 @@ public class TestDatabase {
         database.limit = 1;
         database.match = "Denver";
         testPlaces = new Place();
-        testPlaces.id = "CO35";
-        testPlaces.name = "Denver Health Heliport";
-        testPlaces.latitude = 39.727500915527344;
-        testPlaces.longitude = -104.99099731445312;
+        testPlaces.id = "CO32";
+        testPlaces.name = "Capri Heliport";
+        testPlaces.latitude = 39.85279846191406;
+        testPlaces.longitude = -104.97699737548828;
     }
 
     @Test
     public void testSearchString(){
         database.databaseSearch();
+        System.out.println(database.places.get(0).id);
+        System.out.println(database.places.get(0).name);
+        System.out.println(database.places.get(0).latitude);
+        System.out.println(database.places.get(0).longitude);
         assertEquals(true, database.places.get(0).id.equals(testPlaces.id));
         assertEquals(true, database.places.get(0).name.equals(testPlaces.name));
         assertEquals(true, database.places.get(0).latitude == testPlaces.latitude);
