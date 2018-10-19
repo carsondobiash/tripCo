@@ -21,6 +21,39 @@ public class TestTrip {
   @Before
   public void initialize() {
     trip = new Trip();
+    trip.title = "Test";
+
+    Place place1 = new Place();
+    place1.id = "dnvr";
+    place1.name = "Dever";
+    place1.latitude = 39.7392;
+    place1.longitude = -104.9903;
+
+    Place place2 = new Place();
+    place1.id = "bldr";
+    place1.name = "Boulder";
+    place1.latitude = 40.01499;
+    place1.longitude = -105.27055;
+
+    Place place3 = new Place();
+    place1.id = "foco";
+    place1.name = "Fort Collins";
+    place1.latitude = 40.585258;
+    place1.longitude = -105.084419;
+
+    ArrayList<Place> places = new ArrayList<>();
+    places.add(place1);
+    places.add(place2);
+    places.add(place3);
+
+    trip.places = places;
+
+    Option option = new Option();
+    option.optimization = "none";
+    option.units = "miles";
+
+    trip.options = option;
+
   }
 
   @Test
@@ -30,10 +63,50 @@ public class TestTrip {
   }
 
   @Test
+  public void testOptimized(){
+
+    trip.optimized();
+
+    Place place1 = new Place();
+    place1.id = "dnvr";
+    place1.name = "Dever";
+    place1.latitude = 39.7392;
+    place1.longitude = -104.9903;
+
+    Place place2 = new Place();
+    place1.id = "bldr";
+    place1.name = "Boulder";
+    place1.latitude = 40.01499;
+    place1.longitude = -105.27055;
+
+    Place place3 = new Place();
+    place1.id = "foco";
+    place1.name = "Fort Collins";
+    place1.latitude = 40.585258;
+    place1.longitude = -105.084419;
+
+    ArrayList<Place> places = new ArrayList<>();
+    places.add(place1);
+    places.add(place2);
+    places.add(place3);
+
+    if (trip.places.size() == places.size()){
+
+      for (int i = 0; i < places.size(); i++){
+        assertEquals(trip.places.get(i).name, places.get(i).name);
+      }
+
+    } else {
+      assertEquals(trip.places.size(), places.size());
+    }
+
+  }
+
+  @Test
   public void testDistances() {
     trip.plan();
     ArrayList<Integer> expectedDistances = new ArrayList<Integer>();
-    Collections.addAll(expectedDistances, 12, 23, 34, 45, 65, 19);
+    Collections.addAll(expectedDistances, 24, 41, 59);
     // Call the equals() method of the first object on the second object.
     //assertEquals(expectedDistances, trip.distances);
   }
@@ -41,8 +114,6 @@ public class TestTrip {
   @Test
   public void testMap() {
     trip.plan();
-    //assertEquals(trip.map,"<svg width=\"1920\" height=\"960\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:svg=\"http://www.w3.org/2000/svg\"><!-- Created with SVG-edit - http://svg-edit.googlecode.com/ --> <g> <g id=\"svg_4\"> <svg id=\"svg_1\" height=\"960\" width=\"1920\" xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns=\"http://www.w3.org/2000/svg\"> <g id=\"svg_2\"> <title>Layer 1</title> <rect fill=\"rgb(119, 204, 119)\" stroke=\"black\" x=\"0\" y=\"0\" width=\"1920\" height=\"960\" id=\"svg_3\"/> </g> </svg> </g> <g id=\"svg_9\"> <svg id=\"svg_5\" height=\"480\" width=\"960\" y=\"240\" x=\"480\" xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns=\"http://www.w3.org/2000/svg\"> <g id=\"svg_6\"> <title>Layer 2</title> <polygon points=\"0,0 960,0 960,480 0,480\" stroke-width=\"12\" stroke=\"brown\" fill=\"none\" id=\"svg_8\"/> <polyline points=\"0,0 960,480 480,0 0,480 960,0 480,480 0,0\" fill=\"none\" stroke-width=\"4\" stroke=\"blue\" id=\"svg_7\"/> </g> </svg> </g> </g> </svg>");
-
     //Check to make sure svg file was found and not empty
     assertNotEquals(trip.map, "");
   }
