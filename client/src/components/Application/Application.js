@@ -127,6 +127,7 @@ class Application extends Component {
       <Container id="Application">
         <Info/>
         <Customize trip={this.state.trip} updatePlaces={this.updatePlaces}/>
+          <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions} port={this.state.port} host={this.state.host} updatePort={this.updatePort} updateHost={this.updateHost}/>
         <Card>
           <Trip trip={this.state.trip} updateTrip={this.updateTrip} updateBasedOnResponse={this.updateBasedOnResponse} port={this.state.port} host={this.state.host}/>
           <Search trip={this.state.trip} search={this.state.search} updateBasedOnSearch={this.updateBasedOnSearch} port={this.state.port} host={this.state.host} updateName={this.updateName} updateLimit={this.updateLimit} updateID={this.updateID} updatePlaces={this.updatePlaces}/>
@@ -134,7 +135,7 @@ class Application extends Component {
           <Itinerary trip={this.state.trip}/>
         </Card>
         <Distance port={this.state.port} host={this.state.host}/>
-          <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions} port={this.state.port} host={this.state.host} updatePort={this.updatePort} updateHost={this.updateHost}/>
+
       </Container>
     )
   }
