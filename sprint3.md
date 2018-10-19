@@ -57,9 +57,9 @@ Epics planned for this sprint.
 
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
-| Epics | *7* | *value* |
-| Tasks |  *17*   | *value* | 
-| Story Points |  *33*  | *value* | 
+| Epics | *7* | *5* |
+| Tasks |  *17*   | *25* | 
+| Story Points |  *33*  | *40* | 
 
 *Enter the `# Planned` at the beginning of the sprint.  Include a discussion of planning decisions based on the planned number of story points versus how many were completed in previous sprints.*
 
@@ -82,7 +82,8 @@ Epics planned for this sprint.
 
 ## Review
 
-*An introductory paragraph describing the overall results of the sprint.*
+*This Sprint went a lot better than last. In the amount done overall is a huge improvement. We started earlier and becuase of that got more work done even though something were still done last minute. Because of that some tasks were caught in Travis and never got added to the final deploy.*
+
 
 #### Completed Epics in Sprint Backlog 
 
@@ -90,14 +91,16 @@ Epics planned for this sprint.
 
 * *## User: I want to make and save changes to the trip: implemented a new UI for the user to add, delete, reverse, make first, and save the current trip they are viewing*
 * *## User: I want to determine the distance between a pair of destinations: Created a UI for the user to input two sets of latitude and longitude and calculate the distance between the two.*
-* *## User: I want to design a trip from scratch so I can stop using the other tool.
+* *## User: I want to design a trip from scratch so I can stop using the other tool.*
+* *## User: I want my trips to be shorter.*
+* *## All clients and servers must interoperate!*
 
 #### Incomplete Epics in Sprint Backlog 
 
 *Describe capabilities not included in the release and list the epics below with an explanation.*
 
-* *## epic title: explanation*
-*
+* *## User: I want to choose what information is displayed in the itinerary and map.*
+* *## User: I'd like even shorter trips.*
 
 #### What Went Well
 
@@ -106,7 +109,8 @@ Epics planned for this sprint.
 * *This sprint proficincies in javascript shot through the rough. It is a much more comfortable environment to be developing in now.*
 * *We had good communication through slack, any issues we had we could help eachother work through them.*
 * *Github pull requests were merged in a timely manner so we could continue our work.*
-* *Starting on the code earlier allowed for more trouble shooting through out the spritn.*
+* *Starting on the code earlier allowed for more trouble shooting through out the sprint.*
+
 
 #### Problems Encountered and Resolutions
 
@@ -114,14 +118,16 @@ Epics planned for this sprint.
 
 * *Once again, time seems to be a relative weakness of the teams, as a majority of the work was left till the last minute.*
 * *Also, one group member was doing the same work as another, it might be useful to constantly check the pipelines, especially the in-progress one.*
+* *Doing things last minute caused some things to not be added to the final deploy. This is becuase of the Travis wait queue but the blame is still on those that waited too long.*
 
 ## Retrospective
 
 *An introductory paragraph for your retrospective.*
+*We need to create a better plan at the start of the sprint. This should allow us to really know what is needed for each epic. Also the task that are being taken and worked on need to be assigned in Github to prevent someone from working on the same thing as another. Next time we need to do these things as well as meeting up in the lab at a designated time.*
 
 #### What we changed this sprint
 
-*Although groupmembers did start a little earlier, most of the work was left till the last minute, so not much changed.*
+*Although groupmembers did start a little earlier, most of the work was left till the last minute, so not much changed. However more stuff still got done, but that may be because of luck. Some of our communication got better however and that caused a better environment.*
 
 #### What we did well
 
@@ -129,8 +135,8 @@ Epics planned for this sprint.
 
 #### What we need to work on
 
-*We need to start working on the code a little earlier as well as communicate with one another regarding the purpose of each of our indivdual tasks to prevent mixups.*
+*We need to start working on the code a little earlier as well as communicate with one another regarding the purpose of each of our indivdual tasks to prevent mixups. We also need to clean up our UI so it is easier to navigate and manage.*
 
 #### What we will change next sprint 
 
-*Articulate the one thing you will change for the next sprint and how you will accomplish that.*
+*Next Sprint we will meet up at least once to work on code as well as assign tasks to ourselves on Github to avoid mixups. This could have allowed more stuff to get done if two people werent working on the same thing.*
