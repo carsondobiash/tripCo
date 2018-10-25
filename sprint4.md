@@ -3,7 +3,7 @@
 ## Goal
 
 ### Interactive Maps and Shorter Trips!
-### Sprint Leader: *firstname lastname*
+### Sprint Leader: *Carson Dobiash*
 
 ## Definition of Done
 
@@ -46,7 +46,9 @@ User layout:
 Epics planned for this sprint.
 
 * *User: I want to view my trip in other tools: let the user distinguish between a kml and svg, and then let them save the map file locally so they can use it in other tools such as google maps*
-*
+* *User: I want to choose what information is displayed in the itinerary and map.*
+* *User: I'd like even shorter trips.*
+* *User: I want to plan trips worldwide.*
 
 
 ## Metrics
