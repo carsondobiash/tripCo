@@ -42,6 +42,9 @@ User layout:
 
 *We want the user to have portability within their trips.*
 
+API Server Requests
+![UI](/Diagrams/Sprint4/ServerClassDiagram.jpg)
+
 
 Epics planned for this sprint.
 
