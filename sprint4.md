@@ -37,18 +37,23 @@
 
 
 ## Plan
+*This Sprint we should be able to compleete the four epics entailed in Tripco. We will also go back and fix some of our code layed out in Code Climate, as well as writting more test code for past code.*
+
 User layout:
 ![UI](/images/unnamed.jpg)
 
 *We want the user to have portability within their trips.*
 
-API Server Requests
+API Server Requests:
 ![UI](/Diagrams/Sprint4/ServerClassDiagram.jpg)
+
+Client Component Hierarchy
+![UI](/Diagrams/Sprint4/Sprint4 Client Comp.png)
 
 
 Epics planned for this sprint.
 
-* *User: I want to view my trip in other tools: let the user distinguish between a kml and svg, and then let them save the map file locally so they can use it in other tools such as google maps*
+* *User: I want to view my trip in other tools.*
 * *User: I want to choose what information is displayed in the itinerary and map.*
 * *User: I'd like even shorter trips.*
 * *User: I want to plan trips worldwide.*
@@ -59,8 +64,8 @@ Epics planned for this sprint.
 | Statistic | Planned | Completed |
 | --- | ---: | ---: |
 | Epics | *4* | *total* |
-| Tasks |  *total*   | *total* | 
-| Story Points |  *total*  | *total* | 
+| Tasks |  *9*   | *total* | 
+| Story Points |  *19*  | *total* | 
 
 *Enter the `# Planned` at the beginning of the sprint.  Include a discussion of planning decisions based on the planned number of story points versus how many were completed in previous sprints.*
 
