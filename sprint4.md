@@ -37,14 +37,15 @@
 
 
 ## Plan
+User layout:
+![UI](/images/unnamed.jpg)
 
-*An introductory paragraph describing what you expect to accomplish this sprint that will achieve the goal.*
+*We want the user to have portability within their trips.*
 
-*Include any design diagrams prepared during sprint planning (user interface, component diagram, component/state/hierarchy, etc.) with a short paragraph for each.
 
 Epics planned for this sprint.
 
-* *## epic title: description*
+* *User: I want to view my trip in other tools: let the user distinguish between a kml and svg, and then let them save the map file locally so they can use it in other tools such as google maps*
 *
 
 
@@ -52,7 +53,7 @@ Epics planned for this sprint.
 
 | Statistic | Planned | Completed |
 | --- | ---: | ---: |
-| Epics | *total* | *total* |
+| Epics | *4* | *total* |
 | Tasks |  *total*   | *total* | 
 | Story Points |  *total*  | *total* | 
 
