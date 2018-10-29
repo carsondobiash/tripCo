@@ -9,9 +9,11 @@ public class Config {
   private short version = 3;
   private String type = "config";
   private List<String> units = Arrays.asList("miles","nautical miles","kilometers", "user defined");
-  private List optimizations;
+  private ArrayList<Map<String, String>> optimizations;
 
   public Config(){
+
+      optimizations = new ArrayList<>();
       Map<String, String> none = new HashMap<>();
       none.put("label", "none");
       none.put("description", "The trip is not optimized.");
@@ -25,6 +27,8 @@ public class Config {
       optimizations.add(none);
       optimizations.add(shorty);
       optimizations.add(shorter);
+
+      System.out.println(optimizations);
 
   }
 
