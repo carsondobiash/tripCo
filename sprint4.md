@@ -78,6 +78,7 @@ Epics planned for this sprint.
 | :--- | :--- | :--- | :--- |
 | *date* | *#task, ...* | *#task, ...* | *none* | 
 | *10/26/18* | *None* | *None* | *None* |
+| *10/29/18* | *None* | *#195, #260, #193, #289* | *None* |
 
 *Add a new row for the scrum session after each lecture. *
 
