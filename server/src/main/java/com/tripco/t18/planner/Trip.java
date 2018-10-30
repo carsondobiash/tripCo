@@ -181,26 +181,31 @@ public class Trip {
     }
 
     private ArrayList<Place> optimized() {
-        
-
-        //Just returns places as is.
-        if (options.optimization.equals("none")) {
-            return this.places;
-        }
 
         //Nearest Neighbor algorithm.
-        else if (options.optimization.equals("short")) {
-            ArrayList<Place> update = nearestNeighbor();
+        if (options.optimization.equals("short")) {
+            ArrayList<Place> update = nearestNeighbor("NN");
 
             return update;
         }
-        else{
-            return this.places;
+        //2-opt
+        else if(options.optimization.equals("shorter")){
+            ArrayList<Place> update = nearestNeighbor("2opt");
+            return update;
         }
-
+        else return this.places;
     }
 
-    private ArrayList<Place> nearestNeighbor() {
+    private ArrayList<Place> twoOptSwap(ArrayList<Place> places, int i1, int k){
+        while(i1 < k){
+            Place temp = places.get(i1);
+            places.set(i1,places.get(k));
+            places.set(k,temp);
+            i1++; k--;
+        }
+        return places;
+    }
+    private ArrayList<Place> nearestNeighbor(String opt) {
 
         int shortestPath = Integer.MAX_VALUE;
         ArrayList<Place> optPlace = new ArrayList<>();
