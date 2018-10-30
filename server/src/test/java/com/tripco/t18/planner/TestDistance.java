@@ -31,7 +31,7 @@ public class TestDistance {
 
     @Test
     public void testCalculateDistanceMiles(){
-        int expectedDistance = 24;
+        Integer expectedDistance = 24;
         distance.calculatedistance();
         assertEquals(expectedDistance, distance.distance);
     }
@@ -46,7 +46,7 @@ public class TestDistance {
         destination.longitude = 151.2093;
 
         distance = new Distance(origin, destination, "kilometers");
-        int expectedDistance = 13432;
+        Integer expectedDistance = 13432;
         distance.calculatedistance();
         assertEquals(expectedDistance, distance.distance);
     }
@@ -60,7 +60,7 @@ public class TestDistance {
         destination.longitude = 151.2093;
 
         distance = new Distance(origin, destination, "nautical miles");
-        int expectedDistance = 7252;
+        Integer expectedDistance = 7252;
         distance.calculatedistance();
         assertEquals(expectedDistance, distance.distance);
     }
@@ -75,7 +75,7 @@ public class TestDistance {
         destination.longitude = 151.2093;
 
         distance = new Distance(origin, destination, "miles");
-        int expectedDistance = 8347;
+        Integer expectedDistance = 8347;
         distance.calculatedistance();
         assertEquals(expectedDistance, distance.distance);
     }

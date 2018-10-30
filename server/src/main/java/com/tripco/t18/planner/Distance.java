@@ -6,13 +6,13 @@ public class Distance {
 
     //Inisitalizing class variables
     public String type;
-    public int version;
+    public Integer version;
     public Place origin;
     public Place destination;
     public String units;
-    public int distance;
+    public Integer distance;
     public String unitName;
-    public int unitRadius;
+    public Integer unitRadius;
 
     public Distance(){}
 
@@ -30,7 +30,7 @@ public class Distance {
         this.unitName = unitName;
     }
 
-    public int  calculatedistance() {
+    public int calculatedistance() {
         //Seting up latitude and longitude in radians
         double latitude_origin = Math.toRadians(this.origin.latitude);
         double longitude_origin = Math.toRadians(this.origin.longitude);

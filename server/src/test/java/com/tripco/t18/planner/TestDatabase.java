@@ -36,10 +36,6 @@ public class TestDatabase {
     @Test
     public void testSearchString(){
         database.databaseSearch();
-        System.out.println(database.places.get(0).id);
-        System.out.println(database.places.get(0).name);
-        System.out.println(database.places.get(0).latitude);
-        System.out.println(database.places.get(0).longitude);
         assertEquals(true, database.places.get(0).id.equals(testPlaces.id));
         assertEquals(true, database.places.get(0).name.equals(testPlaces.name));
         assertEquals(true, database.places.get(0).latitude == testPlaces.latitude);

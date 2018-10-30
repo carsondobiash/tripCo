@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class Trip {
     // The variables in this class should reflect TFFI.
-    public int version;
+    public Integer version;
     public String type;
     public String title;
     public ArrayList<Place> places = new ArrayList<>();

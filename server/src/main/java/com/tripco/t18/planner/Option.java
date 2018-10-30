@@ -10,9 +10,9 @@ import java.util.List;
 public class Option {
 
   public String distance;
-  public String optimization;
+  public String optimization = "none";
   public String units;
   public String unitName;
-  public int unitRadius;
+  public Integer unitRadius;
 
 }

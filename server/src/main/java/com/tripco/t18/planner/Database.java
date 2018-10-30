@@ -6,9 +6,9 @@ import java.util.ArrayList;
 public class Database {
     //Class variables that will become json objects
     public String type;
-    public int version;
+    public Integer version;
     public String match;
-    public int limit = 0;
+    public Integer limit;
     public ArrayList<Place> places = new ArrayList<>();
 
     //Class variable for database configuration information
@@ -25,6 +25,9 @@ public class Database {
         remoteDatabase();
         count = Integer.toString(limit);
         search = ("select id,name,latitude,longitude from airports where name like '%" + match + "%' or municipality like '%" + match + "%' or id like '%" + match +"%' order by name");
+        if(limit == null){
+            limit = 0;
+        }
         if(limit != 0){
             search += (" LIMIT " + count + ";");
         }
