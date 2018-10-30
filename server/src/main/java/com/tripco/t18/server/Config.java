@@ -28,7 +28,7 @@ public class Config {
       optimizations.add(shorty);
       optimizations.add(shorter);
 
-      System.out.println(optimizations);
+      
 
   }
 
