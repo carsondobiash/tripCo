@@ -196,14 +196,13 @@ public class Trip {
         else return this.places;
     }
 
-    private ArrayList<Place> twoOptSwap(ArrayList<Place> places, int i1, int k){
+    private void twoOptSwap(ArrayList<Place> places, int i1, int k){
         while(i1 < k){
             Place temp = places.get(i1);
             places.set(i1,places.get(k));
             places.set(k,temp);
             i1++; k--;
         }
-        return places;
     }
     private ArrayList<Place> nearestNeighbor(String opt) {
 
