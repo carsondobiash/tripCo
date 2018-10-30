@@ -204,6 +204,21 @@ public class Trip {
             i1++; k--;
         }
     }
+    private void twoOptCheck(ArrayList<Place> visited){
+        boolean improve = true;
+        while(improve){
+            improve = false;
+            for(int i = 0; i <= places.size()-3; i++){
+                for(int k = i+2; k<= places.size()-1; k++){
+                    int delta = -calcLeg(places.get(i), places.get(i+1))-calcLeg(places.get(k), places.get(k+1)) + calcLeg(places.get(i+1), places.get(k+1)) + calcLeg(places.get(i), places.get(k));
+                    if(delta < 0){
+                        twoOptSwap(visited, i+1, k);
+                        improve = true;
+                    }
+                }
+            }
+        }
+    }
     private ArrayList<Place> nearestNeighbor(String opt) {
 
         int shortestPath = Integer.MAX_VALUE;
@@ -245,6 +260,8 @@ public class Trip {
                 visited.add(next);
 
             }
+            if(opt.equals("2opt"))
+                twoOptCheck(visited);
 
             if (legTotal < shortestPath){
 
