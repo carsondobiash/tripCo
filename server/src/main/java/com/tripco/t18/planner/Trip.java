@@ -205,12 +205,14 @@ public class Trip {
         }
     }
     private void twoOptCheck(ArrayList<Place> visited){
+        visited.add(visited.get(0));
         boolean improve = true;
         while(improve){
             improve = false;
             for(int i = 0; i <= places.size()-3; i++){
-                for(int k = i+2; k<= places.size()-1; k++){
-                    int delta = -calcLeg(places.get(i), places.get(i+1))-calcLeg(places.get(k), places.get(k+1)) + calcLeg(places.get(i+1), places.get(k+1)) + calcLeg(places.get(i), places.get(k));
+                for(int k = i+2; k <= places.size()-1; k++){
+                    System.out.println(i + " " + k);
+                    int delta = -calcLeg(visited.get(i), visited.get(i+1))-calcLeg(visited.get(k), visited.get(k+1)) + calcLeg(visited.get(i+1), visited.get(k+1)) + calcLeg(visited.get(i), visited.get(k));
                     if(delta < 0){
                         twoOptSwap(visited, i+1, k);
                         improve = true;
