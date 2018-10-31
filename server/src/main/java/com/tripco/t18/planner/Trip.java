@@ -207,7 +207,7 @@ public class Trip {
         }
     }
     private void twoOptCheck(ArrayList<Place> visited){
-        visited.add(visited.get(0));
+
         boolean improve = true;
         while(improve){
             improve = false;
@@ -264,12 +264,16 @@ public class Trip {
                 visited.add(next);
 
             }
+            visited.add(start);
+            legTotal += calcLeg(visited.get(visited.size()-2), start);
+
             if(opt.equals("2opt"))
                 twoOptCheck(visited);
 
             if (legTotal < shortestPath){
 
                 shortestPath = legTotal;
+                visited.remove(visited.size()-1);
                 optPlace = visited;
 
             }
