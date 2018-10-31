@@ -183,6 +183,8 @@ public class Trip {
     private ArrayList<Place> optimized() {
 
         //Nearest Neighbor algorithm.
+        if(options.optimization == (null))
+            return this.places;
         if (options.optimization.equals("short")) {
             ArrayList<Place> update = nearestNeighbor("NN");
 
