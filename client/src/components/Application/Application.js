@@ -132,7 +132,7 @@ class Application extends Component {
           <Trip trip={this.state.trip} updateTrip={this.updateTrip} updateBasedOnResponse={this.updateBasedOnResponse} port={this.state.port} host={this.state.host}/>
           <Search trip={this.state.trip} search={this.state.search} updateBasedOnSearch={this.updateBasedOnSearch} port={this.state.port} host={this.state.host} updateName={this.updateName} updateLimit={this.updateLimit} updateID={this.updateID} updatePlaces={this.updatePlaces}/>
           <Map trip={this.state.trip} updateTrip={this.updateBasedOnResponse}/>
-          <Itinerary trip={this.state.trip}/>
+          <Itinerary trip={this.state.trip} config={this.state.config}/>
         </Card>
         <Distance port={this.state.port} host={this.state.host}/>
 
