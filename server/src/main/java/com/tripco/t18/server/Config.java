@@ -10,6 +10,7 @@ public class Config {
   private String type = "config";
   private List<String> units = Arrays.asList("miles","nautical miles","kilometers", "user defined");
   private ArrayList<Map<String, String>> optimizations;
+  private List<String> attributes = Arrays.asList("name", "id", "latitude", "longitude");
 
   public Config(){
 

@@ -1,14 +1,16 @@
 package com.tripco.t18.planner;
 
 import java.sql.*;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Database {
     //Class variables that will become json objects
-    public String type;
     public Integer version;
+    public String type;
+    public ArrayList<Map<String, String>> filters;
     public String match;
     public Integer limit;
+    public Integer found;
     public ArrayList<Place> places = new ArrayList<>();
 
     //Class variable for database configuration information
@@ -19,12 +21,19 @@ public class Database {
     //fill in SQL queries to count the number of records and to retrieve the data
     private static String count = "";
     private static String search = "";
+    private static String getCount = "";
 
     //Arguments contain the username and password for the database
     public void databaseSearch(){
         remoteDatabase();
         count = Integer.toString(limit);
         search = ("select id,name,latitude,longitude from airports where name like '%" + match + "%' or municipality like '%" + match + "%' or id like '%" + match +"%' order by name");
+        getCount = ("select count(*) from world_airports where name like '%" + match + "%' or municipality like '%" + match + "%' or id like '%" + match +"%' order by name");
+        String isTravis = System.getenv("TRAVIS");
+        if(isTravis != null && isTravis.equals("true")){
+            search = ("select id,name,latitude,longitude from airports where name like '%" + match + "%' or municipality like '%" + match + "%' or id like '%" + match +"%' order by name");
+            getCount = ("select count(*) from airports where name like '%" + match + "%' or municipality like '%" + match + "%' or id like '%" + match +"%' order by name");
+        }
         if(limit == null){
             limit = 0;
         }
@@ -36,9 +45,12 @@ public class Database {
             // connect to the database and query
             try (Connection conn = DriverManager.getConnection(myUrl, user, pass);
                  Statement stQuery = conn.createStatement();
-                 ResultSet rsQuery = stQuery.executeQuery(search)
+                 Statement stCount = conn.createStatement();
+                 ResultSet rsQuery = stQuery.executeQuery(search);
+                 ResultSet rsCount = stCount.executeQuery(getCount);
             ) {
                 dbSearch(rsQuery);
+                dbCount(rsCount);
             }
         }
         catch (Exception e) {
@@ -62,6 +74,14 @@ public class Database {
             tempPlace.latitude = Double.parseDouble(lat);
             tempPlace.longitude = Double.parseDouble(lon);
             places.add(tempPlace);
+        }
+    }
+
+    public void dbCount(ResultSet query) throws SQLException{
+        String num;
+        while(query.next()){
+            num = query.getString("count(*)");
+            found = Integer.parseInt(num);
         }
     }
 

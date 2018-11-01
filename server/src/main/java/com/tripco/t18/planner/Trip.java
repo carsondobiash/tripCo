@@ -50,7 +50,7 @@ public class Trip {
 
         try {
 
-            reader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/CObackground.svg")));
+            reader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/World_map_with_nations.svg")));
 
         } catch (Exception e) {
 

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
-import {CardBody} from 'reactstrap'
-import { Table } from 'reactstrap'
+import {CardBody, CardText, ButtonGroup} from 'reactstrap'
+import { Input, Form } from 'reactstrap'
+import { Table, Row, Col, Label } from 'reactstrap'
 
 /* Options allows the user to change the parameters for planning
  * and rendering the trip map and itinerary.
@@ -10,7 +11,13 @@ import { Table } from 'reactstrap'
 class Itinerary extends Component{
     constructor(props) {
         super(props);
-
+        this.state = {
+            name: true,
+            id: false,
+            latitude: false,
+            longitude: false
+        };
+        this.updateTable = this.updateTable.bind(this);
     }
 
 
@@ -26,8 +33,26 @@ class Itinerary extends Component{
         return total;
     }
 
+    updateTable(event){
+        this.setState({
+            [event.target.value]: event.target.checked
+        })
+    }
 
     render() {
+        const checks = this.props.config.attributes.map((attr) =>
+            <div align="left">
+                <Label><Input
+                    type="checkbox"
+                    checked={this.state[attr]}
+                    onClick={this.updateTable}
+                    value={attr}
+                />
+                    {attr.charAt(0).toUpperCase() + attr.slice(1)}
+                </Label>
+            </div>
+        );
+
         return(
             <CardBody>
                 <h4>{this.props.trip.title}</h4>
@@ -35,23 +60,51 @@ class Itinerary extends Component{
                     <thead>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope='row'>Start</th>
-                            {this.props.trip.places.length > 0 && this.props.trip.places.map(place =>
-                                <td key={place.id}>{place.name}</td>
-                            )}
-                        </tr>
-                        <tr>
-                            <th scope='row'>Finish</th>
-                            {this.props.trip.places.length > 0 && this.props.trip.places.map((place, index)=>
-                                {
-                                    if(index !== 0){
-                                        return <td key={place.id}>{place.name}</td>
+                        {this.state.id === true &&
+                            <tr>
+                                <th scope='row'>Id</th>
+                                {this.props.trip.places.length > 0 && this.props.trip.places.map(place =>
+                                    <td key={place.id}>{place.id}</td>
+                                )}
+                            </tr>
+                        }
+                        {this.state.latitude === true &&
+                            <tr>
+                                <th scope='row'>Latitude</th>
+                                {this.props.trip.places.length > 0 && this.props.trip.places.map(place =>
+                                    <td key={place.id}>{place.latitude}</td>
+                                )}
+                            </tr>
+                        }
+                        {this.state.longitude === true &&
+                            <tr>
+                                <th scope='row'>Longitude</th>
+                                {this.props.trip.places.length > 0 && this.props.trip.places.map(place =>
+                                    <td key={place.id}>{place.longitude}</td>
+                                )}
+                            </tr>
+                        }
+                        {this.state.name === true &&
+                            <tr>
+                                <th scope='row'>Name</th>
+                                {this.props.trip.places.length > 0 && this.props.trip.places.map(place =>
+                                    <td key={place.id}>{place.name}</td>
+                                )}
+                            </tr>
+                        }
+                        {this.state.name === true &&
+                            <tr>
+                                <th scope='row'>Destination</th>
+                                {this.props.trip.places.length > 0 && this.props.trip.places.map((place, index) => {
+                                        if (index !== 0) {
+                                            return <td key={place.id}>{place.name}</td>
+                                        }
                                     }
-                                }
-                            )}
-                            {this.props.trip.places.length > 0 && <td key={this.props.trip.places[0].id}>{this.props.trip.places[0].name}</td>}
-                        </tr>
+                                )}
+                                {this.props.trip.places.length > 0 &&
+                                <td key={this.props.trip.places[0].id}>{this.props.trip.places[0].name}</td>}
+                            </tr>
+                        }
                         <tr>
                             <th scope='row'>Leg Distance</th>
                             {this.props.trip.distances && this.props.trip.distances.map((distance, index) =>
@@ -67,6 +120,11 @@ class Itinerary extends Component{
                         </tr>
                     </tbody>
                 </Table>
+                <Col>
+                    <Form>
+                        {checks}
+                    </Form>
+                </Col>
             </CardBody>
 
         )
