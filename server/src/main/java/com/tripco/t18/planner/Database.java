@@ -29,6 +29,11 @@ public class Database {
         count = Integer.toString(limit);
         search = ("select id,name,latitude,longitude from airports where name like '%" + match + "%' or municipality like '%" + match + "%' or id like '%" + match +"%' order by name");
         getCount = ("select count(*) from world_airports where name like '%" + match + "%' or municipality like '%" + match + "%' or id like '%" + match +"%' order by name");
+        String isTravis = System.getenv("TRAVIS");
+        if(isTravis != null && isTravis.equals("true")){
+            search = ("select id,name,latitude,longitude from airports where name like '%" + match + "%' or municipality like '%" + match + "%' or id like '%" + match +"%' order by name");
+            getCount = ("select count(*) from airports where name like '%" + match + "%' or municipality like '%" + match + "%' or id like '%" + match +"%' order by name");
+        }
         if(limit == null){
             limit = 0;
         }
