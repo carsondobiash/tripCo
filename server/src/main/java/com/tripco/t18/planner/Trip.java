@@ -214,7 +214,7 @@ public class Trip {
             improve = false;
             for(int i = 0; i <= places.length-3; i++){
                 for(int k = i+2; k <= places.length-1; k++){
-                    System.out.println(i + " " + k);
+
                     int delta = -calcLeg(visited[i], visited[i+1])-calcLeg(visited[k], visited[k+1]) + calcLeg(visited[i+1], visited[k+1]) + calcLeg(visited[i], visited[k]);
                     if(delta < 0){
                         twoOptSwap(visited, i+1, k);
