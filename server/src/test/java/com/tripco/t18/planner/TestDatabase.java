@@ -41,6 +41,12 @@ public class TestDatabase {
         assertEquals(true, database.places.get(0).name.equals(testPlaces.name));
         assertEquals(true, database.places.get(0).latitude == testPlaces.latitude);
         assertEquals(true, database.places.get(0).longitude == testPlaces.longitude);
-        assertEquals(true, database.found == 30);
+        String isTravis = System.getenv("TRAVIS");
+        if(isTravis != null && isTravis.equals("true")){
+            assertEquals(true, database.found == 25);
+        }
+        else {
+            assertEquals(true, database.found == 30);
+        }
     }
 }
