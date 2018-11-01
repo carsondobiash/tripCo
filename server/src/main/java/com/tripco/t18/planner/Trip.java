@@ -215,7 +215,7 @@ public class Trip {
             for(int i = 0; i <= places.length-3; i++){
                 for(int k = i+2; k <= places.length-1; k++){
 
-                    int delta = -calcLeg(visited[i], visited[i+1])-calcLeg(visited[k], visited[k+1]) + calcLeg(visited[i+1], visited[k+1]) + calcLeg(visited[i], visited[k]);
+                    int delta = -calcLeg(visited[i], visited[i+1])-calcLeg(visited[k], visited[k+1]) + calcLeg(visited[i], visited[k]) + calcLeg(visited[i+1], visited[k+1]);
                     if(delta < 0){
                         twoOptSwap(visited, i+1, k);
                         improve = true;
@@ -232,9 +232,8 @@ public class Trip {
         for (int i = 0; i < places.length; i++) {
 
             Place start = places[i];
-            Place[] visited = new Place[places.length];
+            Place[] visited = new Place[places.length+1];
             visited[0] = start;
-            int legTotal = 0;
             int index = 1;
 
             while (index != places.length) {
@@ -260,20 +259,21 @@ public class Trip {
                     }
                 }
 
-                legTotal += shortestLeg;
+
                 visited[index] = next;
                 index += 1;
             }
             visited[index] = start;
-            legTotal += calcLeg(visited[visited.length-2], start);
 
             if(opt.equals("2opt"))
                 twoOptCheck(visited);
 
+            int legTotal = calcTotalDist(visited);
+
             if (legTotal < shortestPath){
 
                 shortestPath = legTotal;
-                optPlace = visited;
+                optPlace = Arrays.copyOf(visited, places.length);
 
             }
 
@@ -282,4 +282,13 @@ public class Trip {
         return optPlace;
 
     }
+
+    private int calcTotalDist(Place [] data){
+        int legTotal = 0;
+        for(int i = 0; i < data.length-1; i++){
+            legTotal += calcLeg(data[i], data[i+1]);
+        }
+        return legTotal;
+    }
 }
+

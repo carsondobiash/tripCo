@@ -1,6 +1,7 @@
 package com.tripco.t18.planner;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -13,11 +14,14 @@ import static org.junit.Assert.*;
 /*
   This class contains tests for the Trip class.
  */
+
 @RunWith(JUnit4.class)
+
 public class TestTrip {
   Trip trip;
 
   // Setup to be done before every test in TestPlan
+
   @Before
   public void initialize() {
     trip = new Trip();
@@ -41,10 +45,10 @@ public class TestTrip {
     place1.latitude = 40.585258;
     place1.longitude = -105.084419;
 
-    ArrayList<Place> places = new ArrayList<>();
-    places.add(place1);
-    places.add(place2);
-    places.add(place3);
+    Place[] places  = new Place[3];
+    places[0] = place1;
+    places[1] = place2;
+    places[2] = place3;
 
     trip.places = places;
 
@@ -85,19 +89,19 @@ public class TestTrip {
     place1.latitude = 40.585258;
     place1.longitude = -105.084419;
 
-    ArrayList<Place> places = new ArrayList<>();
-    places.add(place1);
-    places.add(place2);
-    places.add(place3);
+    Place[] places  = new Place[3];
+    places[0] = place1;
+    places[1] = place2;
+    places[2] = place3;
 
-    if (trip.places.size() == places.size()){
+    if (trip.places.length == places.length){
 
-      for (int i = 0; i < places.size(); i++){
-        assertEquals(trip.places.get(i).name, places.get(i).name);
+      for (int i = 0; i < places.length; i++){
+        assertEquals(trip.places[i].name, places[i].name);
       }
 
     } else {
-      assertEquals(trip.places.size(), places.size());
+      assertEquals(trip.places.length, places.length);
     }
 
   }
