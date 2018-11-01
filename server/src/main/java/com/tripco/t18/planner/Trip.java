@@ -181,26 +181,49 @@ public class Trip {
     }
 
     private ArrayList<Place> optimized() {
-        
-
-        //Just returns places as is.
-        if (options.optimization.equals("none")) {
-            return this.places;
-        }
 
         //Nearest Neighbor algorithm.
-        else if (options.optimization.equals("short")) {
-            ArrayList<Place> update = nearestNeighbor();
+        if(options.optimization == (null))
+            return this.places;
+        if (options.optimization.equals("short")) {
+            ArrayList<Place> update = nearestNeighbor("NN");
 
             return update;
         }
-        else{
-            return this.places;
+        //2-opt
+        else if(options.optimization.equals("shorter")){
+            ArrayList<Place> update = nearestNeighbor("2opt");
+            return update;
         }
-
+        else return this.places;
     }
 
-    private ArrayList<Place> nearestNeighbor() {
+    private void twoOptSwap(ArrayList<Place> places, int i1, int k){
+        while(i1 < k){
+            Place temp = places.get(i1);
+            places.set(i1,places.get(k));
+            places.set(k,temp);
+            i1++; k--;
+        }
+    }
+    private void twoOptCheck(ArrayList<Place> visited){
+
+        boolean improve = true;
+        while(improve){
+            improve = false;
+            for(int i = 0; i <= places.size()-3; i++){
+                for(int k = i+2; k <= places.size()-1; k++){
+                    System.out.println(i + " " + k);
+                    int delta = -calcLeg(visited.get(i), visited.get(i+1))-calcLeg(visited.get(k), visited.get(k+1)) + calcLeg(visited.get(i+1), visited.get(k+1)) + calcLeg(visited.get(i), visited.get(k));
+                    if(delta < 0){
+                        twoOptSwap(visited, i+1, k);
+                        improve = true;
+                    }
+                }
+            }
+        }
+    }
+    private ArrayList<Place> nearestNeighbor(String opt) {
 
         int shortestPath = Integer.MAX_VALUE;
         ArrayList<Place> optPlace = new ArrayList<>();
@@ -241,10 +264,16 @@ public class Trip {
                 visited.add(next);
 
             }
+            visited.add(start);
+            legTotal += calcLeg(visited.get(visited.size()-2), start);
+
+            if(opt.equals("2opt"))
+                twoOptCheck(visited);
 
             if (legTotal < shortestPath){
 
                 shortestPath = legTotal;
+                visited.remove(visited.size()-1);
                 optPlace = visited;
 
             }
