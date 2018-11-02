@@ -19,8 +19,8 @@ public class Trip {
     public Integer version;
     public String type;
     public String title;
-    public Place[] places;
     public Option options;
+    public Place[] places;
     public ArrayList<Integer> distances = new ArrayList<>();
     public String map;
 
