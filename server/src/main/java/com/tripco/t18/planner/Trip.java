@@ -239,10 +239,11 @@ public class Trip {
             visitedFlag[i] = true;
             visited[0] = start;
             int index = 1;
+            int origin = i;
 
             while (index != places.length) {
 
-                int origin = index-1;
+
                 int shortestLeg = Integer.MAX_VALUE;
                 int next = -1;
 
@@ -260,6 +261,7 @@ public class Trip {
 
                 visitedFlag[next] = true;
                 visited[index] = places[next];
+                origin = next;
                 index += 1;
             }
             visited[index] = start;
