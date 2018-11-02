@@ -284,7 +284,6 @@ public class Trip {
     private int[][] fillDistanceTable(int[][] table){
         for(int i = 0; i < table.length; i++){
             for(int j = 0; j < table[i].length; j++){
-                if(i == j) continue;
                 table[i][j] = calcLeg(places[i%places.length], places[j%places.length]);
             }
         }
