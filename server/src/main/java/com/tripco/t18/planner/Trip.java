@@ -9,6 +9,7 @@ import spark.Request;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * The Trip class supports TFFI so it can easily be converted to/from Json by Gson.
@@ -19,7 +20,7 @@ public class Trip {
     public String type;
     public String title;
     public Option options;
-    public ArrayList<Place> places = new ArrayList<>();
+    public Place[] places;
     public ArrayList<Integer> distances = new ArrayList<>();
     public String map;
 
@@ -49,7 +50,7 @@ public class Trip {
 
         try {
 
-            reader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/CObackground.svg")));
+            reader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/World_map_with_nations.svg")));
 
         } catch (Exception e) {
 
@@ -102,10 +103,10 @@ public class Trip {
         ArrayList<Double> destinationList_latitude = new ArrayList<>();
         ArrayList<Double> destinationList_longitude = new ArrayList<>();
 
-        for (int i = 0; i < places.size(); i++) {
+        for (int i = 0; i < places.length; i++) {
 
-            origin = places.get(i % places.size());
-            destination = places.get((i + 1) % places.size());
+            origin = places[i % places.length];
+            destination = places[(i + 1) % places.length];
             originList_latitude.add(degreesToPixel(origin.latitude, "latitude"));
             originList_longitude.add(degreesToPixel(origin.longitude, "longitude"));
             destinationList_latitude.add(degreesToPixel(destination.latitude, "latitude"));
@@ -114,7 +115,7 @@ public class Trip {
         }
 
 
-        for (int i = 0; i < places.size(); i++) {
+        for (int i = 0; i < places.length; i++) {
             polygon += originList_longitude.get(i).toString() + "," + originList_latitude.get(i).toString() + " ";
             polygon += destinationList_longitude.get(i).toString() + "," + destinationList_latitude.get(i).toString() + " ";
         }
@@ -153,9 +154,9 @@ public class Trip {
         Place origin;
         Place destination;
 
-        for (int i = 0; i < places.size(); i++) {
-            origin = places.get(i % places.size());
-            destination = places.get((i + 1) % places.size());
+        for (int i = 0; i < places.length; i++) {
+            origin = places[i % places.length];
+            destination = places[(i + 1) % places.length];
 
             store = calcLeg(origin,destination);
             dist.add(store);
@@ -180,41 +181,41 @@ public class Trip {
 
     }
 
-    private ArrayList<Place> optimized() {
+    private Place[] optimized() {
 
         //Nearest Neighbor algorithm.
         if(options.optimization == (null))
             return this.places;
         if (options.optimization.equals("short")) {
-            ArrayList<Place> update = nearestNeighbor("NN");
+            Place[] update = nearestNeighbor("NN");
 
             return update;
         }
         //2-opt
         else if(options.optimization.equals("shorter")){
-            ArrayList<Place> update = nearestNeighbor("2opt");
+            Place[] update = nearestNeighbor("2opt");
             return update;
         }
         else return this.places;
     }
 
-    private void twoOptSwap(ArrayList<Place> places, int i1, int k){
+    private void twoOptSwap(Place[] places, int i1, int k){
         while(i1 < k){
-            Place temp = places.get(i1);
-            places.set(i1,places.get(k));
-            places.set(k,temp);
+            Place temp = places[i1];
+            places[i1] = places[k];
+            places[k] = temp;
             i1++; k--;
         }
     }
-    private void twoOptCheck(ArrayList<Place> visited){
+    private void twoOptCheck(Place[] visited){
 
         boolean improve = true;
         while(improve){
             improve = false;
-            for(int i = 0; i <= places.size()-3; i++){
-                for(int k = i+2; k <= places.size()-1; k++){
-                    System.out.println(i + " " + k);
-                    int delta = -calcLeg(visited.get(i), visited.get(i+1))-calcLeg(visited.get(k), visited.get(k+1)) + calcLeg(visited.get(i+1), visited.get(k+1)) + calcLeg(visited.get(i), visited.get(k));
+            for(int i = 0; i <= places.length-3; i++){
+                for(int k = i+2; k <= places.length-1; k++){
+
+                    int delta = -calcLeg(visited[i], visited[i+1])-calcLeg(visited[k], visited[k+1]) + calcLeg(visited[i], visited[k]) + calcLeg(visited[i+1], visited[k+1]);
                     if(delta < 0){
                         twoOptSwap(visited, i+1, k);
                         improve = true;
@@ -223,32 +224,30 @@ public class Trip {
             }
         }
     }
-    private ArrayList<Place> nearestNeighbor(String opt) {
+    private Place[] nearestNeighbor(String opt) {
 
         int shortestPath = Integer.MAX_VALUE;
-        ArrayList<Place> optPlace = new ArrayList<>();
+        Place[] optPlace = new Place[places.length];
 
-        for (int i = 0; i < places.size(); i++) {
+        for (int i = 0; i < places.length; i++) {
 
-            Place start = places.get(i);
-            ArrayList<Place> visited = new ArrayList<>();
-            visited.add(start);
-            int legTotal = 0;
+            Place start = places[i];
+            Place[] visited = new Place[places.length+1];
+            visited[0] = start;
+            int index = 1;
 
-            while (visited.size() != places.size()) {
+            while (index != places.length) {
 
-                Place origin = visited.get(visited.size()-1);
+                Place origin = visited[index-1];
                 int shortestLeg = Integer.MAX_VALUE;
                 Place next = new Place();
 
 
-                for (int j = 0; j < places.size(); j++) {
+                for (int j = 0; j < places.length; j++) {
 
-                    if (visited.contains(places.get(j))) {
+                    if (!(Arrays.asList(visited).contains(places[j]))) {
 
-                    } else {
-
-                        Place destination = places.get(j);
+                        Place destination = places[j];
                         int storeLeg = calcLeg(origin,destination);
 
                         if (storeLeg < shortestLeg){
@@ -260,21 +259,21 @@ public class Trip {
                     }
                 }
 
-                legTotal += shortestLeg;
-                visited.add(next);
 
+                visited[index] = next;
+                index += 1;
             }
-            visited.add(start);
-            legTotal += calcLeg(visited.get(visited.size()-2), start);
+            visited[index] = start;
 
             if(opt.equals("2opt"))
                 twoOptCheck(visited);
 
+            int legTotal = calcTotalDist(visited);
+
             if (legTotal < shortestPath){
 
                 shortestPath = legTotal;
-                visited.remove(visited.size()-1);
-                optPlace = visited;
+                optPlace = Arrays.copyOf(visited, places.length);
 
             }
 
@@ -283,4 +282,13 @@ public class Trip {
         return optPlace;
 
     }
+
+    private int calcTotalDist(Place [] data){
+        int legTotal = 0;
+        for(int i = 0; i < data.length-1; i++){
+            legTotal += calcLeg(data[i], data[i+1]);
+        }
+        return legTotal;
+    }
 }
+
