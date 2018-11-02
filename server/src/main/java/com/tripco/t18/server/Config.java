@@ -1,6 +1,7 @@
 package com.tripco.t18.server;
 
 import com.google.gson.Gson;
+import com.tripco.t18.planner.Filters;
 
 import java.util.*;
 
@@ -11,6 +12,7 @@ public class Config {
   private List<String> units = Arrays.asList("miles","nautical miles","kilometers", "user defined");
   private ArrayList<Map<String, String>> optimizations;
   private List<String> attributes = Arrays.asList("name", "id", "latitude", "longitude");
+  private ArrayList<Filters> filters;
 
   public Config(){
 
@@ -29,7 +31,15 @@ public class Config {
       optimizations.add(shorty);
       optimizations.add(shorter);
 
-      
+      filters = new ArrayList<>();
+      Filters support = new Filters();
+      support.values = new ArrayList<>();
+      support.name = "type";
+      support.values.add("balloonport");
+      support.values.add("heliport");
+      support.values.add("airport");
+      support.values.add("seaplane base");
+      filters.add(support);
 
   }
 
