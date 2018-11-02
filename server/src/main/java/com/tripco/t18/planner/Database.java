@@ -7,8 +7,8 @@ public class Database {
     //Class variables that will become json objects
     public Integer version;
     public String type;
-    public ArrayList<Map<String, String>> filters;
     public String match;
+    public ArrayList<Filters> filters = new ArrayList<>();
     public Integer limit;
     public Integer found;
     public ArrayList<Place> places = new ArrayList<>();
@@ -26,18 +26,28 @@ public class Database {
     //Arguments contain the username and password for the database
     public void databaseSearch(){
         remoteDatabase();
-        count = Integer.toString(limit);
-        search = ("select id,name,latitude,longitude from airports where name like '%" + match + "%' or municipality like '%" + match + "%' or id like '%" + match +"%' order by name");
-        getCount = ("select count(*) from world_airports where name like '%" + match + "%' or municipality like '%" + match + "%' or id like '%" + match +"%' order by name");
+        Integer lim;
+        if(limit == null){
+            lim = 0;
+        }
+        else{
+            lim = limit;
+        }
+        count = Integer.toString(lim);
+        search = ("select world_airports.id,world_airports.name,world_airports.latitude,world_airports.longitude,world_airports.type from world_airports inner join region on world_airports.iso_region = region.id " +
+                "inner join country on world_airports.iso_country = country.id inner join continents on world_airports.continent = continents.id where country.name like '%" + match + "%' " + filterDatabase() +
+                " or region.name like '%" + match + "%' " + filterDatabase() + " or world_airports.name like '%" + match + "%' " + filterDatabase() + " or world_airports.municipality like '%" + match + "%' " +
+                filterDatabase() + " order by continents.name, country.name, region.name, world_airports.municipality, world_airports.name ASC");
+        getCount = ("select count(*) from world_airports inner join region on world_airports.iso_region = region.id " +
+                "inner join country on world_airports.iso_country = country.id inner join continents on world_airports.continent = continents.id where country.name like '%" + match + "%' " + filterDatabase() +
+                " or region.name like '%" + match + "%' " + filterDatabase() + " or world_airports.name like '%" + match + "%' " + filterDatabase() + " or world_airports.municipality like '%" + match + "%' " +
+                filterDatabase() + " order by continents.name, country.name, region.name, world_airports.municipality, world_airports.name ASC");
         String isTravis = System.getenv("TRAVIS");
         if(isTravis != null && isTravis.equals("true")){
             search = ("select id,name,latitude,longitude from airports where name like '%" + match + "%' or municipality like '%" + match + "%' or id like '%" + match +"%' order by name");
             getCount = ("select count(*) from airports where name like '%" + match + "%' or municipality like '%" + match + "%' or id like '%" + match +"%' order by name");
         }
-        if(limit == null){
-            limit = 0;
-        }
-        if(limit != 0){
+        if(lim != 0){
             search += (" LIMIT " + count + ";");
         }
         try {
@@ -69,6 +79,7 @@ public class Database {
             name = query.getString("name");
             lat = query.getString("latitude");
             lon = query.getString("longitude");
+            name.replaceAll("\"", "");
             tempPlace.id = id;
             tempPlace.name = name;
             tempPlace.latitude = Double.parseDouble(lat);
@@ -83,6 +94,18 @@ public class Database {
             num = query.getString("count(*)");
             found = Integer.parseInt(num);
         }
+    }
+
+    private String filterDatabase(){
+        String filter = "";
+        if(!filters.isEmpty()){
+            for(int i = 0; i < filters.size(); i++){
+                for(int j = 0; j < filters.get(i).values.size(); j++){
+                    filter += "and " + filters.get(i).name + " not like '%" + filters.get(i).values.get(j) + "%' ";
+                }
+            }
+        }
+        return filter;
     }
 
     public void remoteDatabase(){

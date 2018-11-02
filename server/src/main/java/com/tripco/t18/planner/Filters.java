@@ -4,5 +4,5 @@ import java.util.*;
 
 public class Filters {
     public String name;
-    public ArrayList<Map<String, String>> filters;
+    public ArrayList<String> values;
 }

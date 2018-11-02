@@ -18,8 +18,8 @@ public class Trip {
     public Integer version;
     public String type;
     public String title;
-    public ArrayList<Place> places = new ArrayList<>();
     public Option options;
+    public ArrayList<Place> places = new ArrayList<>();
     public ArrayList<Integer> distances = new ArrayList<>();
     public String map;
 
