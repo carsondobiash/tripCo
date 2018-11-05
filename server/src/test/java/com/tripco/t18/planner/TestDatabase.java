@@ -45,10 +45,6 @@ public class TestDatabase {
             assertEquals(true, database.found == 25);
         }
         else {
-            testPlaces.id = "CND7";
-            testPlaces.name = "Slocan Community Hospital Helipad";
-            testPlaces.latitude = 49.9841;
-            testPlaces.longitude = -117.3744;
             assertEquals(true, database.places.get(0).id.equals(testPlaces.id));
             assertEquals(true, database.places.get(0).name.equals(testPlaces.name));
             assertEquals(true, database.places.get(0).latitude == testPlaces.latitude);
