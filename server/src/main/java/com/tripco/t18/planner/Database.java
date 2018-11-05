@@ -37,15 +37,15 @@ public class Database {
         search = ("select world_airports.id,world_airports.name,world_airports.latitude,world_airports.longitude,world_airports.type from world_airports inner join region on world_airports.iso_region = region.id " +
                 "inner join country on world_airports.iso_country = country.id inner join continents on world_airports.continent = continents.id where country.name like '%" + match + "%' " + filterDatabase() +
                 " or region.name like '%" + match + "%' " + filterDatabase() + " or world_airports.name like '%" + match + "%' " + filterDatabase() + " or world_airports.municipality like '%" + match + "%' " +
-                filterDatabase() + " order by continents.name, country.name, region.name, world_airports.municipality, world_airports.name ASC");
+                filterDatabase() + " order by world_airports.name, world_airports.municipality, continents.name, country.name, region.name ASC");
         getCount = ("select count(*) from world_airports inner join region on world_airports.iso_region = region.id " +
                 "inner join country on world_airports.iso_country = country.id inner join continents on world_airports.continent = continents.id where country.name like '%" + match + "%' " + filterDatabase() +
                 " or region.name like '%" + match + "%' " + filterDatabase() + " or world_airports.name like '%" + match + "%' " + filterDatabase() + " or world_airports.municipality like '%" + match + "%' " +
-                filterDatabase() + " order by continents.name, country.name, region.name, world_airports.municipality, world_airports.name ASC");
+                filterDatabase());
         String isTravis = System.getenv("TRAVIS");
         if(isTravis != null && isTravis.equals("true")){
             search = ("select id,name,latitude,longitude from airports where name like '%" + match + "%' or municipality like '%" + match + "%' or id like '%" + match +"%' order by name");
-            getCount = ("select count(*) from airports where name like '%" + match + "%' or municipality like '%" + match + "%' or id like '%" + match +"%' order by name");
+            getCount = ("select count(*) from airports where name like '%" + match + "%' or municipality like '%" + match + "%' or id like '%" + match +"%'");
         }
         if(lim != 0){
             search += (" LIMIT " + count + ";");
@@ -101,7 +101,7 @@ public class Database {
         if(!filters.isEmpty()){
             for(int i = 0; i < filters.size(); i++){
                 for(int j = 0; j < filters.get(i).values.size(); j++){
-                    filter += "and " + filters.get(i).name + " not like '%" + filters.get(i).values.get(j) + "%' ";
+                    filter += "and " + filters.get(i).name + " like '%" + filters.get(i).values.get(j) + "%' ";
                 }
             }
         }
