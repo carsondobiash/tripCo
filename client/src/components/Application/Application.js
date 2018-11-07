@@ -35,7 +35,9 @@ class Application extends Component {
       search: {
           type: "search",
           match: "",
+          filters:[],
           limit: 0,
+          found: 0,
           places: []
       },
       port: location.port,
@@ -51,6 +53,7 @@ class Application extends Component {
     this.updateName = this.updateName.bind(this);
     this.updateLimit = this.updateLimit.bind(this);
     this.updateID = this.updateID.bind(this);
+    this.updateFilter = this.updateFilter.bind(this);
   }
 
   componentWillMount() {
@@ -119,6 +122,14 @@ class Application extends Component {
       this.setState();
     }
 
+    updateFilter(filter){
+      let temp = this.state.search;
+      let newFilter = JSON.parse(JSON.stringify(this.state.search.filters));
+      newFilter.push(filter);
+      temp.filters = newFilter;
+      this.setState({search: temp});
+    }
+
 
   render() {
     if(!this.state.config) { return <div/> }
@@ -130,7 +141,8 @@ class Application extends Component {
           <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions} port={this.state.port} host={this.state.host} updatePort={this.updatePort} updateHost={this.updateHost}/>
         <Card>
           <Trip trip={this.state.trip} updateTrip={this.updateTrip} updateBasedOnResponse={this.updateBasedOnResponse} port={this.state.port} host={this.state.host}/>
-          <Search trip={this.state.trip} search={this.state.search} updateBasedOnSearch={this.updateBasedOnSearch} port={this.state.port} host={this.state.host} updateName={this.updateName} updateLimit={this.updateLimit} updateID={this.updateID} updatePlaces={this.updatePlaces}/>
+          <Search trip={this.state.trip} search={this.state.search} updateBasedOnSearch={this.updateBasedOnSearch} port={this.state.port} host={this.state.host} updateName={this.updateName}
+                  updateLimit={this.updateLimit} updateID={this.updateID} updatePlaces={this.updatePlaces} updateFilter={this.updateFilter}/>
           <Map trip={this.state.trip} updateTrip={this.updateBasedOnResponse}/>
           <Itinerary trip={this.state.trip} config={this.state.config}/>
         </Card>
