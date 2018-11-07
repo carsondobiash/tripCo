@@ -26,6 +26,18 @@ class Options extends Component{
       </Button>
     );
 
+      const optimizations = this.props.config.optimization.map((options) =>
+          <Button
+              key={'distance_button_' + options['label']}
+              className='btn-outline-dark unit-button'
+              active={this.props.options.optimization === options['label']}
+              value={options['label']}
+              onClick={(event) => this.props.updateOptions('optimization', event.target.value)}
+          >
+              {options['label']}
+          </Button>
+      );
+
     let customUnits;
     if(this.props.options.units === 'user defined'){
      customUnits =
@@ -48,6 +60,11 @@ class Options extends Component{
           <ButtonGroup size="sm">
               {buttons}
           </ButtonGroup>
+            <br></br><br></br>
+            <p>Select the level of optimization you wish to use.</p>
+            <ButtonGroup>
+                {optimizations}
+            </ButtonGroup>
             {customUnits}
             <p/>
             <div>
