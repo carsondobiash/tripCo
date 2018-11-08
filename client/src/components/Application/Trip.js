@@ -96,9 +96,11 @@ class Trip extends Component{
                                        placeholder="Id"/>
                                 <Input type="number"
                                        name="latitude"
+                                       step="0.01"
                                        placeholder="Latitude"/>
                                 <Input type="number"
                                        name="longitude"
+                                       step="0.01"
                                        placeholder="Longitude"/>
                                 <Button className="btn" type="submit">Add Place</Button>
                             </Form>
