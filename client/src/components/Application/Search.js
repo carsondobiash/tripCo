@@ -30,6 +30,7 @@ class Search extends Component {
     }
 
     search(){
+        this.props.search.places = [];
         request(this.props.search, 'search', this.props.port, this.props.host).then(res => {this.props.updateBasedOnSearch(res);});
     }
 
@@ -56,9 +57,7 @@ class Search extends Component {
     }
 
     storeFilterName(event){
-        let temp = this.state.store;
-        temp.name = event.target.value;
-        temp.values = [];
+        let temp = {'name':event.target.value, 'values':[]};
         this.setState({store: temp});
     }
 
@@ -66,11 +65,6 @@ class Search extends Component {
         let temp = this.state.store;
         temp.values.push(event.target.value);
         this.setState({store: temp});
-    }
-
-    updateFilterLocal() {
-        let filter = this.state.store;
-        this.props.updateFilter(filter);
     }
 
     removeFilterValue(event){
@@ -116,9 +110,13 @@ class Search extends Component {
                 found =
                     <Label>Showing {this.props.search.found} out of {this.props.search.found}</Label>
             }
-            else if(this.props.search.limit !== 0){
+            if(this.props.search.limit !== 0){
                 found =
                     <Label>Showing {this.props.search.limit} out of {this.props.search.found}</Label>
+            }
+            if(this.props.search.limit >= this.props.search.found){
+                found =
+                    <Label>Showing {this.props.search.found} out of {this.props.search.found}</Label>
             }
         }
 
@@ -147,8 +145,8 @@ class Search extends Component {
                                     <Label>Filter Name</Label>
                                     <Input type="select" onChange={(event) => this.storeFilterName(event)}>
                                         <option value=''>Select</option>
-                                        <option value='continent'>Continent</option>
-                                        <option value='type'>Type</option>
+                                        <option key='continent' value='continent'>Continent</option>
+                                        <option key='type' value='type'>Type</option>
                                     </Input>
                                 </FormGroup>
                                 <FormGroup>
@@ -191,7 +189,7 @@ class Search extends Component {
                                             {filterValues}
                                         </DropdownMenu>
                                     </ButtonDropdown>
-                                    <Button onClick={(event) => this.updateFilterLocal()}>Add Filter</Button>
+                                    <Button onClick={(event) => this.props.updateFilter(this.state.store)}>Add Filter</Button>
                                 </div>
                             </Col>
                         </Row>

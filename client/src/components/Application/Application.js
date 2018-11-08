@@ -124,10 +124,16 @@ class Application extends Component {
 
     updateFilter(filter){
       let temp = this.state.search;
-      let newFilter = JSON.parse(JSON.stringify(this.state.search.filters));
-      newFilter.push(filter);
-      temp.filters = newFilter;
+      let newFilter = this.state.search.filters;
+      let tempFilter = newFilter.concat(filter);
+      temp.filters = tempFilter;
       this.setState({search: temp});
+      //let newFilter = JSON.parse(JSON.stringify(this.state.search.filters));
+      //   let newFilter = this.state.search.filters;
+      // console.log(newFilter);
+      // newFilter.push(filter);
+      // console.log(newFilter);
+      // temp.filters = newFilter;
     }
 
 
