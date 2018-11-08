@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Card, CardHeader, CardBody, CardImg } from 'reactstrap'
-import { ButtonGroup, Button } from 'reactstrap'
+import { ButtonGroup, Button, Form } from 'reactstrap'
 
 /* Options allows the user to change the parameters for planning
  * and rendering the trip map and itinerary.
@@ -10,12 +10,26 @@ import { ButtonGroup, Button } from 'reactstrap'
 class Map extends Component{
     constructor(props) {
         super(props);
+        this.saveMap = this.saveMap.bind(this);
+    }
+
+    saveMap(e){
+        e.preventDefault(event);
+        let map =("map." + event.target.name);
+        let downloader = document.createElement("a");
+        let file = new Blob([this.props.trip.map], {type: event.target.name});
+        downloader.href = URL.createObjectURL(file);
+        downloader.download = map;
+        downloader.click();
     }
 
     render() {
         return(
                 <CardBody>
                 <CardImg src={"data:image/svg+xml;utf8," + this.props.trip.map}/>
+                <Button type="submit" name="svg" onClick={this.saveMap}>
+                    Download
+                </Button>
                 </CardBody>
         )
     }
