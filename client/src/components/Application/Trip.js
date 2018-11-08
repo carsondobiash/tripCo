@@ -60,9 +60,6 @@ class Trip extends Component{
         place.longitude = event.target.longitude.value;
 
 
-        //this.setState({places: this.props.trip.places.concat(place)});
-        //console.log(this.state.places);
-
         this.props.updateTrip("places", this.props.trip.places.concat(place));
     }
 
