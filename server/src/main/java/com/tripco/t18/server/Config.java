@@ -33,14 +33,28 @@ public class Config {
       optimization.add(shorter);
 
       filters = new ArrayList<>();
-      Filters support = new Filters();
-      support.values = new ArrayList<>();
-      support.name = "type";
-      support.values.add("balloonport");
-      support.values.add("heliport");
-      support.values.add("airport");
-      support.values.add("seaplane base");
-      filters.add(support);
+      Filters supportType = new Filters();
+      supportType.values = new ArrayList<>();
+      supportType.name = "type";
+      supportType.values.add("balloonport");
+      supportType.values.add("heliport");
+      supportType.values.add("seaplane base");
+      supportType.values.add("small_airports");
+      supportType.values.add("medium_airports");
+      supportType.values.add("large_airports");
+      filters.add(supportType);
+
+      Filters supportContinent = new Filters();
+      supportContinent.values = new ArrayList<>();
+      supportContinent.name = "continents";
+      supportContinent.values.add("AF");
+      supportContinent.values.add("AN");
+      supportContinent.values.add("AS");
+      supportContinent.values.add("EU");
+      supportContinent.values.add("NA");
+      supportContinent.values.add("OC");
+      supportContinent.values.add("SA");
+      filters.add(supportContinent);
 
   }
 
