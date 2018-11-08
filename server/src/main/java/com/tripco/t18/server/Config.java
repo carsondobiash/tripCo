@@ -46,7 +46,7 @@ public class Config {
 
       Filters supportContinent = new Filters();
       supportContinent.values = new ArrayList<>();
-      supportContinent.name = "continents";
+      supportContinent.name = "continent";
       supportContinent.values.add("AF");
       supportContinent.values.add("AN");
       supportContinent.values.add("AS");
