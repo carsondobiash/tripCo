@@ -13,6 +13,7 @@ public class Config {
   private ArrayList<Map<String, String>> optimization;
   private List<String> attributes = Arrays.asList("name", "id", "latitude", "longitude");
   private ArrayList<Filters> filters;
+  private List<String> maps = Arrays.asList("svg", "kml");
 
   public Config(){
 
