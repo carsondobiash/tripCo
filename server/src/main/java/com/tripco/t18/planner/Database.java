@@ -101,7 +101,7 @@ public class Database {
         if(!filters.isEmpty()){
             for(int i = 0; i < filters.size(); i++){
                 for(int j = 0; j < filters.get(i).values.size(); j++){
-                    filter += "and " + filters.get(i).name + " like '%" + filters.get(i).values.get(j) + "%' ";
+                    filter += "and world_airports." + filters.get(i).name + " like '%" + filters.get(i).values.get(j) + "%' ";
                 }
             }
         }
