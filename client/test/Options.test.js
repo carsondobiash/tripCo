@@ -21,12 +21,14 @@ import Options from '../src/components/Application/Options'
 */
 
 /* A test response for our client to use;
- * this object represents the props that would be passed to the Options
+ * this object represents the props that wounpmld be passed to the Options
  * component on construction.
  */
 const startProps = {
-  'config': { 'units': ['miles', 'kilometers'] },
-  'options': { 'unit': 'miles' }
+  'config': {
+    'units': ['miles', 'kilometers'],
+    'optimization' : [{'label' : "none"}, {'label' : "short"}, {'label' : "shorter"}] },
+  'options': { 'units': 'miles' }
 };
 
 /* Test example using a pre-defined function */
@@ -38,7 +40,7 @@ function testExample() {
   let actual = [];
   options.find('Button').map((element) => actual.push(element.prop('value')));
 
-  expect(actual).toEqual(startProps.config.units);
+  expect(actual.slice(0,2)).toEqual(startProps.config.units);
 }
 
 test('Check to see if table gets made correctly (Function)', testExample);
@@ -61,5 +63,42 @@ test('Check to see if table gets made correctly (Lambda)', () => {
   let actual = [];
   options.find('Button').map((element) => actual.push(element.prop('value')));  // (2)
 
-  expect(actual).toEqual(startProps.config.units);  // (3)
+  expect(actual.slice(0,2)).toEqual(startProps.config.units);  // (3)
+});
+
+test('Check to see if optimizations are rendered correctly (Lambda)', () => {
+    /*  First, we create a version of our Options component, using the
+     *  startProps object defined above for its props (1). With our new unrendered
+     *  component, we can call ReactWrapper.find() to extract a certain part
+     *  of the component and its children (2). Lastly, we check to see if the
+     *  value of the buttons created by the component is what we expect,
+     *  given the example input (3).
+    */
+    const options = mount((   // (1)
+        <Options config={startProps.config} options={startProps.options}/>
+    ));
+    const expected = ["none", "short", "shorter"];
+    let actual = [];
+    options.find('Button').map((element) => actual.push(element.prop('value')));  // (2)
+
+    expect(actual.slice(2, actual.length)).toEqual(expected);  // (3)
+});
+
+test('Check to see if customUnits are rendered correctly (Lambda)', () => {
+    /*  First, we create a version of our Options component, using the
+     *  startProps object defined above for its props (1). With our new unrendered
+     *  component, we can call ReactWrapper.find() to extract a certain part
+     *  of the component and its children (2). Lastly, we check to see if the
+     *  value of the buttons created by the component is what we expect,
+     *  given the example input (3).
+    */
+    startProps.options.units = 'user defined';
+    const options = mount((   // (1)
+        <Options config={startProps.config} options={startProps.options}/>
+    ));
+    const expected = [null, null];
+    let actual = [];
+    options.find('input').map((element) => actual.push(element.prop('value')));  // (2)
+
+    expect(actual.slice(0,2)).toEqual(expected);  // (3)
 });
