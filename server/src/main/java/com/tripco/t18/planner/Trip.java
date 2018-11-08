@@ -66,7 +66,7 @@ public class Trip {
 
                 SVG_as_String += line_of_SVGfile;
 
-                if (line_of_SVGfile.equals("                    id=\"path181\"/>")) {
+                if (line_of_SVGfile.equals("       id=\"Antarctique\" />")) {
                     String splice_add = spliceSVG();
                     SVG_as_String += splice_add;
                 }
@@ -86,13 +86,14 @@ public class Trip {
     private String spliceSVG() {
 
         String polygon = "<polyline points=\"";
+        String dots;
 
         String splice_add = "\n<svg\n" +
                 "        xmlns:svg=\"http://www.w3.org/2000/svg\"\n" +
                 "        xmlns=\"http://www.w3.org/2000/svg\"\n" +
                 "        version=\"1.0\"\n" +
-                "        width=\"1066.6073\"\n" +
-                "        height=\"783.0824\"\n" +
+                "        width=\"1024\"\n" +
+                "        height=\"512\"\n" +
                 "        id=\"svg2339\">";
 
         Place origin;
@@ -116,11 +117,18 @@ public class Trip {
 
 
         for (int i = 0; i < places.length; i++) {
+            dots = "<circle cx=\"";
+
             polygon += originList_longitude.get(i).toString() + "," + originList_latitude.get(i).toString() + " ";
             polygon += destinationList_longitude.get(i).toString() + "," + destinationList_latitude.get(i).toString() + " ";
+
+            dots += originList_longitude.get(i).toString() + "\" cy=\"" + originList_latitude.get(i).toString() + "\" r=\"2\" stroke=\"green\" stroke-width=\"1\" fill=\"pink\" />";
+
+            splice_add += dots;
+
         }
 
-        polygon += "\"\nfill=\"none\" stroke-width=\"4\" stroke=\"blue\" id=\"s7\"/>";
+        polygon += "\"\nfill=\"none\" stroke-width=\"2\" stroke=\"purple\" id=\"s7\"/>";
 
         return splice_add + polygon + "</svg>";
     }
@@ -129,10 +137,17 @@ public class Trip {
 
         if (type.equals("longitude")) {
 
-            return Math.abs((1066.6073 / 7.5) * (-109.3 - deg));
+            return Math.abs(((800.00 / 360.00) * (180.00 + deg)));
+
         } else if (type.equals("latitude")) {
 
-            return Math.abs((783.0824 / 4.4) * (41.2 - deg));
+            if (0 >= deg) {
+                return Math.abs(((400.00 / 180.00) * (90.00 + Math.abs(deg))));
+            }
+            else{
+                return Math.abs(((400.00 / 180.00) * (-90.00 + deg)));
+            }
+
         } else {
             return -1;
         }
