@@ -27,7 +27,7 @@ class Map extends Component{
         return(
                 <CardBody>
                 <CardImg src={"data:image/svg+xml;utf8," + this.props.trip.map}/>
-                <Button type="submit" name="svg" onClick={this.saveMap}>
+                <Button type="submit" name={this.props.trip.options.map} onClick={this.saveMap}>
                     Download
                 </Button>
                 </CardBody>

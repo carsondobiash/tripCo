@@ -38,7 +38,24 @@ class Options extends Component{
           </Button>
       );
 
-    let customUnits;
+      let maps;
+      if(this.props.config !== null) {
+          maps = this.props.config.maps.map((map) =>
+              <Button
+                  key={'distance_button_' + map}
+                  className='btn-outline-dark unit-button'
+                  active={this.props.options.map === map}
+                  value={map}
+                  onClick={(event) => this.props.updateOptions('map', event.target.value)}
+              >
+                  {map}
+              </Button>
+          );
+      }
+
+
+
+      let customUnits;
     if(this.props.options.units === 'user defined'){
      customUnits =
          <div>
@@ -64,6 +81,11 @@ class Options extends Component{
             <p>Select the level of optimization you wish to use.</p>
             <ButtonGroup>
                 {optimizations}
+            </ButtonGroup>
+            <br></br><br></br>
+            <p>Select your map file type</p>
+            <ButtonGroup>
+                {maps}
             </ButtonGroup>
             {customUnits}
             <p/>

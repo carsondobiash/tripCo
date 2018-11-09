@@ -27,6 +27,7 @@ class Application extends Component {
           optimization : "none",
           unitName: "",
           unitRadius: null,
+          map: "svg"
         },
         places: [],
         distances: [],
