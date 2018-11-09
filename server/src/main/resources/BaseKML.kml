@@ -4,16 +4,16 @@
         <name>Paths</name>
         <Style id="yellowLineGreenPoly">
             <LineStyle>
-                <color>50F078F0</color>
-                <width>50</width>
+                <color>7f00ffff</color>
+                <width>4</width>
             </LineStyle>
             <PolyStyle>
-                <color>50F078F0</color>
+                <color>7f00ff00</color>
             </PolyStyle>
         </Style>
         <Placemark>
             <name>Absolute Extruded</name>
-            <description>Transparent pink wall with pink outlines</description>
+            <description>Transparent green wall with yellow outlines</description>
             <styleUrl>#yellowLineGreenPoly</styleUrl>
             <LineString>
                 <extrude>1</extrude>
