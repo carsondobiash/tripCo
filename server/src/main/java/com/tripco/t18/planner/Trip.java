@@ -108,19 +108,44 @@ public class Trip {
 
             origin = places[i % places.length];
             destination = places[(i + 1) % places.length];
-            originList_latitude.add(degreesToPixel(origin.latitude, "latitude"));
+
             originList_longitude.add(degreesToPixel(origin.longitude, "longitude"));
-            destinationList_latitude.add(degreesToPixel(destination.latitude, "latitude"));
             destinationList_longitude.add(degreesToPixel(destination.longitude, "longitude"));
+
+            originList_latitude.add(degreesToPixel(origin.latitude, "latitude"));
+            destinationList_latitude.add(degreesToPixel(destination.latitude, "latitude"));
 
         }
 
 
         for (int i = 0; i < places.length; i++) {
-            dots = "<circle cx=\"";
 
-            polygon += originList_longitude.get(i).toString() + "," + originList_latitude.get(i).toString() + " ";
-            polygon += destinationList_longitude.get(i).toString() + "," + destinationList_latitude.get(i).toString() + " ";
+            dots = "<circle cx=\"";
+            String line;
+
+            origin = places[i % places.length];
+            destination = places[(i + 1) % places.length];
+
+            if(checkForWrap(origin.longitude, destination.longitude) == false) {
+                polygon += originList_longitude.get(i).toString() + "," + originList_latitude.get(i).toString() + " ";
+                polygon += destinationList_longitude.get(i).toString() + "," + destinationList_latitude.get(i).toString() + " ";
+            }
+            else{
+                System.out.println("IN TO PRINT LINES");
+
+                if(origin.longitude <= 0) {
+
+                    line = "<line x1=\"" + String.valueOf(degreesToPixel(origin.longitude, "longitude")) + "\" y1=\"" +
+                            String.valueOf(degreesToPixel(origin.latitude, "latitude")) + "\" x2=\"" + String.valueOf(degreesToPixel(destination.longitude - 360, "longitude")) + "\" y2=\"" +
+                            String.valueOf(degreesToPixel(destination.latitude, "latitude")) + "\" style=\"stroke:rgb(128,0,128);stroke-width:1\" />";
+                    splice_add += line;
+
+                    line = "<line x1=\"" + String.valueOf(degreesToPixel(origin.longitude + 360, "longitude")) + "\" y1=\"" +
+                            String.valueOf(degreesToPixel(origin.latitude, "latitude")) + "\" x2=\"" + String.valueOf(degreesToPixel(destination.longitude, "longitude")) + "\" y2=\"" +
+                            String.valueOf(degreesToPixel(destination.latitude, "latitude")) + "\" style=\"stroke:rgb(128,0,128);stroke-width:1\" />";
+                    splice_add += line;
+                }
+            }
 
             dots += originList_longitude.get(i).toString() + "\" cy=\"" + originList_latitude.get(i).toString() + "\" r=\"2\" stroke=\"green\" stroke-width=\"1\" fill=\"pink\" />";
 
@@ -137,7 +162,7 @@ public class Trip {
 
         if (type.equals("longitude")) {
 
-            return Math.abs(((800.00 / 360.00) * (180.00 + deg)));
+            return ((800.00 / 360.00) * (180.00 + deg));
 
         } else if (type.equals("latitude")) {
 
@@ -150,6 +175,17 @@ public class Trip {
 
         } else {
             return -1;
+        }
+
+    }
+
+    private boolean checkForWrap(double originLong, double destLong){
+
+        if (Math.abs((originLong-destLong)) > 180){
+            return true;
+        }
+        else{
+            return false;
         }
 
     }
