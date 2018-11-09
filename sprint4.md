@@ -125,11 +125,11 @@ Epics planned for this sprint.
 
 #### What we changed this sprint
 
-*Articulate specifically what you will do differently based on the retrospective from the previous sprint before the sprint starts.*
+*This sprint we definately started working way earlier than previous sprints. There is still room to improve of course, as there was kinda of a mad dash to update the sprint.md at on the last day. We also went to TA's more for help instead of just being stuck for hours on end. Other than those two things, the sprint remained largely the same as those already passed.*
 
 #### What we did well
 
-*Articulate what went well at the end of the sprint.*
+*This sprint our time management was a LOT better than previous sprints. Some members actually finished their amount of the work well before the sprint due date, which relieved a lot of pressure towarads the end of the sprint. Would recommend doing that again! Part of the reason that people were able to get done so early is that we took advantage of office hours and actually asking questions in lecture. Who knew? Also, our communication was good as usual, which is extremely important.*
 
 #### What we need to work on
 
