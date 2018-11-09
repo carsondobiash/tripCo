@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+    <Document>
+        <name>Paths</name>
+        <Style id="yellowLineGreenPoly">
+            <LineStyle>
+                <color>50F078F0</color>
+                <width>50</width>
+            </LineStyle>
+            <PolyStyle>
+                <color>50F078F0</color>
+            </PolyStyle>
+        </Style>
+        <Placemark>
+            <name>Absolute Extruded</name>
+            <description>Transparent pink wall with pink outlines</description>
+            <styleUrl>#yellowLineGreenPoly</styleUrl>
+            <LineString>
+                <extrude>1</extrude>
+                <tessellate>1</tessellate>
+                <altitudeMode>absolute</altitudeMode>
+                <coordinates>
+                </coordinates>
+            </LineString>
+        </Placemark>
+    </Document>
+</kml>
