@@ -95,15 +95,15 @@ Epics planned for this sprint.
 
 *Describe the solution based on the completed epics and list the epics below.*
 
-* *## epic title: comments*
-* 
+* *User: I want to choose what information is displayed in the itinerary and map: completed everything except for custom attribute input.*
+* *User: I'd like even shorter trips: Implemented 2opt and with a button to select optimization options*
+* *User: I want to plan trips worldwide: Trip planning now displays a world map with destinations.*
 
 #### Incomplete Epics in Sprint Backlog 
 
 *Describe capabilities not included in the release and list the epics below with an explanation.*
 
-* *## epic title: explanation*
-*
+* *User: I want to view my trip in other tools: SVG files can be saved, but kml files cannot. this should be a quick fix before Sprint 5*
 
 #### What Went Well
 
@@ -133,8 +133,8 @@ Epics planned for this sprint.
 
 #### What we need to work on
 
-*Articulate things you could improve at the end of the sprint.*
+*For next sprint, we should probably start working even earlier so to avoid rushing later on. We also should meet together more often so we can collaborate on tasks which involve multiple people working on them.*
 
 #### What we will change next sprint 
 
-*Articulate the one thing you will change for the next sprint and how you will accomplish that.*
+*Next sprint, we will start working on the project earlier and more frequently throughout the week. We will also schedule meeting times so we can check up on how we are all doing.*
