@@ -27,6 +27,7 @@ class Application extends Component {
           optimization : "none",
           unitName: "",
           unitRadius: null,
+          map: "svg"
         },
         places: [],
         distances: [],
@@ -133,6 +134,8 @@ class Application extends Component {
 
   render() {
     if(!this.state.config) { return <div/> }
+
+    console.log(this.state.config)
 
     return(
       <Container id="Application">
