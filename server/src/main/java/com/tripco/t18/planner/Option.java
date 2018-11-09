@@ -12,6 +12,7 @@ public class Option {
   public String distance;
   public String optimization;
   public String units;
+  public String map;
   public String unitName;
   public Integer unitRadius;
 
