@@ -109,15 +109,14 @@ Epics planned for this sprint.
 
 *Describe what went well during the sprint in general terms followed by a more detailed list.*
 
-* *something*
-*
+* *Communication was again good. Constant messaging though Slack and meetings in class allowed for a good communication between all group members.*
+* *Starting on the work earlier. This sprint we all managed to work on tasks earlier and were able to get more done. This also allowed for less cruch time stuff near the deadline.*
 
 #### Problems Encountered and Resolutions
 
 *Describe what problems occurred during the sprint in general terms followed by a more detailed list.*
 
-* *something*
-*
+* *Pull requests not getting mereged in timely manner sometimes. The resolution to this was to just send a message in Slack tagging group members and letting them know that a pull request was open and waiting to be merged.*
 
 ## Retrospective
 
