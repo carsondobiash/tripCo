@@ -32,7 +32,7 @@ public class Trip {
     public void plan() {
         this.places = optimized();
         this.distances = legDistances();
-        this.map = svg();
+        this.map = typeOfMap();
     }
 
     /**
@@ -40,6 +40,77 @@ public class Trip {
      *
      * @return
      */
+
+    private String typeOfMap(){
+
+        if(options.map == (null)){
+            return svg();
+        }
+        else if(options.map.equals("svg")){
+            return svg();
+        }
+        else if(options.map.equals("kml")){
+            return kml();
+        }
+        else {
+            return svg();
+        }
+    }
+
+    private String kml(){
+        String KML_as_String = "";
+
+        BufferedReader reader;
+
+        try {
+
+            reader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/BaseKML.kml")));
+
+        } catch (Exception e) {
+
+            return "";
+
+        }
+
+        String line_of_KMLfile = "";
+
+        try {
+
+            while ((line_of_KMLfile = reader.readLine()) != null) {
+
+                KML_as_String += line_of_KMLfile;
+
+                if (line_of_KMLfile.equals("                <coordinates>")) {
+                    String splice_add = spliceKML();
+                    KML_as_String += splice_add;
+                }
+
+            }
+
+        } catch (Exception e) {
+            // TODO
+        }
+
+        //Return String of the KML File
+
+        return KML_as_String;
+    }
+
+    private String spliceKML(){
+
+        Place place;
+        String coordinates = "                     ";
+
+        for (int i = 0; i < places.length; i++) {
+            place = places[i % places.length];
+
+            coordinates += String.valueOf(place.longitude) + ", " + String.valueOf(place.latitude) + " ";
+
+        }
+
+        return coordinates;
+    }
+
     private String svg() {
 
 
@@ -131,18 +202,19 @@ public class Trip {
                 polygon += destinationList_longitude.get(i).toString() + "," + destinationList_latitude.get(i).toString() + " ";
             }
             else{
-                System.out.println("IN TO PRINT LINES");
 
                 if(origin.longitude <= 0) {
 
-                    line = "<line x1=\"" + String.valueOf(degreesToPixel(origin.longitude, "longitude")) + "\" y1=\"" +
-                            String.valueOf(degreesToPixel(origin.latitude, "latitude")) + "\" x2=\"" + String.valueOf(degreesToPixel(destination.longitude - 360, "longitude")) + "\" y2=\"" +
-                            String.valueOf(degreesToPixel(destination.latitude, "latitude")) + "\" style=\"stroke:rgb(128,0,128);stroke-width:1\" />";
+                    line = "<line x1=\"" + String.valueOf(degreesToPixel(origin.longitude, "longitude")) + "\" y1=\""
+                            + String.valueOf(degreesToPixel(origin.latitude, "latitude")) + "\" x2=\""
+                            + String.valueOf(degreesToPixel(destination.longitude - 360, "longitude")) + "\" y2=\""
+                            + String.valueOf(degreesToPixel(destination.latitude, "latitude")) + "\" style=\"stroke:rgb(128,0,128);stroke-width:1\" />";
                     splice_add += line;
 
-                    line = "<line x1=\"" + String.valueOf(degreesToPixel(origin.longitude + 360, "longitude")) + "\" y1=\"" +
-                            String.valueOf(degreesToPixel(origin.latitude, "latitude")) + "\" x2=\"" + String.valueOf(degreesToPixel(destination.longitude, "longitude")) + "\" y2=\"" +
-                            String.valueOf(degreesToPixel(destination.latitude, "latitude")) + "\" style=\"stroke:rgb(128,0,128);stroke-width:1\" />";
+                    line = "<line x1=\"" + String.valueOf(degreesToPixel(origin.longitude + 360, "longitude")) + "\" y1=\""
+                            + String.valueOf(degreesToPixel(origin.latitude, "latitude")) + "\" x2=\""
+                            + String.valueOf(degreesToPixel(destination.longitude, "longitude")) + "\" y2=\""
+                            + String.valueOf(degreesToPixel(destination.latitude, "latitude")) + "\" style=\"stroke:rgb(128,0,128);stroke-width:1\" />";
                     splice_add += line;
                 }
             }
