@@ -63,9 +63,9 @@ Epics planned for this sprint.
 
 | Statistic | Planned | Completed |
 | --- | ---: | ---: |
-| Epics | *4* | *total* |
-| Tasks |  *9*   | *total* | 
-| Story Points |  *19*  | *total* | 
+| Epics | *4* | *3* |
+| Tasks |  *9*   | *21* | 
+| Story Points |  *19*  | *38* | 
 
 *Enter the `# Planned` at the beginning of the sprint.  Include a discussion of planning decisions based on the planned number of story points versus how many were completed in previous sprints.*
 
@@ -89,7 +89,7 @@ Epics planned for this sprint.
 
 ## Review
 
-*An introductory paragraph describing the overall results of the sprint.*
+*This sprint we almost got everything done that we set out to do. People started a lot eairlier on their stuff as well as talking more to the TAs. Also posting on piazza was a huge help in answering some questions we had. Some minor stuff was still saved to the last minute, causing us to have to wait for Travis to merge the Sprint4.md files.*
 
 #### Completed Epics in Sprint Backlog 
 
@@ -121,7 +121,7 @@ Epics planned for this sprint.
 
 ## Retrospective
 
-*An introductory paragraph for your retrospective.*
+*Our plan at the start could still be better. We could add more tasks and really get into the meat of what needs to get done. Also we really need to add more test code as well as going through and cleaning smelly code. Still most stuff did get done even if some of it should have been done earlier. Also we should work on cleaning up how our webpage looks and the layout in the next sprint.*
 
 #### What we changed this sprint
 
