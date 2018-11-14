@@ -43,6 +43,10 @@
 
 *Include any design diagrams prepared during sprint planning (user interface, component diagram, component/state/hierarchy, etc.) with a short paragraph for each.
 
+API Server Requests:
+![UI](/Diagrams/Sprint4/ServerClassDiagram.jpg)
+* This diagram shows the server interoperation when a request is made to the server.
+
 Epics planned for this sprint.
 
 * *## epic title: description*
