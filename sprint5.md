@@ -45,7 +45,11 @@
 
 API Server Requests:
 ![UI](/Diagrams/Sprint4/ServerClassDiagram.jpg)
-* This diagram shows the server interoperation when a request is made to the server.
+* This diagram shows the server interoperation when a request is made to the server. 
+
+Client Component Hierarchy:
+![UI](/Diagrams/Sprint5/Sprint5ClientComp.png)
+
 
 Epics planned for this sprint.
 
