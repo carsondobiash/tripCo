@@ -36,9 +36,6 @@ public class Calculate {
 
         // plan the trip.
         int dist = distance.calculatedistance();
-
-        // log something.
-        System.out.println(dist);
     }
 
     /** Handles the response for a Trip object.

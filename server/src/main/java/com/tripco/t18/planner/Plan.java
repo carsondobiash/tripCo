@@ -37,9 +37,6 @@ public class Plan {
 
     // plan the trip.
     trip.plan();
-
-    // log something.
-    System.out.println(trip.title);
   }
 
   /** Handles the response for a Trip object.

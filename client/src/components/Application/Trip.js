@@ -60,9 +60,6 @@ class Trip extends Component{
         place.longitude = event.target.longitude.value;
 
 
-        //this.setState({places: this.props.trip.places.concat(place)});
-        //console.log(this.state.places);
-
         this.props.updateTrip("places", this.props.trip.places.concat(place));
     }
 
@@ -96,9 +93,11 @@ class Trip extends Component{
                                        placeholder="Id"/>
                                 <Input type="number"
                                        name="latitude"
+                                       step="0.01"
                                        placeholder="Latitude"/>
                                 <Input type="number"
                                        name="longitude"
+                                       step="0.01"
                                        placeholder="Longitude"/>
                                 <Button className="btn" type="submit">Add Place</Button>
                             </Form>

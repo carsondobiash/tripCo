@@ -10,13 +10,14 @@ public class Config {
   private short version = 4;
   private String type = "config";
   private List<String> units = Arrays.asList("miles","nautical miles","kilometers", "user defined");
-  private ArrayList<Map<String, String>> optimizations;
+  private ArrayList<Map<String, String>> optimization;
   private List<String> attributes = Arrays.asList("name", "id", "latitude", "longitude");
   private ArrayList<Filters> filters;
+  private List<String> maps = Arrays.asList("svg", "kml");
 
   public Config(){
 
-      optimizations = new ArrayList<>();
+      optimization = new ArrayList<>();
       Map<String, String> none = new HashMap<>();
       none.put("label", "none");
       none.put("description", "The trip is not optimized.");
@@ -27,19 +28,33 @@ public class Config {
       shorter.put("label", "shorter");
       shorter.put("description", "2-opt.");
 
-      optimizations.add(none);
-      optimizations.add(shorty);
-      optimizations.add(shorter);
+      optimization.add(none);
+      optimization.add(shorty);
+      optimization.add(shorter);
 
       filters = new ArrayList<>();
-      Filters support = new Filters();
-      support.values = new ArrayList<>();
-      support.name = "type";
-      support.values.add("balloonport");
-      support.values.add("heliport");
-      support.values.add("airport");
-      support.values.add("seaplane base");
-      filters.add(support);
+      Filters supportType = new Filters();
+      supportType.values = new ArrayList<>();
+      supportType.name = "type";
+      supportType.values.add("balloonport");
+      supportType.values.add("heliport");
+      supportType.values.add("seaplane base");
+      supportType.values.add("small_airports");
+      supportType.values.add("medium_airports");
+      supportType.values.add("large_airports");
+      filters.add(supportType);
+
+      Filters supportContinent = new Filters();
+      supportContinent.values = new ArrayList<>();
+      supportContinent.name = "continent";
+      supportContinent.values.add("AF");
+      supportContinent.values.add("AN");
+      supportContinent.values.add("AS");
+      supportContinent.values.add("EU");
+      supportContinent.values.add("NA");
+      supportContinent.values.add("OC");
+      supportContinent.values.add("SA");
+      filters.add(supportContinent);
 
       Filters supportContinent = new Filters();
       supportContinent.values = new ArrayList<>();

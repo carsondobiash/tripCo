@@ -32,7 +32,7 @@ public class Trip {
     public void plan() {
         this.places = optimized();
         this.distances = legDistances();
-        this.map = svg();
+        this.map = typeOfMap();
     }
 
     /**
@@ -40,6 +40,77 @@ public class Trip {
      *
      * @return
      */
+
+    private String typeOfMap(){
+
+        if(options.map == (null)){
+            return svg();
+        }
+        else if(options.map.equals("svg")){
+            return svg();
+        }
+        else if(options.map.equals("kml")){
+            return kml();
+        }
+        else {
+            return svg();
+        }
+    }
+
+    private String kml(){
+        String KML_as_String = "";
+
+        BufferedReader reader;
+
+        try {
+
+            reader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/BaseKML.kml")));
+
+        } catch (Exception e) {
+
+            return "";
+
+        }
+
+        String line_of_KMLfile = "";
+
+        try {
+
+            while ((line_of_KMLfile = reader.readLine()) != null) {
+
+                KML_as_String += line_of_KMLfile;
+
+                if (line_of_KMLfile.equals("                <coordinates>")) {
+                    String splice_add = spliceKML();
+                    KML_as_String += splice_add;
+                }
+
+            }
+
+        } catch (Exception e) {
+            // TODO
+        }
+
+        //Return String of the KML File
+
+        return KML_as_String;
+    }
+
+    private String spliceKML(){
+
+        Place place;
+        String coordinates = "                     ";
+
+        for (int i = 0; i < places.length; i++) {
+            place = places[i % places.length];
+
+            coordinates += String.valueOf(place.longitude) + ", " + String.valueOf(place.latitude) + " ";
+
+        }
+
+        return coordinates;
+    }
+
     private String svg() {
 
 
@@ -66,7 +137,7 @@ public class Trip {
 
                 SVG_as_String += line_of_SVGfile;
 
-                if (line_of_SVGfile.equals("                    id=\"path181\"/>")) {
+                if (line_of_SVGfile.equals("       id=\"Antarctique\" />")) {
                     String splice_add = spliceSVG();
                     SVG_as_String += splice_add;
                 }
@@ -86,13 +157,14 @@ public class Trip {
     private String spliceSVG() {
 
         String polygon = "<polyline points=\"";
+        String dots;
 
         String splice_add = "\n<svg\n" +
                 "        xmlns:svg=\"http://www.w3.org/2000/svg\"\n" +
                 "        xmlns=\"http://www.w3.org/2000/svg\"\n" +
                 "        version=\"1.0\"\n" +
-                "        width=\"1066.6073\"\n" +
-                "        height=\"783.0824\"\n" +
+                "        width=\"1024\"\n" +
+                "        height=\"512\"\n" +
                 "        id=\"svg2339\">";
 
         Place origin;
@@ -107,20 +179,53 @@ public class Trip {
 
             origin = places[i % places.length];
             destination = places[(i + 1) % places.length];
-            originList_latitude.add(degreesToPixel(origin.latitude, "latitude"));
+
             originList_longitude.add(degreesToPixel(origin.longitude, "longitude"));
-            destinationList_latitude.add(degreesToPixel(destination.latitude, "latitude"));
             destinationList_longitude.add(degreesToPixel(destination.longitude, "longitude"));
+
+            originList_latitude.add(degreesToPixel(origin.latitude, "latitude"));
+            destinationList_latitude.add(degreesToPixel(destination.latitude, "latitude"));
 
         }
 
 
         for (int i = 0; i < places.length; i++) {
-            polygon += originList_longitude.get(i).toString() + "," + originList_latitude.get(i).toString() + " ";
-            polygon += destinationList_longitude.get(i).toString() + "," + destinationList_latitude.get(i).toString() + " ";
+
+            dots = "<circle cx=\"";
+            String line;
+
+            origin = places[i % places.length];
+            destination = places[(i + 1) % places.length];
+
+            if(checkForWrap(origin.longitude, destination.longitude) == false) {
+                polygon += originList_longitude.get(i).toString() + "," + originList_latitude.get(i).toString() + " ";
+                polygon += destinationList_longitude.get(i).toString() + "," + destinationList_latitude.get(i).toString() + " ";
+            }
+            else{
+
+                if(origin.longitude <= 0) {
+
+                    line = "<line x1=\"" + String.valueOf(degreesToPixel(origin.longitude, "longitude")) + "\" y1=\""
+                            + String.valueOf(degreesToPixel(origin.latitude, "latitude")) + "\" x2=\""
+                            + String.valueOf(degreesToPixel(destination.longitude - 360, "longitude")) + "\" y2=\""
+                            + String.valueOf(degreesToPixel(destination.latitude, "latitude")) + "\" style=\"stroke:rgb(128,0,128);stroke-width:1\" />";
+                    splice_add += line;
+
+                    line = "<line x1=\"" + String.valueOf(degreesToPixel(origin.longitude + 360, "longitude")) + "\" y1=\""
+                            + String.valueOf(degreesToPixel(origin.latitude, "latitude")) + "\" x2=\""
+                            + String.valueOf(degreesToPixel(destination.longitude, "longitude")) + "\" y2=\""
+                            + String.valueOf(degreesToPixel(destination.latitude, "latitude")) + "\" style=\"stroke:rgb(128,0,128);stroke-width:1\" />";
+                    splice_add += line;
+                }
+            }
+
+            dots += originList_longitude.get(i).toString() + "\" cy=\"" + originList_latitude.get(i).toString() + "\" r=\"2\" stroke=\"green\" stroke-width=\"1\" fill=\"pink\" />";
+
+            splice_add += dots;
+
         }
 
-        polygon += "\"\nfill=\"none\" stroke-width=\"4\" stroke=\"blue\" id=\"s7\"/>";
+        polygon += "\"\nfill=\"none\" stroke-width=\"2\" stroke=\"purple\" id=\"s7\"/>";
 
         return splice_add + polygon + "</svg>";
     }
@@ -129,12 +234,30 @@ public class Trip {
 
         if (type.equals("longitude")) {
 
-            return Math.abs((1066.6073 / 7.5) * (-109.3 - deg));
+            return ((800.00 / 360.00) * (180.00 + deg));
+
         } else if (type.equals("latitude")) {
 
-            return Math.abs((783.0824 / 4.4) * (41.2 - deg));
+            if (0 >= deg) {
+                return Math.abs(((400.00 / 180.00) * (90.00 + Math.abs(deg))));
+            }
+            else{
+                return Math.abs(((400.00 / 180.00) * (-90.00 + deg)));
+            }
+
         } else {
             return -1;
+        }
+
+    }
+
+    private boolean checkForWrap(double originLong, double destLong){
+
+        if (Math.abs((originLong-destLong)) > 180){
+            return true;
+        }
+        else{
+            return false;
         }
 
     }
