@@ -35,19 +35,8 @@ class Search extends Component {
     }
 
     addPlace(place){
-        let newPlaces = new Array(this.props.trip.places.length + 1);
-        for(let index = 0; index < (newPlaces.length); index++){
-            if(index === this.props.trip.places.length) {
-                newPlaces[index] = JSON.parse(JSON.stringify(this.props.trip.places[0]));
-            }
-            else
-                newPlaces[index] = this.props.trip.places[index];
-        }
-        newPlaces[newPlaces.length - 1].name = place.name;
-        newPlaces[newPlaces.length - 1].latitude = place.latitude;
-        newPlaces[newPlaces.length - 1].longitude = place.longitude;
-        newPlaces[newPlaces.length - 1].id = place.id;
-        this.props.updatePlaces(newPlaces);
+        this.props.trip.places.push(place);
+        this.props.updatePlaces(this.props.trip.places);
     }
 
     addPlaceAll(){
@@ -75,6 +64,18 @@ class Search extends Component {
 
 
     render() {
+        let values =
+            <div>
+                <h5>Input Values For Search</h5>
+                <div>
+                    <Label>Enter Name</Label>
+                    <Input id={'searchName'} type="text" placeholder="Name" onChange={(event) => this.props.updateName(event.target.value)}/>
+                    <p/>
+                    <Label>Enter Limit</Label>
+                    <Input id={'searchLimit'} type="number" placeholder="Limit" onChange={(event) => this.props.updateLimit(event.target.value)}/>
+                </div>
+            </div>
+
         let data =
             <ListGroup>
                 <Label>Click on a result to add the result to the trip</Label>
@@ -96,6 +97,16 @@ class Search extends Component {
                 }
             </ListGroup>
 
+        let filter =
+            <FormGroup>
+            <Label>Filter Name</Label>
+        <Input id={'filterName'} type="select" onChange={(event) => this.storeFilterName(event)}>
+            <option value=''>Select</option>
+            <option key='continent' value='continent'>Continent</option>
+            <option key='type' value='type'>Type</option>
+        </Input>
+        </FormGroup>
+
         let filterValues;
         if (this.state.store.values != null) {
             filterValues =
@@ -103,6 +114,37 @@ class Search extends Component {
                 <DropdownItem key={values} value={values} onClick={(event) => this.removeFilterValue(event)}>{values}</DropdownItem>
             )
         }
+
+        let filterValuesAdd =
+            <FormGroup>
+                <Label>Filter Values(Click on values to add them)</Label>
+                {this.state.store.name === 'type' ?
+                    <Input id={'filterType'} type="select" onChange={(event) => this.addFilterValue(event)} multiple>
+                        <option value='balloonport'>Balloonport</option>
+                        <option value='closed'>Closed</option>
+                        <option value='heliport'>Heliport</option>
+                        <option value='large_airport'>Large Airport</option>
+                        <option value='medium_airport'>Medium Airport</option>
+                        <option value='seaplane_base'>Seaplane Base</option>
+                        <option value='small_airport'>Small Airport</option>
+                    </Input>
+                    :
+                    this.state.store.name === 'continent' ?
+                        <Input id={'filterContinent'} type="select" onChange={(event) => this.addFilterValue(event)} multiple>
+                            <option value='Africa'>Africa</option>
+                            <option value='Antarctica'>Antarctica</option>
+                            <option value='Asia'>Asia</option>
+                            <option value='Europe'>Europe</option>
+                            <option value='North America'>North America</option>
+                            <option value='Oceania'>Oceania</option>
+                            <option value='South America'>South America</option>
+                        </Input>
+                        :
+                        <Input type="select" multiple>
+                            <option>Select</option>
+                        </Input>
+                }
+            </FormGroup>
 
         let found;
         if(this.props.search.places != null){
@@ -127,61 +169,15 @@ class Search extends Component {
                     <h3>Search</h3>
                         <Row>
                             <Col>
-                                <div>
-                                <h5>Input Values For Search</h5>
-                                    <div>
-                                        <Label>Enter Name</Label>
-                                        <Input type="text" placeholder="Name" onChange={(event) => this.props.updateName(event.target.value)}/>
-                                        <p/>
-                                        <Label>Enter Limit</Label>
-                                        <Input type="number" placeholder="Limit" onChange={(event) => this.props.updateLimit(event.target.value)}/>
-                                    </div>
-                                </div>
+                                {values}
                             </Col>
                             <Col>
-                                <p/>
-                                <p/>
-                                <FormGroup>
-                                    <Label>Filter Name</Label>
-                                    <Input type="select" onChange={(event) => this.storeFilterName(event)}>
-                                        <option value=''>Select</option>
-                                        <option key='continent' value='continent'>Continent</option>
-                                        <option key='type' value='type'>Type</option>
-                                    </Input>
-                                </FormGroup>
-                                <FormGroup>
-                                    <Label>Filter Values(Click on values to add them)</Label>
-                                    {this.state.store.name === 'type' ?
-                                        <Input type="select" onChange={(event) => this.addFilterValue(event)} multiple>
-                                            <option value='balloonport'>Balloonport</option>
-                                            <option value='closed'>Closed</option>
-                                            <option value='heliport'>Heliport</option>
-                                            <option value='large_airport'>Large Airport</option>
-                                            <option value='medium_airport'>Medium Airport</option>
-                                            <option value='seaplane_base'>Seaplane Base</option>
-                                            <option value='small_airport'>Small Airport</option>
-                                        </Input>
-                                        :
-                                    this.state.store.name === 'continent' ?
-                                        <Input type="select" onChange={(event) => this.addFilterValue(event)} multiple>
-                                            <option value='AF'>Africa</option>
-                                            <option value='AN'>Antarctica</option>
-                                            <option value='AS'>Asia</option>
-                                            <option value='EU'>Europe</option>
-                                            <option value='NA'>North America</option>
-                                            <option value='OC'>Oceania</option>
-                                            <option value='SA'>South America</option>
-                                        </Input>
-                                        :
-                                        <Input type="select" multiple>
-                                            <option>Select</option>
-                                        </Input>
-                                    }
-                                </FormGroup>
+                                {filter}
+                                {filterValuesAdd}
                                 <p/>
                                 <div className="text-right">
                                     <Label>View values in filter. Click on a value to remove. Then add the filter.</Label>
-                                    <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle} className="text-center">
+                                    <ButtonDropdown id={'filterValues'} isOpen={this.state.dropdownOpen} toggle={this.toggle} className="text-center">
                                         <DropdownToggle caret>
                                             Filter Values
                                         </DropdownToggle>
@@ -189,7 +185,8 @@ class Search extends Component {
                                             {filterValues}
                                         </DropdownMenu>
                                     </ButtonDropdown>
-                                    <Button onClick={(event) => this.props.updateFilter(this.state.store)}>Add Filter</Button>
+                                    <Button id={'addFilter'} onClick={(event) => this.props.updateFilter(this.state.store)}>Add Filter</Button>
+                                    <Button id={'removeFilter'} onClick={(event) => this.props.removeFilter()}>Remove Filters</Button>
                                 </div>
                             </Col>
                         </Row>
@@ -197,7 +194,7 @@ class Search extends Component {
                             <Col>
                                 <p/>
                                 <div className="text-center">
-                                        <Button onClick={this.search} className="btn">Search</Button>
+                                        <Button id={'search'} onClick={this.search} className="btn">Search</Button>
                                 </div>
                                 <p/>
                             </Col>
@@ -212,7 +209,7 @@ class Search extends Component {
                                 <p/>
                                 {found}
                                 <div className="text-center">
-                                    <Button onClick={(event) => {this.addPlaceAll()}}>Add All</Button>
+                                    <Button id={'search'} onClick={(event) => {this.addPlaceAll()}}>Add All</Button>
                                 </div>
                            </Col>
                         </Row>

@@ -41,6 +41,18 @@ public class Config {
       support.values.add("seaplane base");
       filters.add(support);
 
+      Filters supportContinent = new Filters();
+      supportContinent.values = new ArrayList<>();
+      supportContinent.name = "continent";
+      supportContinent.values.add("Africa");
+      supportContinent.values.add("Antarctica");
+      supportContinent.values.add("Asia");
+      supportContinent.values.add("Europe");
+      supportContinent.values.add("North America");
+      supportContinent.values.add("Oceania");
+      supportContinent.values.add("South America");
+      filters.add(supportContinent);
+
   }
 
   static String getConfig() {
