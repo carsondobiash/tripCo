@@ -54,13 +54,11 @@ Client Component Hierarchy:
 
 Epics planned for this sprint.
 
-
-* *## epic title: description*
-* *User: I want an interactive map*
+* *User: I want an interactive map: This epic will involve using Leaflet to display the map as well as moving the SVG/KML to have a save only function.*
 * *User: I want to know who to thank for this application*
 * *User: I want trip planning to be fast*
 * *User: I want the shortest trips possible*
-* *User: Make the system easier to use: This epic mostly involves rearranging the front end to be more visually appealing and easy to understand for the user. *
+* *User: Make the system easier to use: This epic mostly involves rearranging the front end to be more visually appealing and easy to understand for the user.*
 * *User: I want to view my trip in other tools: This epic is mostly done from last sprint, we just need to add a button for svg/kml.*
 
 ## Metrics
