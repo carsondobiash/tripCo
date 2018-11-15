@@ -54,20 +54,24 @@ Client Component Hierarchy:
 
 Epics planned for this sprint.
 
-* *User: Make the system easier to use: This epic mostly involves rearranging the front end to be more visually appealing and easy to understand for the user. *
+* *User: I want an interactive map: This epic will involve using Leaflet to display the map as well as moving the SVG/KML to have a save only function.*
+* *User: I want to know who to thank for this application*
+* *User: I want trip planning to be fast*
+* *User: I want the shortest trips possible*
+* *User: Make the system easier to use: This epic mostly involves rearranging the front end to be more visually appealing and easy to understand for the user.*
 * *User: I want to view my trip in other tools: This epic is mostly done from last sprint, we just need to add a button for svg/kml.*
-*
-
 
 ## Metrics
 
 | Statistic | Planned | Completed |
 | --- | ---: | ---: |
-| Epics | *total* | *total* |
-| Tasks |  *total*   | *total* | 
-| Story Points |  *total*  | *total* | 
+| Epics | *6* | *total* |
+| Tasks |  *12*   | *total* | 
+| Story Points |  *26*  | *total* | 
 
 *Enter the `# Planned` at the beginning of the sprint.  Include a discussion of planning decisions based on the planned number of story points versus how many were completed in previous sprints.*
+
+The number planned for this sprint is a total of 26 story points. This shouldn't be that big of an issue as the number of story points that we completed last sprint was 38. We will probably still add more to this as we find more and more stuff that needs to be added.
 
 *Enter the `# Completed` at the end of the sprint.  Include a discussion about any difference in the number planned versus completed tasks and story points.*
 
