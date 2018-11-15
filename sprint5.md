@@ -39,7 +39,7 @@
 
 ## Plan
 
-*An introductory paragraph describing what you expect to accomplish this sprint that will achieve the goal.*
+*This is the final sprint. Our team plans on completely finishing the website and making it look nicer too! We are going to add an interactive map, further optimization (3opt), cleaner UI, and faster trip planning. And lastly we are going to add an authors section to our page.*
 
 *Include any design diagrams prepared during sprint planning (user interface, component diagram, component/state/hierarchy, etc.) with a short paragraph for each.
 
@@ -49,16 +49,19 @@ API Server Requests:
 
 Client Component Hierarchy:
 ![UI](/Diagrams/Sprint5/Sprint5ClientComp.png)
+* This diagram contains all the components in our website and all the props being passed between components.
 
 
 Epics planned for this sprint.
+
 
 * *## epic title: description*
 * *User: I want an interactive map*
 * *User: I want to know who to thank for this application*
 * *User: I want trip planning to be fast*
 * *User: I want the shortest trips possible*
-
+* *User: Make the system easier to use: This epic mostly involves rearranging the front end to be more visually appealing and easy to understand for the user. *
+* *User: I want to view my trip in other tools: This epic is mostly done from last sprint, we just need to add a button for svg/kml.*
 
 ## Metrics
 
