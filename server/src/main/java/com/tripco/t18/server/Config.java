@@ -56,18 +56,6 @@ public class Config {
       supportContinent.values.add("SA");
       filters.add(supportContinent);
 
-      Filters supportContinent = new Filters();
-      supportContinent.values = new ArrayList<>();
-      supportContinent.name = "continent";
-      supportContinent.values.add("Africa");
-      supportContinent.values.add("Antarctica");
-      supportContinent.values.add("Asia");
-      supportContinent.values.add("Europe");
-      supportContinent.values.add("North America");
-      supportContinent.values.add("Oceania");
-      supportContinent.values.add("South America");
-      filters.add(supportContinent);
-
   }
 
   static String getConfig() {
