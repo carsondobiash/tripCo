@@ -47,13 +47,13 @@ public class Config {
       Filters supportContinent = new Filters();
       supportContinent.values = new ArrayList<>();
       supportContinent.name = "continent";
-      supportContinent.values.add("AF");
-      supportContinent.values.add("AN");
-      supportContinent.values.add("AS");
-      supportContinent.values.add("EU");
-      supportContinent.values.add("NA");
-      supportContinent.values.add("OC");
-      supportContinent.values.add("SA");
+      supportContinent.values.add("Africa");
+      supportContinent.values.add("Antarctica");
+      supportContinent.values.add("Asia");
+      supportContinent.values.add("Europe");
+      supportContinent.values.add("North America");
+      supportContinent.values.add("Oceania");
+      supportContinent.values.add("South America");
       filters.add(supportContinent);
 
   }

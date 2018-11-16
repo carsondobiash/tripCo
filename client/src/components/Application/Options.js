@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Card, CardHeader, CardBody, Label, Input} from 'reactstrap'
-import { ButtonGroup, Button, Form, FormGroup} from 'reactstrap'
+import { ButtonGroup, Button, Form, FormGroup, Row, Col} from 'reactstrap'
 
 /* Options allows the user to change the parameters for planning
  * and rendering the trip map and itinerary.
@@ -52,6 +52,19 @@ class Options extends Component{
         </div>
     }
 
+    let portInput =
+        <div>
+            <Row>
+                <Col>
+                    <Label>Enter Port Number</Label>
+                    <Input type="text" placeholder="Enter Port Number" onChange={this.props.updatePort}/>
+                </Col>
+                <Col>
+                    <Label>Enter Hostname</Label>
+                    <Input type="text" placeholder="Enter Hostname" onChange={this.props.updateHost}/>
+                </Col>
+            </Row>
+        </div>
 
         return(
       <Card>
@@ -67,13 +80,7 @@ class Options extends Component{
             </ButtonGroup>
             {customUnits}
             <p/>
-            <div>
-                <Label>Enter Port Number</Label>
-                <Input type="text" placeholder="Enter Port Number" onChange={this.props.updatePort}/>
-                <p/>
-                <Label>Enter Hostname</Label>
-                <Input type="text" placeholder="Enter Hostname" onChange={this.props.updateHost}/>
-            </div>
+            {portInput}
         </CardBody>
       </Card>
     )

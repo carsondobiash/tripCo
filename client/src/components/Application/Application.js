@@ -54,6 +54,7 @@ class Application extends Component {
     this.updateLimit = this.updateLimit.bind(this);
     this.updateID = this.updateID.bind(this);
     this.updateFilter = this.updateFilter.bind(this);
+    this.removeFilter = this.removeFilter.bind(this);
   }
 
   componentWillMount() {
@@ -130,6 +131,12 @@ class Application extends Component {
       this.setState({search: temp});
     }
 
+    removeFilter(){
+    let temp = this.state.search;
+    temp.filters = [];
+    this.setState({searc: temp});
+    }
+
 
   render() {
     if(!this.state.config) { return <div/> }
@@ -142,7 +149,7 @@ class Application extends Component {
         <Card>
           <Trip trip={this.state.trip} updateTrip={this.updateTrip} updateBasedOnResponse={this.updateBasedOnResponse} port={this.state.port} host={this.state.host}/>
           <Search trip={this.state.trip} search={this.state.search} updateBasedOnSearch={this.updateBasedOnSearch} port={this.state.port} host={this.state.host} updateName={this.updateName}
-                  updateLimit={this.updateLimit} updateID={this.updateID} updatePlaces={this.updatePlaces} updateFilter={this.updateFilter}/>
+                  updateLimit={this.updateLimit} updateID={this.updateID} updatePlaces={this.updatePlaces} updateFilter={this.updateFilter} removeFilter={this.removeFilter}/>
           <Map trip={this.state.trip} updateTrip={this.updateBasedOnResponse}/>
           <Itinerary trip={this.state.trip} config={this.state.config}/>
         </Card>
