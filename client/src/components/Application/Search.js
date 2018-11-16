@@ -77,25 +77,21 @@ class Search extends Component {
             </div>
 
         let data =
-            <ListGroup>
+            <FormGroup>
                 <Label>Click on a result to add the result to the trip</Label>
+                <Input type='select' bsSize='large' multiple>
                 {this.props.search.places.map((place) =>
-                    <ListGroupItem
+                        <option
                         key={place.name}
-                        tag="button"
                         id={place.name}
-                        className='btn-outline-dark unit-button'
-                        active={this.state.current === place.name}
-                        onClick={((event) => {
-                            this.setState({"current": event.target.innerText});
-                            this.addPlace(place)
-                        })}
-                    >
-                        {place.name}
-                    </ListGroupItem>
+                        onClick={((event) => {this.addPlace(place)})}
+                        >
+                            {place.name}
+                        </option>
                 )
                 }
-            </ListGroup>
+                </Input>
+            </FormGroup>
 
         let filter =
             <FormGroup>
