@@ -101,11 +101,27 @@ public class Database {
         if(!filters.isEmpty()){
             for(int i = 0; i < filters.size(); i++){
                 for(int j = 0; j < filters.get(i).values.size(); j++){
-                    filter += "and world_airports." + filters.get(i).name + " like '%" + filters.get(i).values.get(j) + "%' ";
+                    String value = filters.get(i).values.get(j);
+                    value = valueChange(value);
+                    filter += "and world_airports." + filters.get(i).name + " like '%" + value + "%' ";
                 }
             }
         }
         return filter;
+    }
+
+    private String valueChange(String value){
+        switch(value){
+            case "Africa": value = "AF"; break;
+            case "Antarctica": value = "AN"; break;
+            case "Asia": value = "AS"; break;
+            case "Europe": value = "EU"; break;
+            case "North America": value = "NA"; break;
+            case "Oceania": value = "OC"; break;
+            case "South America": value = "SA"; break;
+            default: break;
+        }
+        return value;
     }
 
     public void remoteDatabase(){
