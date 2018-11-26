@@ -77,7 +77,7 @@ test('Check to see if optimizations are rendered correctly (Lambda)', () => {
     const options = mount((   // (1)
         <Options config={startProps.config} options={startProps.options}/>
     ));
-    const expected = ["none", "short", "shorter"];
+    const expected = ["none", "short", "shorter", undefined];
     let actual = [];
     options.find('Button').map((element) => actual.push(element.prop('value')));  // (2)
 
