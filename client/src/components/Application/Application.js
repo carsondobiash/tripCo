@@ -55,6 +55,7 @@ class Application extends Component {
     this.updateID = this.updateID.bind(this);
     this.updateFilter = this.updateFilter.bind(this);
     this.removeFilter = this.removeFilter.bind(this);
+    this.updateServer = this.updateServer.bind(this);
   }
 
   componentWillMount() {
@@ -137,6 +138,16 @@ class Application extends Component {
     this.setState({searc: temp});
     }
 
+    updateServer(){
+      if(this.state.host === ""){
+        this.setState({host: location.hostname})
+      }
+      if(this.state.port === ""){
+        this.setState({port: location.port})
+      }
+      get_config(type, this.state.host, this.state.port).then(config => {this.setState({config: config})});
+    }
+
 
   render() {
     if(!this.state.config) { return <div/> }
@@ -145,11 +156,12 @@ class Application extends Component {
       <Container id="Application">
         <Info/>
         <Customize trip={this.state.trip} updatePlaces={this.updatePlaces}/>
-          <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions} port={this.state.port} host={this.state.host} updatePort={this.updatePort} updateHost={this.updateHost}/>
+          <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions} port={this.state.port} host={this.state.host} updatePort={this.updatePort} updateHost={this.updateHost}
+          updateServer={this.updateServer}/>
         <Card>
           <Trip trip={this.state.trip} updateTrip={this.updateTrip} updateBasedOnResponse={this.updateBasedOnResponse} port={this.state.port} host={this.state.host}/>
           <Search trip={this.state.trip} search={this.state.search} updateBasedOnSearch={this.updateBasedOnSearch} port={this.state.port} host={this.state.host} updateName={this.updateName}
-                  updateLimit={this.updateLimit} updateID={this.updateID} updatePlaces={this.updatePlaces} updateFilter={this.updateFilter} removeFilter={this.removeFilter}/>
+                  updateLimit={this.updateLimit} updateID={this.updateID} updatePlaces={this.updatePlaces} updateFilter={this.updateFilter} removeFilter={this.removeFilter} config={this.state.config}/>
           <Map trip={this.state.trip} updateTrip={this.updateBasedOnResponse}/>
           <Itinerary trip={this.state.trip} config={this.state.config}/>
         </Card>

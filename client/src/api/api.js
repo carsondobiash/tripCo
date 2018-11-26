@@ -4,6 +4,10 @@ function get_port() {
     process.env.dev
 }
 
+function get_host() {
+  return location.hostname
+}
+
 export async function request(body, type, port=get_port(), host = location.hostname){
   if(port === ""){
     port = location.port;
@@ -17,8 +21,8 @@ export async function request(body, type, port=get_port(), host = location.hostn
   }).then(response => {return response.json()}).catch(err => {console.error(err)});
 }
 
-export async function get_config(type, port=get_port()) {
-  return fetch('http://' + location.hostname + ":" + port + '/config', {
+export async function get_config(type, host = location.hostname, port=get_port()) {
+  return fetch('http://' + host + ":" + port + '/config', {
     method:"GET"
   }).then(response => {return response.json()}).catch(err => {console.error(err)});
 }
