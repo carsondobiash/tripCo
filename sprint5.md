@@ -84,6 +84,10 @@ The number planned for this sprint is a total of 26 story points. This shouldn't
 | Date | Tasks closed  | Tasks in progress | Impediments |
 | :--- | :--- | :--- | :--- |
 | *date* | *#task, ...* | *#task, ...* | *none* | 
+| *11/14/18* | *none* | *#387* | *none* |
+| *11/16/18* | *#387* | *none* | *none* |
+| *11/26/18* | *#389* | *none* | *none* |
+| *11/28/18* | *none* | *#390, #391* | *none* |
 
 *Add a new row for the scrum session after each lecture. *
 
