@@ -14,6 +14,7 @@ class Search extends Component {
         this.state = {
             current: "null",
             store: {name:"", values:[]},
+            index: 0,
             dropdownOpen: false
         };
         this.search = this.search.bind(this);
@@ -47,6 +48,14 @@ class Search extends Component {
 
     storeFilterName(event){
         let temp = {'name':event.target.value, 'values':[]};
+        let index = 0;
+        for(let i = 0; i < this.props.config.filters.length; i++){
+            if(this.props.config.filters[i].name === event.target.value){
+                index = i;
+                break;
+            }
+        }
+        this.setState({index: index});
         this.setState({store: temp});
     }
 
@@ -61,7 +70,6 @@ class Search extends Component {
         filterValues.values.splice(filterValues.values.indexOf(event.target.value),1);
         this.setState({store: filterValues});
     }
-
 
     render() {
         let values =
@@ -97,9 +105,16 @@ class Search extends Component {
             <FormGroup>
             <Label>Filter Name</Label>
         <Input id={'filterName'} type="select" onChange={(event) => this.storeFilterName(event)}>
-            <option value=''>Select</option>
-            <option key='continent' value='continent'>Continent</option>
-            <option key='type' value='type'>Type</option>
+            {this.props.config.filters.map((filter) =>
+                <option
+                    key={filter.name}
+                    id={filter.name}
+                    value={filter.name}
+                >
+                    {filter.name.charAt(0).toUpperCase() + filter.name.slice(1)}
+                </option>
+            )
+            }
         </Input>
         </FormGroup>
 
@@ -114,32 +129,12 @@ class Search extends Component {
         let filterValuesAdd =
             <FormGroup>
                 <Label>Filter Values(Click on values to add them)</Label>
-                {this.state.store.name === 'type' ?
-                    <Input id={'filterType'} type="select" onChange={(event) => this.addFilterValue(event)} multiple>
-                        <option value='balloonport'>Balloonport</option>
-                        <option value='closed'>Closed</option>
-                        <option value='heliport'>Heliport</option>
-                        <option value='large_airport'>Large Airport</option>
-                        <option value='medium_airport'>Medium Airport</option>
-                        <option value='seaplane_base'>Seaplane Base</option>
-                        <option value='small_airport'>Small Airport</option>
-                    </Input>
-                    :
-                    this.state.store.name === 'continent' ?
-                        <Input id={'filterContinent'} type="select" onChange={(event) => this.addFilterValue(event)} multiple>
-                            <option value='Africa'>Africa</option>
-                            <option value='Antarctica'>Antarctica</option>
-                            <option value='Asia'>Asia</option>
-                            <option value='Europe'>Europe</option>
-                            <option value='North America'>North America</option>
-                            <option value='Oceania'>Oceania</option>
-                            <option value='South America'>South America</option>
-                        </Input>
-                        :
-                        <Input type="select" multiple>
-                            <option>Select</option>
-                        </Input>
-                }
+                <Input id='filterValues' type='select' onChange={(event) => this.addFilterValue(event)} multiple>
+                    {this.props.config.filters[this.state.index].values.map((filter) =>
+                        <option value={filter}>{filter}</option>
+                    )
+                    }
+                </Input>
             </FormGroup>
 
         let found;

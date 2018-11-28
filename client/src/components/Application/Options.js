@@ -58,10 +58,11 @@ class Options extends Component{
                 <Col>
                     <Label>Enter Port Number</Label>
                     <Input type="text" placeholder="Enter Port Number" onChange={this.props.updatePort}/>
-                </Col>
-                <Col>
+                    <p/>
                     <Label>Enter Hostname</Label>
                     <Input type="text" placeholder="Enter Hostname" onChange={this.props.updateHost}/>
+                    <p/>
+                    <Button onClick={this.props.updateServer}>Set Server</Button>
                 </Col>
             </Row>
         </div>
