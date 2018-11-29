@@ -156,7 +156,7 @@ public class Trip {
 
     private String spliceSVG() {
 
-        String polygon = "<polyline points=\"";
+        String polyline;
         String dots;
 
         String splice_add = "\n<svg\n" +
@@ -198,8 +198,11 @@ public class Trip {
             destination = places[(i + 1) % places.length];
 
             if(checkForWrap(origin.longitude, destination.longitude) == false) {
-                polygon += originList_longitude.get(i).toString() + "," + originList_latitude.get(i).toString() + " ";
-                polygon += destinationList_longitude.get(i).toString() + "," + destinationList_latitude.get(i).toString() + " ";
+                polyline = "<line x1=\"" + originList_longitude.get(i).toString() + "\" y1=\""
+                        + originList_latitude.get(i).toString() + "\" x2=\""
+                        + destinationList_longitude.get(i).toString() + "\" y2=\""
+                        + destinationList_latitude.get(i).toString() + "\" style=\"stroke:rgb(128,0,128);stroke-width:2\" />";
+                splice_add += polyline;
             }
             else{
 
@@ -208,14 +211,15 @@ public class Trip {
                     line = "<line x1=\"" + String.valueOf(degreesToPixel(origin.longitude, "longitude")) + "\" y1=\""
                             + String.valueOf(degreesToPixel(origin.latitude, "latitude")) + "\" x2=\""
                             + String.valueOf(degreesToPixel(destination.longitude - 360, "longitude")) + "\" y2=\""
-                            + String.valueOf(degreesToPixel(destination.latitude, "latitude")) + "\" style=\"stroke:rgb(128,0,128);stroke-width:1\" />";
+                            + String.valueOf(degreesToPixel(destination.latitude, "latitude")) + "\" style=\"stroke:rgb(128,0,128);stroke-width:2\" />";
                     splice_add += line;
 
                     line = "<line x1=\"" + String.valueOf(degreesToPixel(origin.longitude + 360, "longitude")) + "\" y1=\""
                             + String.valueOf(degreesToPixel(origin.latitude, "latitude")) + "\" x2=\""
                             + String.valueOf(degreesToPixel(destination.longitude, "longitude")) + "\" y2=\""
-                            + String.valueOf(degreesToPixel(destination.latitude, "latitude")) + "\" style=\"stroke:rgb(128,0,128);stroke-width:1\" />";
+                            + String.valueOf(degreesToPixel(destination.latitude, "latitude")) + "\" style=\"stroke:rgb(128,0,128);stroke-width:2\" />";
                     splice_add += line;
+
                 }
             }
 
@@ -225,9 +229,7 @@ public class Trip {
 
         }
 
-        polygon += "\"\nfill=\"none\" stroke-width=\"2\" stroke=\"purple\" id=\"s7\"/>";
-
-        return splice_add + polygon + "</svg>";
+        return splice_add + "</svg>";
     }
 
     private double degreesToPixel(double deg, String type) {
