@@ -12,6 +12,15 @@ public class NearestNeighborThread implements Runnable{
         this.distanceTable = distanceTable;
     }
 
+    public int getResult(){
+        return result;
+    }
+
+    public int[] getPlacesByIndex(){
+        return placesByIndex;
+    }
+
+
     public void run(){}
 
 }
