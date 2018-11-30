@@ -151,13 +151,7 @@ public class Trip {
 
         String dots;
 
-        String splice_add = "\n<svg\n"
-               + "        xmlns:svg=\"http://www.w3.org/2000/svg\"\n"
-               + "        xmlns=\"http://www.w3.org/2000/svg\"\n"
-               + "        version=\"1.0\"\n"
-               + "        width=\"1024\"\n"
-               + "        height=\"512\"\n"
-               + "        id=\"svg2339\">";
+        String splice_add;
 
         Place origin;
         Place destination;
@@ -180,7 +174,9 @@ public class Trip {
 
         }
 
-        splice_add = drawLines(originList_latitude, originList_longitude, destinationList_latitude, destinationList_longitude, splice_add);
+
+
+        splice_add = drawLines(originList_latitude, originList_longitude, destinationList_latitude, destinationList_longitude);
 
         for (int i = 0; i < places.length; i++) {
 
@@ -197,11 +193,12 @@ public class Trip {
         return splice_add + "</svg>";
     }
 
-    private String drawLines(ArrayList originLat, ArrayList originLong, ArrayList destinationLat, ArrayList destinationLong, String splice){
+    private String drawLines(ArrayList originLat, ArrayList originLong, ArrayList destinationLat, ArrayList destinationLong){
 
-        String polyline;
+        String splice = "\n<svg\n" + "        xmlns:svg=\"http://www.w3.org/2000/svg\"\n"
+                + "        xmlns=\"http://www.w3.org/2000/svg\"\n" + "        version=\"1.0\"\n"
+                + "        width=\"1024\"\n" + "        height=\"512\"\n" + "        id=\"svg2339\">";
         String line;
-
         Place origin;
         Place destination;
 
@@ -211,29 +208,23 @@ public class Trip {
             destination = places[(i + 1) % places.length];
 
             if(checkForWrap(origin.longitude, destination.longitude) == false) {
-                polyline = "<line x1=\"" + originLong.get(i).toString() + "\" y1=\""
-                        + originLat.get(i).toString() + "\" x2=\""
-                        + destinationLong.get(i).toString() + "\" y2=\""
-                        + destinationLat.get(i).toString()
-                        + "\" style=\"stroke:rgb(128,0,128);stroke-width:2\" />";
-                splice += polyline;
+                line = "<line x1=\"" + originLong.get(i).toString() + "\" y1=\""
+                        + originLat.get(i).toString() + "\" x2=\"" + destinationLong.get(i).toString() + "\" y2=\""
+                        + destinationLat.get(i).toString() + "\" style=\"stroke:rgb(128,0,128);stroke-width:2\" />";
+                splice += line;
             }
             else{
 
                 if(origin.longitude <= 0) {
 
                     line = "<line x1=\"" + String.valueOf(degreesToPixel(origin.longitude, "longitude")) + "\" y1=\""
-                            + String.valueOf(degreesToPixel(origin.latitude, "latitude")) + "\" x2=\""
-                            + String.valueOf(degreesToPixel(destination.longitude - 360, "longitude")) + "\" y2=\""
-                            + String.valueOf(degreesToPixel(destination.latitude, "latitude"))
-                            + "\" style=\"stroke:rgb(128,0,128);stroke-width:2\" />";
+                            + String.valueOf(degreesToPixel(origin.latitude, "latitude")) + "\" x2=\"" + String.valueOf(degreesToPixel(destination.longitude - 360, "longitude")) + "\" y2=\""
+                            + String.valueOf(degreesToPixel(destination.latitude, "latitude")) + "\" style=\"stroke:rgb(128,0,128);stroke-width:2\" />";
                     splice += line;
 
                     line = "<line x1=\"" + String.valueOf(degreesToPixel(origin.longitude + 360, "longitude")) + "\" y1=\""
-                            + String.valueOf(degreesToPixel(origin.latitude, "latitude")) + "\" x2=\""
-                            + String.valueOf(degreesToPixel(destination.longitude, "longitude")) + "\" y2=\""
-                            + String.valueOf(degreesToPixel(destination.latitude, "latitude"))
-                            + "\" style=\"stroke:rgb(128,0,128);stroke-width:2\" />";
+                            + String.valueOf(degreesToPixel(origin.latitude, "latitude")) + "\" x2=\"" + String.valueOf(degreesToPixel(destination.longitude, "longitude")) + "\" y2=\""
+                            + String.valueOf(degreesToPixel(destination.latitude, "latitude")) + "\" style=\"stroke:rgb(128,0,128);stroke-width:2\" />";
                     splice += line;
 
                 }
