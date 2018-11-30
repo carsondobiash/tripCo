@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import { Container } from 'reactstrap';
-import { Card, CardHeader, CardBody } from 'reactstrap'
+import { Container, Nav, NavItem, NavLink } from 'reactstrap';
+import { Card, CardBody, CardTitle, TabContent, TabPane  } from 'reactstrap'
 import Info from './Info'
 import Options from './Options';
 import Map from './Map';
@@ -41,7 +41,8 @@ class Application extends Component {
           places: []
       },
       port: location.port,
-      host: location.hostname
+      host: location.hostname,
+      tab: '1'
     }
     this.updateTrip = this.updateTrip.bind(this);
     this.updateBasedOnResponse = this.updateBasedOnResponse.bind(this);
@@ -56,6 +57,7 @@ class Application extends Component {
     this.updateFilter = this.updateFilter.bind(this);
     this.removeFilter = this.removeFilter.bind(this);
     this.updateServer = this.updateServer.bind(this);
+    this.toggleTab = this.toggleTab.bind(this);
   }
 
   componentWillMount() {
@@ -148,24 +150,69 @@ class Application extends Component {
       get_config(type, this.state.host, this.state.port).then(config => {this.setState({config: config})});
     }
 
+    toggleTab(tab){
+      if(this.state.tab !== tab){
+        this.setState({
+            tab: tab
+        });
+      }
+    }
+
 
   render() {
     if(!this.state.config) { return <div/> }
 
     return(
       <Container id="Application">
-        <Info/>
-        <Customize trip={this.state.trip} updatePlaces={this.updatePlaces}/>
-          <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions} port={this.state.port} host={this.state.host} updatePort={this.updatePort} updateHost={this.updateHost}
-          updateServer={this.updateServer}/>
-        <Card>
-          <Trip trip={this.state.trip} updateTrip={this.updateTrip} updateBasedOnResponse={this.updateBasedOnResponse} port={this.state.port} host={this.state.host}/>
-          <Search trip={this.state.trip} search={this.state.search} updateBasedOnSearch={this.updateBasedOnSearch} port={this.state.port} host={this.state.host} updateName={this.updateName}
-                  updateLimit={this.updateLimit} updateID={this.updateID} updatePlaces={this.updatePlaces} updateFilter={this.updateFilter} removeFilter={this.removeFilter} config={this.state.config}/>
-          <Map trip={this.state.trip} updateTrip={this.updateBasedOnResponse}/>
-          <Itinerary trip={this.state.trip} config={this.state.config}/>
-        </Card>
-        <Distance port={this.state.port} host={this.state.host}/>
+        <Nav tabs>
+            <NavItem>
+                <NavLink
+                    className={this.state.tab === '1' ? "active" : "" }
+                    onClick={() => this.toggleTab('1')}
+                >
+                    Trip Planner
+                </NavLink>
+            </NavItem>
+            <NavItem>
+                <NavLink
+                    className={this.state.tab === '2' ? "active" : "" }
+                    onClick={() => this.toggleTab('2')}
+                >
+                    Author Section
+                </NavLink>
+            </NavItem>
+        </Nav>
+        <TabContent activeTab={this.state.tab}>
+          <TabPane tabId={'1'}>
+            <Info/>
+            <Customize trip={this.state.trip} updatePlaces={this.updatePlaces}/>
+              <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions} port={this.state.port} host={this.state.host} updatePort={this.updatePort} updateHost={this.updateHost}
+              updateServer={this.updateServer}/>
+            <Card>
+              <Trip trip={this.state.trip} updateTrip={this.updateTrip} updateBasedOnResponse={this.updateBasedOnResponse} port={this.state.port} host={this.state.host}/>
+              <Search trip={this.state.trip} search={this.state.search} updateBasedOnSearch={this.updateBasedOnSearch} port={this.state.port} host={this.state.host} updateName={this.updateName}
+                      updateLimit={this.updateLimit} updateID={this.updateID} updatePlaces={this.updatePlaces} updateFilter={this.updateFilter} removeFilter={this.removeFilter} config={this.state.config}/>
+              <Map trip={this.state.trip} updateTrip={this.updateBasedOnResponse}/>
+              <Itinerary trip={this.state.trip} config={this.state.config}/>
+            </Card>
+            <Distance port={this.state.port} host={this.state.host}/>
+          </TabPane>
+          <TabPane tabId={'2'}>
+              <Card>
+                  <CardBody>
+                      <h4>Meet the team!</h4>
+                      <div>
+                          <h5>Carson Dobiash</h5>
+                          <p>
+                              I'm a junior Computer Science student at CSU. I am interested in front
+                              end development so this was a very exciting project! I hope you enjoy the site!
+                          </p>
+                      </div>
+                  </CardBody>
+              </Card>
+          </TabPane>
+        </TabContent>
+
 
       </Container>
     )
