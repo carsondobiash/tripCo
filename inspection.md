@@ -17,6 +17,7 @@
 
 | file:line | problem | hi/med/low | who found | github#  |
 | --- | --- | :---: | :---: | --- |
-|  | | | | |
-|  | | | | |
+
+| Application.js:109 | consolodate methods | med | Daniel | #404 |
+| Application.js:188 | Put all body parts into a card for collapsing| med | Brandon | #405 |
  
