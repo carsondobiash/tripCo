@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class NearestNeighborThread implements Runnable{
 
     private static Place[] places;
-    private static int[][] distanceTable;
+    public static int[][] distanceTable;
     private int result;
     private int startCity;
     private int[] placesByIndex;
@@ -15,7 +15,6 @@ public class NearestNeighborThread implements Runnable{
         this.optimization = optimization;
         this.startCity = startCity;
     }
-
     public int getResult(){
         return result;
     }
