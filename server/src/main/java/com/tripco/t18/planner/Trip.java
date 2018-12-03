@@ -340,91 +340,15 @@ public class Trip {
         else return this.places;
     }
 
-    private void twoOptSwap(int[] places, int i1, int k){
-        while(i1 < k){
-            int temp = places[i1];
-            places[i1] = places[k];
-            places[k] = temp;
-            i1++; k--;
-        }
-    }
-    private void twoOptCheck(int[] visited, int[][] table){
-        boolean improve = true;
-        while(improve){
-            improve = false;
-            for(int i = 0; i <= places.length-3; i++){
-                for(int k = i+2; k <= places.length-1; k++){
-
-                    int delta = -table[visited[i]][visited[i+1]]-table[visited[k]][visited[k+1]] + table[visited[i]][visited[k]] + table[visited[i+1]][visited[k+1]];
-                    if(delta < 0){
-                        twoOptSwap(visited, i+1, k);
-                        improve = true;
-                    }
-                }
-            }
-        }
-    }
     private Place[] nearestNeighbor(String opt) {
         int distanceTable[][] = new int[places.length+1][places.length+1];
         fillDistanceTable(distanceTable);
 
-        int shortestPath = Integer.MAX_VALUE;
-        int[] optIndex = new int[places.length];
+        return null;
 
-        for (int i = 0; i < places.length; i++) {
-
-            int[] visited = new int[places.length+1];
-            Boolean[] visitedFlag = new Boolean[places.length];
-            visitedFlag[i] = true;
-            visited[0] = i;
-            int index = 1;
-            int origin = i;
-
-            while (index != places.length) {
-
-
-                int shortestLeg = Integer.MAX_VALUE;
-                int next = -1;
-
-
-                for (int dest = 0; dest < places.length; dest++) {
-
-                    if (visitedFlag[dest] == null || !(visitedFlag[dest])) {
-                        if (distanceTable[origin][dest] < shortestLeg){
-                            next = dest;
-                            shortestLeg = distanceTable[origin][dest];
-
-                        }
-                    }
-                }
-
-                visitedFlag[next] = true;
-                visited[index] = next;
-                origin = next;
-                index += 1;
-            }
-            visited[index] = i;
-
-            if(opt.equals("2opt"))
-                twoOptCheck(visited, distanceTable);
-
-            int legTotal = calcTotalDist(visited);
-
-            if (legTotal < shortestPath){
-
-                shortestPath = legTotal;
-                optIndex = Arrays.copyOf(visited, places.length);
-
-            }
-
-        }
-        Place[] optimized = new Place[places.length];
-        for(int i = 0; i<optimized.length; i++){
-            optimized[i] = places[optIndex[i]];
-        }
-        return optimized;
 
     }
+
     private int[][] fillDistanceTable(int[][] table){
         for(int i = 0; i < table.length; i++){
             for(int j = 0; j < table[i].length; j++){
@@ -434,12 +358,6 @@ public class Trip {
         return table;
     }
 
-    private int calcTotalDist(int [] data){
-        int legTotal = 0;
-        for(int i = 0; i < data.length-1; i++){
-            legTotal += calcLeg(places[data[i]], places[data[i+1]]);
-        }
-        return legTotal;
-    }
+
 }
 
