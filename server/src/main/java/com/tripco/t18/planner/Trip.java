@@ -343,8 +343,37 @@ public class Trip {
     private Place[] nearestNeighbor(String opt) {
         int distanceTable[][] = new int[places.length+1][places.length+1];
         fillDistanceTable(distanceTable);
+        NearestNeighborThread.distanceTable = fillDistanceTable(distanceTable);
+        Thread[] threads = new Thread[places.length];
+        NearestNeighborThread[] data = new NearestNeighborThread[places.length];
+        int minDistance = Integer.MAX_VALUE;
 
-        return null;
+        for(int startCity = 0; startCity<places.length; startCity++){
+            NearestNeighborThread datum = new NearestNeighborThread(startCity, opt);
+            threads[startCity] = new Thread(datum);
+            threads[startCity].start();
+        }
+
+        for(Thread thread : threads){
+            try {
+                thread.join();
+            }catch(InterruptedException e){}
+        }
+
+        int[] minByIndex = null;
+        for(NearestNeighborThread datum : data){
+            if(minDistance > datum.getResult()){
+                minDistance = datum.getResult();
+                minByIndex = datum.getPlacesByIndex();
+            }
+        }
+
+        Place[] result = new Place[places.length];
+        for(int i = 0; i < places.length; i++){
+            result[i] = places[minByIndex[i]];
+        }
+
+        return result;
 
 
     }
