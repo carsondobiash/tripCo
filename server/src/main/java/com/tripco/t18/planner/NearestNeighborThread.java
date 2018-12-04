@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class NearestNeighborThread implements Runnable{
 
-    private static Place[] places;
+    public static Place[] places;
     public static int[][] distanceTable;
     private int result;
     private int startCity;

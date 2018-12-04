@@ -344,12 +344,14 @@ public class Trip {
         int distanceTable[][] = new int[places.length+1][places.length+1];
         fillDistanceTable(distanceTable);
         NearestNeighborThread.distanceTable = fillDistanceTable(distanceTable);
+        NearestNeighborThread.places = places;
         Thread[] threads = new Thread[places.length];
         NearestNeighborThread[] data = new NearestNeighborThread[places.length];
         int minDistance = Integer.MAX_VALUE;
 
         for(int startCity = 0; startCity<places.length; startCity++){
             NearestNeighborThread datum = new NearestNeighborThread(startCity, opt);
+            data[startCity] = datum;
             threads[startCity] = new Thread(datum);
             threads[startCity].start();
         }
@@ -360,7 +362,7 @@ public class Trip {
             }catch(InterruptedException e){}
         }
 
-        int[] minByIndex = null;
+        int[] minByIndex = new int[places.length];
         for(NearestNeighborThread datum : data){
             if(minDistance > datum.getResult()){
                 minDistance = datum.getResult();
