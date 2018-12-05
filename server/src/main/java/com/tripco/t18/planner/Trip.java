@@ -341,7 +341,6 @@ public class Trip {
 
     private Place[] nearestNeighbor(String opt) {
         int distanceTable[][] = new int[places.length+1][places.length+1];
-        fillDistanceTable(distanceTable);
         NearestNeighborThread.distanceTable = fillDistanceTable(distanceTable);
         NearestNeighborThread.places = places;
         Thread[] threads = new Thread[places.length];
