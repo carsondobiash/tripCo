@@ -105,6 +105,7 @@ class Search extends Component {
             <FormGroup>
             <Label>Filter Name</Label>
         <Input id={'filterName'} type="select" onChange={(event) => this.storeFilterName(event)}>
+            <option>Select</option>
             {this.props.config.filters.map((filter) =>
                 <option
                     key={filter.name}
@@ -126,16 +127,28 @@ class Search extends Component {
             )
         }
 
-        let filterValuesAdd =
-            <FormGroup>
-                <Label>Filter Values(Click on values to add them)</Label>
-                <Input id='filterValues' type='select' onChange={(event) => this.addFilterValue(event)} multiple>
-                    {this.props.config.filters[this.state.index].values.map((filter) =>
-                        <option value={filter}>{filter}</option>
-                    )
-                    }
-                </Input>
-            </FormGroup>
+        let filterValuesAdd;
+            if(this.state.store.name === "" || this.state.store.name === "Select"){
+                filterValuesAdd =
+                    <FormGroup>
+                        <Label>Filter Values(Click on values to add them)</Label>
+                        <Input id='filterValues' type='select' multiple>
+                            <option value='Select'>Select</option>
+                        </Input>
+                    </FormGroup>
+            }
+            else {
+                filterValuesAdd =
+                    <FormGroup>
+                        <Label>Filter Values(Click on values to add them)</Label>
+                        <Input id='filterValues' type='select' onChange={(event) => this.addFilterValue(event)} multiple>
+                            {this.props.config.filters[this.state.index].values.map((filter) =>
+                                <option value={filter}>{filter}</option>
+                            )
+                            }
+                        </Input>
+                    </FormGroup>
+            }
 
         let found;
         if(this.props.search.places != null){
@@ -167,7 +180,7 @@ class Search extends Component {
                                 {filterValuesAdd}
                                 <p/>
                                 <div className="text-right">
-                                    <Label>View values in filter. Click on a value to remove. Then add the filter.</Label>
+                                    <Label>Preview values in filter. Click on a value to remove in dropdown. Then add the filter to search. Click "Remove Filters" to clear filters form search</Label>
                                     <ButtonDropdown id={'filterValues'} isOpen={this.state.dropdownOpen} toggle={this.toggle} className="text-center">
                                         <DropdownToggle caret>
                                             Filter Values

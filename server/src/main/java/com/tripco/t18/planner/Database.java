@@ -8,7 +8,7 @@ public class Database {
     public Integer version;
     public String type;
     public String match;
-    public ArrayList<Filters> filters = new ArrayList<>();
+    public Filters[] filters;
     public Integer limit;
     public Integer found;
     public ArrayList<Place> places = new ArrayList<>();
@@ -98,12 +98,17 @@ public class Database {
 
     private String filterDatabase(){
         String filter = "";
-        if(!filters.isEmpty()){
-            for(int i = 0; i < filters.size(); i++){
-                for(int j = 0; j < filters.get(i).values.size(); j++){
-                    String value = filters.get(i).values.get(j);
+        if(filters != null){
+            for(int i = 0; i < filters.length; i++){
+                for(int j = 0; j < filters[i].values.size(); j++){
+                    String value = filters[i].values.get(j);
                     value = valueChange(value);
-                    filter += "and world_airports." + filters.get(i).name + " like '%" + value + "%' ";
+                    if(j == 0) {
+                        filter += "and world_airports." + filters[i].name + " like '%" + value + "%' ";
+                    }
+                    else if(j > 0){
+                        filter += "or world_airports." + filters[i].name + " like '%" + value + "%' ";
+                    }
                 }
             }
         }
