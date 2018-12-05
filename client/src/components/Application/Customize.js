@@ -94,13 +94,15 @@ class Customize extends Component{
 
     deletePlace(placeToDelete) {
         let newIndex = 0;
+        let currentIndex = 0;
         let afterRemove = [this.props.trip.places.length-1];
         for(let propIndex = 0; propIndex < (this.props.trip.places.length); propIndex++){
             if(!(this.props.trip.places[propIndex].name === placeToDelete)){
                 afterRemove[newIndex] = this.props.trip.places[propIndex];
                 newIndex++;
-            }
+            } else {currentIndex = newIndex;}
         }
+        this.setState({"current":afterRemove[currentIndex].name});
         return afterRemove;
     }
 
@@ -170,19 +172,19 @@ class Customize extends Component{
     renderCurrentPlaces(){
         let currentPlaces =
             <div>
-                <ListGroup>
+                <FormGroup>
+                    <Input type="select" id="currentPlaces" multiple>
                     {this.props.trip.places.map((place) =>
-                        <ListGroupItem
-                            tag="button"
+                        <option
                             className='btn-outline-dark unit-button'
                             id={place.name}
-                            active={this.state.current === place.name}
                             onClick={((event) => this.setState({"current": place.name}))}
                         >
                             {place.name}
-                        </ListGroupItem>
+                        </option>
                     )}
-                </ListGroup>
+                    </Input>
+                </FormGroup>
             </div>;
 
         return currentPlaces;
