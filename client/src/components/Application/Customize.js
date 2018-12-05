@@ -102,6 +102,9 @@ class Customize extends Component{
                 newIndex++;
             } else {currentIndex = newIndex;}
         }
+        if(currentIndex >= afterRemove.length){
+            currentIndex-=1;
+        }
         this.setState({"current":afterRemove[currentIndex].name});
         return afterRemove;
     }
