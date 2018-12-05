@@ -39,9 +39,9 @@ public class Config {
       supportType.values.add("balloonport");
       supportType.values.add("heliport");
       supportType.values.add("seaplane base");
-      supportType.values.add("small_airports");
-      supportType.values.add("medium_airports");
-      supportType.values.add("large_airports");
+      supportType.values.add("small_airport");
+      supportType.values.add("medium_airport");
+      supportType.values.add("large_airport");
       filters.add(supportType);
 
       Filters supportContinent = new Filters();
