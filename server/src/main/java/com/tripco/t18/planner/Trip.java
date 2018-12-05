@@ -324,7 +324,6 @@ public class Trip {
 
     private Place[] optimized() {
 
-        //Nearest Neighbor algorithm.
         if(options.optimization == (null))
             return this.places;
         if (options.optimization.equals("short")) {
