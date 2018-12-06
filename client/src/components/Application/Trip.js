@@ -40,6 +40,13 @@ class Trip extends Component{
     }
 
     plan(){
+        if(this.props.trip.hasOwnProperty('options')){
+            this.props.trip.options = {
+                "units": "miles",
+                "optimization": "none",
+                "map": "svg"
+            }
+        }
         let response = request(this.props.trip, 'plan', this.props.port, this.props.host).then(
             res => {this.props.updateBasedOnResponse(res);}
         );
