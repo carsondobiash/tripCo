@@ -26,13 +26,14 @@ class Trip extends Component{
             let reader = new FileReader();
             reader.onload =  function(event){
                 let parsed = JSON.parse(event.target.result);
-                if(!parsed.hasOwnProperty('options')) {
+                if(!parsed.options) {
                     parsed.options = {
                         "units": "miles",
                         "optimization": "none",
                         "map": "svg"
                     }
                 }
+                console.log(parsed);
                 this.props.updateBasedOnResponse(parsed);
             }.bind(this);
             reader.readAsText(f);
@@ -40,13 +41,6 @@ class Trip extends Component{
     }
 
     plan(){
-        if(this.props.trip.hasOwnProperty('options')){
-            this.props.trip.options = {
-                "units": "miles",
-                "optimization": "none",
-                "map": "svg"
-            }
-        }
         let response = request(this.props.trip, 'plan', this.props.port, this.props.host).then(
             res => {this.props.updateBasedOnResponse(res);}
         );
