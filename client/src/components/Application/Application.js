@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Container, Nav, NavItem, NavLink } from 'reactstrap';
+import {Button, Col, Container, Input, Label, Nav, NavItem, NavLink, Row} from 'reactstrap';
 import { Card, CardBody, CardTitle, TabContent, TabPane  } from 'reactstrap'
 import Info from './Info'
 import Options from './Options';
@@ -162,26 +162,29 @@ class Application extends Component {
   render() {
     if(!this.state.config) { return <div/> }
 
+      let navbar =
+          <Nav tabs>
+              <NavItem>
+                  <NavLink
+                      className={this.state.tab === '1' ? "active" : "" }
+                      onClick={() => this.toggleTab('1')}
+                  >
+                      Trip Planner
+                  </NavLink>
+              </NavItem>
+              <NavItem>
+                  <NavLink
+                      className={this.state.tab === '2' ? "active" : "" }
+                      onClick={() => this.toggleTab('2')}
+                  >
+                      Author Section
+                  </NavLink>
+              </NavItem>
+          </Nav>;
+
     return(
       <Container id="Application">
-        <Nav tabs>
-            <NavItem>
-                <NavLink
-                    className={this.state.tab === '1' ? "active" : "" }
-                    onClick={() => this.toggleTab('1')}
-                >
-                    Trip Planner
-                </NavLink>
-            </NavItem>
-            <NavItem>
-                <NavLink
-                    className={this.state.tab === '2' ? "active" : "" }
-                    onClick={() => this.toggleTab('2')}
-                >
-                    Author Section
-                </NavLink>
-            </NavItem>
-        </Nav>
+          {navbar}
         <TabContent activeTab={this.state.tab}>
           <TabPane tabId={'1'}>
             <Info/>
