@@ -25,8 +25,14 @@ class Trip extends Component{
         if(f){
             let reader = new FileReader();
             reader.onload =  function(event){
-                console.log(event.target.result);
                 let parsed = JSON.parse(event.target.result);
+                if(!parsed.hasOwnProperty('options')) {
+                    parsed.options = {
+                        "units": "miles",
+                        "optimization": "none",
+                        "map": "svg"
+                    }
+                }
                 this.props.updateBasedOnResponse(parsed);
             }.bind(this);
             reader.readAsText(f);
