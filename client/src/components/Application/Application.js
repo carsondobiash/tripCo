@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Col, Container, Input, Label, Nav, NavItem, NavLink, Row} from 'reactstrap';
+import {Container, Nav, NavItem, NavLink} from 'reactstrap';
 import { Card, CardBody, CardTitle, TabContent, TabPane  } from 'reactstrap'
 import Info from './Info'
 import Options from './Options';
@@ -10,6 +10,7 @@ import { get_config } from '../../api/api';
 import Itinerary from "./Itinerary";
 import Distance from "./Distance";
 import Search from "./Search";
+import Bio from "./Bio";
 
 /* Renders the application.
  * Holds the destinations and options state shared with the trip.
@@ -201,18 +202,7 @@ class Application extends Component {
             <Distance port={this.state.port} host={this.state.host}/>
           </TabPane>
           <TabPane tabId={'2'}>
-              <Card>
-                  <CardBody>
-                      <h4>Meet the team!</h4>
-                      <div>
-                          <h5>Carson Dobiash</h5>
-                          <p>
-                              {"I am a junior Computer Science student at CSU. I\'m interested in front\
-                              end development so this was a very exciting project! I hope you enjoy the site!"}
-                          </p>
-                      </div>
-                  </CardBody>
-              </Card>
+              <Bio/>
           </TabPane>
         </TabContent>
 
