@@ -24,6 +24,13 @@ class Bio extends Component{
                               end development so this was a very exciting project! I hope you enjoy the site!"}
                         </p>
                     </div>
+                    <div>
+                        <h5>Daniel Chavez</h5>
+                        <p>
+                            {"I am a computer science student at Colorado State University, currently in my junior year."}<br />
+                            {"I am also an avid rockclimber who enjoys the outdoors."}
+                        </p>
+                    </div>
                 </CardBody>
             </Card>
         )
