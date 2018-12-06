@@ -56,7 +56,7 @@ const custom = mount((   // (1)
 
 let ListGroup = [];
 let Buttons = [];
-custom.find('ListGroupItem').map((element) => ListGroup.push(element));
+custom.find('option').map((element) => ListGroup.push(element));
 custom.find('Button').map((element) => Buttons.push(element));
 
 /* Test example using an anonymous function */
