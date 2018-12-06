@@ -26,6 +26,7 @@ class Bio extends Component{
                     </div>
                     <div>
                         <h5>Daniel Chavez</h5>
+                        <img src="https://i.imgur.com/h2aemNK.jpg" width="50" height="50" align="left"/>
                         <p>
                             {"I am a computer science student at Colorado State University, currently in my junior year."}<br />
                             {"I am also an avid rockclimber who enjoys the outdoors."}
