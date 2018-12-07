@@ -93,10 +93,10 @@ class Search extends Component {
                 <h5>Input Values For Search</h5>
                 <div>
                     <Label>Enter Name</Label>
-                    <Input id={'searchName'} type="text" placeholder="Name" onChange={(event) => this.props.updateName(event.target.value)}/>
+                    <Input id={'searchName'} type="text" placeholder="Name" onChange={(event) => this.props.updateSearch("match", event.target.value)}/>
                     <p/>
                     <Label>Enter Limit</Label>
-                    <Input id={'searchLimit'} type="number" placeholder="Limit" onChange={(event) => this.props.updateLimit(event.target.value)}/>
+                    <Input id={'searchLimit'} type="number" placeholder="Limit" onChange={(event) => this.props.updateSearch("limit", parseInt(event.target.value))}/>
                 </div>
             </div>
 
