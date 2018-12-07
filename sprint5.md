@@ -69,12 +69,12 @@ Epics planned for this sprint.
 | Statistic | Planned | Completed |
 | --- | ---: | ---: |
 | Epics | *6* | *4* |
-| Tasks |  *12*   | *39* | 
-| Story Points |  *26*  | *44* | 
+| Tasks |  *12*   | *32* | 
+| Story Points |  *26*  | *45* | 
 
 *Enter the `# Planned` at the beginning of the sprint.  Include a discussion of planning decisions based on the planned number of story points versus how many were completed in previous sprints.*
 
-The number planned for this sprint is a total of 26 story points. This shouldn't be that big of an issue as the number of story points that we completed last sprint was 38. We will probably still add more to this as we find more and more stuff that needs to be added.
+*The number planned for this sprint is a total of 26 story points. This shouldn't be that big of an issue as the number of story points that we completed last sprint was 38. We will probably still add more to this as we find more and more stuff that needs to be added.*
 
 *Enter the `# Completed` at the end of the sprint.  Include a discussion about any difference in the number planned versus completed tasks and story points.*
 
@@ -99,8 +99,6 @@ The number planned for this sprint is a total of 26 story points. This shouldn't
 
 #### Completed Epics in Sprint Backlog 
 
-*Describe the solution based on the completed epics and list the epics below.*
-
 * *User: I want to know who to thank for my application.*
 * *User: I want trip planning to be fast*
 * *User: Make the system easier to use.*
@@ -108,12 +106,11 @@ The number planned for this sprint is a total of 26 story points. This shouldn't
 
 #### Incomplete Epics in Sprint Backlog 
 
-*Describe capabilities not included in the release and list the epics below with an explanation.*
-
 * *User: I want my options remembered so I don't have to fix them all the time: this epic was to enable cookies so that you didn't have to reclick each time, didn't get around to it*
 * *All code shall be clean!: Still have lots of code sections that are not very clean*
 * *TripCo: All code must be tested.: Test coverage is still low*
 * *User: I want the shortest trips possible: 3-opt was not implemented*
+* *User: I want an interactive map: Could't get Leaflet to work properly with the site.*
 
 #### What Went Well
 
@@ -124,14 +121,12 @@ The number planned for this sprint is a total of 26 story points. This shouldn't
 
 #### Problems Encountered and Resolutions
 
-*Describe what problems occurred during the sprint in general terms followed by a more detailed list.*
-
-* *something*
-*
+* *We had some pretty messy code that needed to get cleaned up. Some files did get better, but overall the quality is still at a C on Code Climate.*
+* *We needed more test code on the client side of things as well as for the server. While there were more test written for the server, there was little to none written for the client. This brought down our overall average.*
 
 ## Retrospective
 
-*An introductory paragraph for your retrospective.*
+*We still need to go more in depth on the plan. This would have given us a better picture of what needed to be done. Also somethings just never got claimed in the task list, making it fall through and not get done. The interactrive map was also a hassle with trying to figure out how to get Leaflet to integrate with our site. If Leaflet was planned out more then maybe it would have been easier to figure out and accomplish. We also didn't clean up our code fully or write enough tests and that should have been a priority.*
 
 #### What we changed this sprint
 
@@ -147,4 +142,4 @@ The number planned for this sprint is a total of 26 story points. This shouldn't
 
 #### What we will change next sprint 
 
-*Articulate the one thing you will change for the next sprint and how you will accomplish that.*
+*If there was a next Sprint what we would change is to set up tests and clean code first. It was inexcusable how long these things kept pilling up and it should have been taking care of at the start. Also maybe assigning what people do at the start would be best so things don't get left unclaimed. More reaserch was needed to use Leaflet and as such it should have been looked into by the team so not just one person was trying to figure it out.*
