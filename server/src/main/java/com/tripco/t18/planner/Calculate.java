@@ -24,7 +24,6 @@ public class Calculate {
      */
     public Calculate (Request request) {
         // first print the request
-        System.out.println(HTTP.echoRequest(request));
 
         // extract the information from the body of the request.
         JsonParser jsonParser = new JsonParser();
