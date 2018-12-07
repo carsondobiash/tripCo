@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Card, CardHeader, CardBody, CardImg } from 'reactstrap'
+import {Card, CardHeader, CardBody, CardImg, Navbar, NavbarBrand, NavbarToggler, Col, Row, Collapse} from 'reactstrap'
 import { ButtonGroup, Button, Form } from 'reactstrap'
 
 /* Options allows the user to change the parameters for planning
@@ -10,7 +10,11 @@ import { ButtonGroup, Button, Form } from 'reactstrap'
 class Map extends Component{
     constructor(props) {
         super(props);
+        this.state = {
+            collapse: false
+        }
         this.saveMap = this.saveMap.bind(this);
+        this.toggleNav = this.toggleNav.bind(this);
     }
 
     saveMap(e){
@@ -23,14 +27,24 @@ class Map extends Component{
         downloader.click();
     }
 
+    toggleNav(){
+        this.setState({collapse: !this.state.collapse})
+    }
+
     render() {
         return(
+            <Navbar light>
+                <NavbarBrand>Map</NavbarBrand>
+                <NavbarToggler onClick={this.toggleNav}/>
+                <Collapse isOpen={this.state.collapse}>
                 <CardBody>
                 <CardImg src={"data:image/svg+xml;utf8," + this.props.trip.map}/>
                 <Button type="submit" name="svg" onClick={this.saveMap}>
                     Download
                 </Button>
                 </CardBody>
+                </Collapse>
+            </Navbar>
         )
     }
 }

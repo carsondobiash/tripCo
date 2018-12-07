@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-import { Card, CardHeader, CardBody } from 'reactstrap'
+import {Card, CardHeader, CardBody, Navbar, NavbarBrand, NavbarToggler, Collapse, Container} from 'reactstrap'
 import {ListGroup, ListGroupItem} from 'reactstrap'
 import {Button, ButtonGroup} from 'reactstrap'
-import {Form, FormGroup, Label, Input} from 'reactstrap'
+import {Form, FormGroup, Label, Input, Row, Col} from 'reactstrap'
 import Info from "./Info";
 
 
@@ -18,7 +18,8 @@ class Customize extends Component{
             current:"",
             name: "",
             lat: null,
-            long: null
+            long: null,
+            navcollapse: false
         };
         this.reversePlaces = this.reversePlaces.bind(this);
         this.deletePlace = this.deletePlace.bind(this);
@@ -31,6 +32,7 @@ class Customize extends Component{
         this.renderCurrentPlaces = this.renderCurrentPlaces.bind(this);
         this.renderMakeFirstButton = this.renderMakeFirstButton.bind(this);
         this.renderSaveButton = this.renderSaveButton.bind(this);
+        this.toggleNav = this.toggleNav.bind(this);
     }
 
     save(){
@@ -194,7 +196,9 @@ class Customize extends Component{
         return currentPlaces;
     }
 
-
+    toggleNav(){
+        this.setState({navcollapse: !this.state.navcollapse})
+    }
 
 
 
@@ -216,6 +220,15 @@ class Customize extends Component{
             saveButton = this.renderSaveButton();
         }
         return(
+            <div>
+            <Navbar light>
+                <NavbarBrand>Customize Trip</NavbarBrand>
+                <NavbarToggler onClick={this.toggleNav}/>
+            </Navbar>
+                <Container>
+                    <Row>
+                        <Col>
+                <Collapse isOpen={this.state.navcollapse}>
             <Card>
                 <CardBody>
                     {currentPlaces}
@@ -225,7 +238,13 @@ class Customize extends Component{
                     <br /><br />
                     {addGroup}
                 </CardBody>
-            </Card>)
+            </Card>
+                </Collapse>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
+        )
     }
 }
 

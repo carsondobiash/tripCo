@@ -179,16 +179,14 @@ class Application extends Component {
         <TabContent activeTab={this.state.tab}>
           <TabPane tabId={'1'}>
             <Info/>
-            <Customize trip={this.state.trip} updatePlaces={this.updatePlaces}/>
-              <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions} port={this.state.port} host={this.state.host} updatePort={this.updatePort} updateHost={this.updateHost}
+            <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions} port={this.state.port} host={this.state.host} updatePort={this.updatePort} updateHost={this.updateHost}
               updateServer={this.updateServer}/>
-            <Card>
-              <Trip trip={this.state.trip} updateTrip={this.updateTrip} updateBasedOnResponse={this.updateBasedOnResponse} port={this.state.port} host={this.state.host}/>
               <Search trip={this.state.trip} search={this.state.search} updateBasedOnSearch={this.updateBasedOnSearch} port={this.state.port} host={this.state.host} updateSearch={this.updateSearch}
                       updatePlaces={this.updatePlaces} updateFilter={this.updateFilter} removeFilter={this.removeFilter} config={this.state.config}/>
+              <Trip trip={this.state.trip} updateTrip={this.updateTrip} updateBasedOnResponse={this.updateBasedOnResponse} port={this.state.port} host={this.state.host}/>
+              <Customize trip={this.state.trip} updatePlaces={this.updatePlaces}/>
               <Map trip={this.state.trip} updateTrip={this.updateBasedOnResponse}/>
               <Itinerary trip={this.state.trip} config={this.state.config}/>
-            </Card>
             <Distance port={this.state.port} host={this.state.host}/>
           </TabPane>
           <TabPane tabId={'2'}>

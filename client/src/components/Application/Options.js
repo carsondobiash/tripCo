@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Card, CardHeader, CardBody, Label, Input} from 'reactstrap'
+import {Card, CardHeader, CardBody, Label, Input, Navbar, NavbarBrand, NavbarToggler, Container, Collapse} from 'reactstrap'
 import { ButtonGroup, Button, Form, FormGroup, Row, Col} from 'reactstrap'
 
 /* Options allows the user to change the parameters for planning
@@ -10,7 +10,14 @@ import { ButtonGroup, Button, Form, FormGroup, Row, Col} from 'reactstrap'
 class Options extends Component{
   constructor(props) {
     super(props);
+    this.toggleCollapse = this.toggleCollapse.bind(this);
+    this.state = {
+        collapse: true
+    }
+  }
 
+  toggleCollapse(){
+      this.setState({collapse: !this.state.collapse})
   }
 
   render() {
@@ -54,37 +61,53 @@ class Options extends Component{
 
     let portInput =
         <div>
-            <Row>
-                <Col>
-                    <Label>Enter Port Number</Label>
-                    <Input type="text" placeholder="Enter Port Number" onChange={this.props.updatePort}/>
-                    <p/>
-                    <Label>Enter Hostname</Label>
-                    <Input type="text" placeholder="Enter Hostname" onChange={this.props.updateHost}/>
-                    <p/>
-                    <Button onClick={this.props.updateServer}>Set Server</Button>
-                </Col>
-            </Row>
+            <Label>Enter Port Number</Label>
+            <Input type="text" placeholder="Enter Port Number" onChange={this.props.updatePort}/>
+            <p/>
+            <Label>Enter Hostname</Label>
+            <Input type="text" placeholder="Enter Hostname" onChange={this.props.updateHost}/>
+            <p/>
+            <Button onClick={this.props.updateServer}>Set Server</Button>
         </div>
 
         return(
-      <Card>
-        <CardBody>
-          <p>Select the options you wish to use.</p>
-          <ButtonGroup size="sm">
-              {buttons}
-          </ButtonGroup>
-            <br></br><br></br>
-            <p>Select the level of optimization you wish to use.</p>
-            <ButtonGroup>
-                {optimizations}
-            </ButtonGroup>
-            {customUnits}
-            <p/>
-            {portInput}
-        </CardBody>
-      </Card>
-    )
+            <div>
+            <Navbar light>
+                <NavbarBrand>Options</NavbarBrand>
+                <NavbarToggler onClick={this.toggleCollapse}/>
+            </Navbar>
+                <Container>
+                <Row>
+                    <Col>
+                <Collapse isOpen={this.state.collapse}>
+                    <Card>
+                        <CardBody>
+                            <Row>
+                                <Col>
+                                <p>Select the options you wish to use.</p>
+                                <ButtonGroup size="sm">
+                                    {buttons}
+                                </ButtonGroup>
+                                <br></br><br></br>
+                                <p>Select the level of optimization you wish to use.</p>
+                                <ButtonGroup>
+                                    {optimizations}
+                                </ButtonGroup>
+                                {customUnits}
+                                <p/>
+                                </Col>
+                                <Col>
+                                {portInput}
+                                </Col>
+                            </Row>
+                        </CardBody>
+                    </Card>
+                </Collapse>
+                    </Col>
+                </Row>
+                </Container>
+            </div>
+    );
   }
 }
 

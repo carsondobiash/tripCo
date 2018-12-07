@@ -1,5 +1,15 @@
 import React, {Component} from 'react'
-import {CardBody, CardText, ButtonGroup} from 'reactstrap'
+import {
+    CardBody,
+    CardText,
+    ButtonGroup,
+    Navbar,
+    NavbarBrand,
+    NavbarToggler,
+    Card,
+    Collapse,
+    Container
+} from 'reactstrap'
 import { Input, Form } from 'reactstrap'
 import { Table, Row, Col, Label } from 'reactstrap'
 
@@ -15,9 +25,11 @@ class Itinerary extends Component{
             name: true,
             id: false,
             latitude: false,
-            longitude: false
+            longitude: false,
+            toggler: false
         };
         this.updateTable = this.updateTable.bind(this);
+        this.togglerNav = this.togglerNav.bind(this);
     }
 
 
@@ -39,6 +51,10 @@ class Itinerary extends Component{
         })
     }
 
+    togglerNav(){
+        this.setState({toggler: !this.state.toggler})
+    }
+
     render() {
         const checks = this.props.config.attributes.map((attr) =>
             <div align="left">
@@ -54,6 +70,17 @@ class Itinerary extends Component{
         );
 
         return(
+            <div>
+            <Navbar light>
+                <NavbarBrand>Itinerary</NavbarBrand>
+                <NavbarToggler onClick={this.togglerNav}/>
+            </Navbar>
+            <div>
+                <Container>
+                    <Row>
+                        <Col>
+                <Collapse isOpen={this.state.toggler}>
+            <Card>
             <CardBody>
                 <h4>{this.props.trip.title}</h4>
                 <Table responsive bordered>
@@ -126,7 +153,13 @@ class Itinerary extends Component{
                     </Form>
                 </Col>
             </CardBody>
-
+            </Card>
+                </Collapse>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
+            </div>
         )
     }
 }
