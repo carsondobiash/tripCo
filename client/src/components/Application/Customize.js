@@ -176,6 +176,7 @@ class Customize extends Component{
         let currentPlaces =
             <div>
                 <FormGroup>
+                    <Label for="currentPlaces">Customize your trip!</Label>
                     <Input type="select" id="currentPlaces" multiple>
                     {this.props.trip.places.map((place) =>
                         <option
