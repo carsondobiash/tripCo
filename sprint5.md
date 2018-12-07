@@ -68,15 +68,17 @@ Epics planned for this sprint.
 
 | Statistic | Planned | Completed |
 | --- | ---: | ---: |
-| Epics | *6* | *total* |
-| Tasks |  *12*   | *total* | 
-| Story Points |  *26*  | *total* | 
+| Epics | *6* | *3* |
+| Tasks |  *12*   | *39* | 
+| Story Points |  *26*  | *43* | 
 
 *Enter the `# Planned` at the beginning of the sprint.  Include a discussion of planning decisions based on the planned number of story points versus how many were completed in previous sprints.*
 
 The number planned for this sprint is a total of 26 story points. This shouldn't be that big of an issue as the number of story points that we completed last sprint was 38. We will probably still add more to this as we find more and more stuff that needs to be added.
 
 *Enter the `# Completed` at the end of the sprint.  Include a discussion about any difference in the number planned versus completed tasks and story points.*
+
+* The number planned was far far less than the number we actually did. This means that we under planed this sprint and did not evaluate all that we had to do for the sprint. *
 
 
 ## Scrums
@@ -100,14 +102,17 @@ The number planned for this sprint is a total of 26 story points. This shouldn't
 *Describe the solution based on the completed epics and list the epics below.*
 
 * *User: I want to know who to thank for my application.*
-* 
+* *User: I want trip planning to be fast*
+* *User: Make the system easier to use.*
 
 #### Incomplete Epics in Sprint Backlog 
 
 *Describe capabilities not included in the release and list the epics below with an explanation.*
 
-* *## epic title: explanation*
-*
+* *User: I want my options remembered so I don't have to fix them all the time: this epic was to enable cookies so that you didn't have to reclick each time, didn't get around to it*
+* *All code shall be clean!: Still have lots of code sections that are not very clean*
+* *TripCo: All code must be tested.: Test coverage is still low*
+* *User: I want the shortest trips possible: 3-opt was not implemented*
 
 #### What Went Well
 
