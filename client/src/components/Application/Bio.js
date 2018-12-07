@@ -40,6 +40,15 @@ class Bio extends Component{
                             {"If I\'m not busy doing school work or at work. I\'m usually playing LoL."}
                         </p>
                     </div>
+                    <div>
+                        <h5>Brandon Jungen</h5>
+                        <img src="https://i.imgur.com/UDgzs7B.jpg" width="175" height="175"/>
+                        <p>
+                            {"I am a Computer Science major in my third year"}
+                            {"I enjoy video games and pickup sports when I can play a pick up game or two and more video games."}
+                            {"Learning how to make this website was challenging but also fun at the same time, so enjoy it pelase."}
+                        </p>
+                    </div>
                 </CardBody>
             </Card>
         )
