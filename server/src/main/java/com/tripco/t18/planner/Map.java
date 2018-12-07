@@ -214,13 +214,13 @@ public class Map {
 
     }
 
-    private double pixelLongitude(double deg){
+    public double pixelLongitude(double deg){
 
         return ((800.00 / 360.00) * (180.00 + deg));
 
     }
 
-    private double pixelLatitude(double deg){
+    public double pixelLatitude(double deg){
 
         if (0 >= deg) {
             return Math.abs(((400.00 / 180.00) * (90.00 + Math.abs(deg))));
@@ -231,7 +231,7 @@ public class Map {
 
     }
 
-    private boolean checkForWrap(double originLong, double destLong){
+    public boolean checkForWrap(double originLong, double destLong){
 
         if (Math.abs((originLong-destLong)) > 180){
             return true;
