@@ -133,11 +133,11 @@ The number planned for this sprint is a total of 26 story points. This shouldn't
 
 #### What we did well
 
-*Articulate what went well at the end of the sprint.*
+*This sprint, we communicated well, as per the norm. Also, our UI looks amazing and were all super stoked on the improvements made this sprint. In additon to that, the response times for NN and other optimizations are a vast improvement from what we had last sprint.*
 
 #### What we need to work on
 
-*Articulate things you could improve at the end of the sprint.*
+*Once again, the common theme of our workflow is starting things way to late, resulting in long travis queues and possible misssing out on improvements made during this sprint. This is a pretty big issue that should've been fixed in the second sprint.*
 
 #### What we will change next sprint 
 
