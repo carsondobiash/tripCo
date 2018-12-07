@@ -93,13 +93,13 @@ The number planned for this sprint is a total of 26 story points. This shouldn't
 
 ## Review
 
-*An introductory paragraph describing the overall results of the sprint.*
+*This sprint was more productive than some of the past ones. We communicated consistently about tasks and bugs that needed to get fixed on or worked on. We also assisted eachother on our tasks when we were having trouble. The only really unproductive time was after thanksgiving break because we had lost some focus over break. Overall a good sprint!*
 
 #### Completed Epics in Sprint Backlog 
 
 *Describe the solution based on the completed epics and list the epics below.*
 
-* *## epic title: comments*
+* *User: I want to know who to thank for my application.*
 * 
 
 #### Incomplete Epics in Sprint Backlog 
@@ -111,10 +111,10 @@ The number planned for this sprint is a total of 26 story points. This shouldn't
 
 #### What Went Well
 
-*Describe what went well during the sprint in general terms followed by a more detailed list.*
+*Overall this sprint went well. We had pretty consistent communication about the tasks that needed to get worked on as well as assisting each other with their tasks.*
 
-* *something*
-*
+* *One teammate was sort of unfamiliar with the inner workings of the search file and the teammate who had worked on it most helped shed some light.*
+* *We worked well as a unit and communicated frequnently throughout the sprint*
 
 #### Problems Encountered and Resolutions
 
@@ -129,7 +129,7 @@ The number planned for this sprint is a total of 26 story points. This shouldn't
 
 #### What we changed this sprint
 
-*Articulate specifically what you will do differently based on the retrospective from the previous sprint before the sprint starts.*
+*This sprint we didn't change a ton of things because our last sprint went pretty well with how we did it before. One thing that we did change was we had more people working on unfamiliar topics than in the past. Other than that we split up the work, planned, and then completed the tasks for the sprint.*
 
 #### What we did well
 
