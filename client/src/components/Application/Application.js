@@ -44,7 +44,7 @@ class Application extends Component {
       port: location.port,
       host: location.hostname,
       tab: '1'
-    }
+    };
     this.updateTrip = this.updateTrip.bind(this);
     this.updateBasedOnResponse = this.updateBasedOnResponse.bind(this);
     this.updateOptions = this.updateOptions.bind(this);
@@ -52,12 +52,10 @@ class Application extends Component {
     this.updatePort = this.updatePort.bind(this);
     this.updateHost = this.updateHost.bind(this);
     this.updateBasedOnSearch = this.updateBasedOnSearch.bind(this);
-    this.updateName = this.updateName.bind(this);
-    this.updateLimit = this.updateLimit.bind(this);
-    this.updateID = this.updateID.bind(this);
     this.updateFilter = this.updateFilter.bind(this);
     this.removeFilter = this.removeFilter.bind(this);
     this.updateServer = this.updateServer.bind(this);
+    this.updateSearch = this.updateSearch.bind(this);
     this.toggleTab = this.toggleTab.bind(this);
   }
 
@@ -76,6 +74,7 @@ class Application extends Component {
     trip[field] = value;
     this.setState(trip);
   }
+
 
   updateBasedOnResponse(value) {
     this.setState({'trip': value});
@@ -107,24 +106,15 @@ class Application extends Component {
       this.setState({'search': value});
     }
 
-    updateID(id){
-      let newID = this.state.search;
-      newID.id = id;
-      this.setState(newID);
-    }
-
-    updateName(name){
-      let search = this.state.search;
-      search.match = name;
-      this.setState();
-    }
-
-    updateLimit(limit){
-      let search = this.state.search;
-      search.limit = limit;
-      if(search.limit === "")
-        search.limit = 0;
-      this.setState();
+    updateSearch(field, value){
+        let search = this.state.search;
+        search[field] = value;
+        if(field === "limit"){
+            if(value === ""){
+                search[field] = 0;
+            }
+        }
+        this.setState(search);
     }
 
     updateFilter(filter){
@@ -136,9 +126,9 @@ class Application extends Component {
     }
 
     removeFilter(){
-    let temp = this.state.search;
-    temp.filters = [];
-    this.setState({searc: temp});
+        let temp = this.state.search;
+        temp.filters = [];
+        this.setState({search: temp});
     }
 
     updateServer(){
@@ -194,8 +184,8 @@ class Application extends Component {
               updateServer={this.updateServer}/>
             <Card>
               <Trip trip={this.state.trip} updateTrip={this.updateTrip} updateBasedOnResponse={this.updateBasedOnResponse} port={this.state.port} host={this.state.host}/>
-              <Search trip={this.state.trip} search={this.state.search} updateBasedOnSearch={this.updateBasedOnSearch} port={this.state.port} host={this.state.host} updateName={this.updateName}
-                      updateLimit={this.updateLimit} updateID={this.updateID} updatePlaces={this.updatePlaces} updateFilter={this.updateFilter} removeFilter={this.removeFilter} config={this.state.config}/>
+              <Search trip={this.state.trip} search={this.state.search} updateBasedOnSearch={this.updateBasedOnSearch} port={this.state.port} host={this.state.host} updateSearch={this.updateSearch}
+                      updatePlaces={this.updatePlaces} updateFilter={this.updateFilter} removeFilter={this.removeFilter} config={this.state.config}/>
               <Map trip={this.state.trip} updateTrip={this.updateBasedOnResponse}/>
               <Itinerary trip={this.state.trip} config={this.state.config}/>
             </Card>
