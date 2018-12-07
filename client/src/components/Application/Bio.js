@@ -26,10 +26,18 @@ class Bio extends Component{
                     </div>
                     <div>
                         <h5>Daniel Chavez</h5>
-                        <img src="https://i.imgur.com/h2aemNK.jpg" width="50" height="50" align="left"/>
+                        <img src="https://i.imgur.com/h2aemNK.jpg" width="175" height="175"/>
                         <p>
                             {"I am a computer science student at Colorado State University, currently in my junior year."}<br />
                             {"I am also an avid rockclimber who enjoys the outdoors."}
+                        </p>
+                    </div>
+                    <div>
+                        <h5>Jacob Augustine</h5>
+                        <img src="https://render.bitstrips.com/v2/cpanel/73fbe124-efb6-42c1-8b3a-5c928dac974f-9e9857a1-1ac9-473c-be28-da5f4ed9785d-v1.png?transparent=1&palette=1" width="200" height="200"/>
+                        <p>
+                            {"Currently a junior at CSU majoring in Computer Science."} <br />
+                            {"If I\'m not busy doing school work or at work. I\'m usually playing LoL."}
                         </p>
                     </div>
                 </CardBody>
