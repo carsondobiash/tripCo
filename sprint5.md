@@ -104,6 +104,7 @@ The number planned for this sprint is a total of 26 story points. This shouldn't
 * *User: I want to know who to thank for my application.*
 * *User: I want trip planning to be fast*
 * *User: Make the system easier to use.*
+* *User: I want to view my trip in other tools*
 
 #### Incomplete Epics in Sprint Backlog 
 
