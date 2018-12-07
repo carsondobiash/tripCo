@@ -1,7 +1,17 @@
 import React, {Component} from 'react'
-import {Card, CardBody, Button, ButtonGroup, Input, Container, ListGroup, ListGroupItem} from 'reactstrap'
+import {
+    Card,
+    CardBody,
+    Button,
+    ButtonGroup,
+    Input,
+    Container,
+    ListGroup,
+    ListGroupItem,
+    NavbarToggler, NavbarBrand
+} from 'reactstrap'
 import {request} from "../../api/api";
-import {Form, FormGroup, Label, Row, Col, ButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle} from 'reactstrap'
+import {Form, FormGroup, Label, Row, Col, ButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle, Navbar, Collapse} from 'reactstrap'
 
 /* Options allows the user to change the parameters for planning
  * and rendering the trip map and itinerary.
@@ -15,7 +25,8 @@ class Search extends Component {
             current: "null",
             store: {name:"", values:[]},
             index: 0,
-            dropdownOpen: false
+            dropdownOpen: false,
+            collapse: false
         };
         this.search = this.search.bind(this);
         this.addPlace = this.addPlace.bind(this);
@@ -24,6 +35,7 @@ class Search extends Component {
         this.addFilterValue = this.addFilterValue.bind(this);
         this.toggle = this.toggle.bind(this);
         this.removeFilterValue = this.removeFilterValue.bind(this);
+        this.toggleCollapse = this.toggleCollapse.bind(this);
     }
 
     toggle(){
@@ -69,6 +81,10 @@ class Search extends Component {
         let filterValues = this.state.store;
         filterValues.values.splice(filterValues.values.indexOf(event.target.value),1);
         this.setState({store: filterValues});
+    }
+
+    toggleCollapse(){
+        this.setState({collapse: !this.state.collapse})
     }
 
     render() {
@@ -167,59 +183,64 @@ class Search extends Component {
         }
 
         return(
-            <Card>
-                <CardBody>
-                    <Container>
-                    <h3>Search</h3>
-                        <Row>
-                            <Col>
-                                {values}
-                            </Col>
-                            <Col>
-                                {filter}
-                                {filterValuesAdd}
-                                <p/>
-                                <div className="text-right">
-                                    <Label>Preview values in filter. Click on a value to remove in dropdown. Then add the filter to search. Click "Remove Filters" to clear filters form search</Label>
-                                    <ButtonDropdown id={'filterValues'} isOpen={this.state.dropdownOpen} toggle={this.toggle} className="text-center">
-                                        <DropdownToggle caret>
-                                            Filter Values
-                                        </DropdownToggle>
-                                        <DropdownMenu>
-                                            {filterValues}
-                                        </DropdownMenu>
-                                    </ButtonDropdown>
-                                    <Button id={'addFilter'} onClick={(event) => this.props.updateFilter(this.state.store)}>Add Filter</Button>
-                                    <Button id={'removeFilter'} onClick={(event) => this.props.removeFilter()}>Remove Filters</Button>
-                                </div>
-                            </Col>
-                        </Row>
-                      <Row>
-                            <Col>
-                                <p/>
-                                <div className="text-center">
-                                        <Button id={'search'} onClick={this.search} className="btn">Search</Button>
-                                </div>
-                                <p/>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                {data}
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <p/>
-                                {found}
-                                <div className="text-center">
-                                    <Button id={'search'} onClick={(event) => {this.addPlaceAll()}}>Add All</Button>
-                                </div>
-                           </Col>
-                        </Row>
-                    </Container>
-                </CardBody>
-            </Card>
+            <Navbar light>
+                <NavbarBrand className='mr-auto'>Search</NavbarBrand>
+                <NavbarToggler onClick={this.toggleCollapse}/>
+                <Collapse isOpen={this.state.collapse} navbar>
+                    <Card>
+                        <CardBody>
+                            <Container>
+                                <Row>
+                                    <Col>
+                                        {values}
+                                    </Col>
+                                    <Col>
+                                        {filter}
+                                        {filterValuesAdd}
+                                        <p/>
+                                        <div className="text-right">
+                                            <Label>Preview values in filter. Click on a value to remove in dropdown. Then add the filter to search. Click "Remove Filters" to clear filters form search</Label>
+                                            <ButtonDropdown id={'filterValues'} isOpen={this.state.dropdownOpen} toggle={this.toggle} className="text-center">
+                                            <DropdownToggle caret>
+                                                Filter Values
+                                            </DropdownToggle>
+                                            <DropdownMenu>
+                                                {filterValues}
+                                            </DropdownMenu>
+                                            </ButtonDropdown>
+                                            <Button id={'addFilter'} onClick={(event) => this.props.updateFilter(this.state.store)}>Add Filter</Button>
+                                            <Button id={'removeFilter'} onClick={(event) => this.props.removeFilter()}>Remove Filters</Button>
+                                        </div>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col>
+                                        <p/>
+                                        <div className="text-center">
+                                            <Button id={'search'} onClick={this.search} className="btn">Search</Button>
+                                        </div>
+                                        <p/>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col>
+                                        {data}
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col>
+                                        <p/>
+                                        {found}
+                                        <div className="text-center">
+                                            <Button id={'search'} onClick={(event) => {this.addPlaceAll()}}>Add All</Button>
+                                        </div>
+                                </Col>
+                                </Row>
+                            </Container>
+                        </CardBody>
+                    </Card>
+                </Collapse>
+            </Navbar>
         )
     }
 }

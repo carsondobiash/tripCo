@@ -1,5 +1,18 @@
 import React, {Component} from 'react'
-import {Card, CardBody, CardTitle, Button, Input} from 'reactstrap'
+import {
+    Card,
+    CardBody,
+    CardTitle,
+    Button,
+    Input,
+    Navbar,
+    NavbarBrand,
+    NavbarToggler,
+    Collapse,
+    Container,
+    Row,
+    Col
+} from 'reactstrap'
 import {request} from "../../api/api";
 import {Form, FormGroup, Label} from 'reactstrap'
 
@@ -11,6 +24,7 @@ class Distance extends Component{
         this.updateOriginLong = this.updateOriginLong.bind(this);
         this.updateDestinLat = this.updateDestinLat.bind(this);
         this.updateDestinLong = this.updateDestinLong.bind(this);
+        this.toggleNav = this.toggleNav.bind(this);
         this.state = {
             distance:{
                 type: "distance",
@@ -26,7 +40,8 @@ class Distance extends Component{
                 },
                 units: "miles",
                 distance: 0
-            }
+            },
+            toggler: false
         };
     }
 
@@ -64,7 +79,9 @@ class Distance extends Component{
         this.setState(long);
     }
 
-
+    toggleNav(){
+        this.setState({toggler: !this.state.toggler})
+    }
 
     render(){
 
@@ -74,6 +91,15 @@ class Distance extends Component{
 
 
         return(
+            <div>
+            <Navbar light>
+                <NavbarBrand>Distance Calculator</NavbarBrand>
+                <NavbarToggler onClick={this.toggleNav}/>
+            </Navbar>
+                <Container>
+                    <Row>
+                        <Col>
+                <Collapse isOpen={this.state.toggler}>
             <Card>
                 <CardBody>
                     <CardTitle>Find Distance Between Two Points</CardTitle>
@@ -107,6 +133,11 @@ class Distance extends Component{
                     {distance}
                 </CardBody>
             </Card>
+                </Collapse>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
         )
     }
 }

@@ -1,5 +1,16 @@
 import React, {Component} from 'react'
-import {Card, CardBody, Button, ButtonGroup, Input} from 'reactstrap'
+import {
+    Card,
+    CardBody,
+    Button,
+    ButtonGroup,
+    Input,
+    Navbar,
+    NavbarBrand,
+    NavbarToggler,
+    Collapse,
+    Container
+} from 'reactstrap'
 import {request} from "../../api/api";
 import {Form, FormGroup, Label, Row, Col} from 'reactstrap'
 
@@ -15,8 +26,10 @@ class Trip extends Component{
         this.plan = this.plan.bind(this);
         this.addPlace = this.addPlace.bind(this);
         this.updateTitle = this.updateTitle.bind(this);
+        this.toggleCollapse = this.toggleCollapse.bind(this);
         this.state = {
-            places: []
+            places: [],
+            collapse: false
         }
     }
 
@@ -70,56 +83,75 @@ class Trip extends Component{
         this.props.updateTrip("places", this.props.trip.places.concat(place));
     }
 
+    toggleCollapse(){
+        this.setState({collapse: !this.state.collapse})
+    }
+
 
     render() {
         return(
-            <Card>
-                <CardBody>
-                <h3>Trip</h3>
-                <Row>
-                    <Col>
-                        <div>
-                            <Label>Trip File</Label>
-                            <Input type="file" title="input" onChange={this.fileOnChange}/>
-                        </div>
-                        <div>
-                            <Label>Create Your Own Trip</Label>
-                            <Input type="text"
-                                   onChange={this.updateTitle}
-                                   placeholder="Title"/>
-                            <Form onSubmit={this.addPlace}>
-                                <Label>Add New Place</Label>
-                                <Input type="text"
-                                       name="name"
-                                       placeholder="Name"/>
-                                <Input type="text"
-                                       name="county"
-                                       placeholder="County (optional)"/>
-                                <Input type="number"
-                                       name="id"
-                                       placeholder="Id"/>
-                                <Input type="number"
-                                       name="latitude"
-                                       step="0.01"
-                                       placeholder="Latitude"/>
-                                <Input type="number"
-                                       name="longitude"
-                                       step="0.01"
-                                       placeholder="Longitude"/>
-                                <Button className="btn" type="submit">Add Place</Button>
-                            </Form>
-                        </div>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <div className="text-center">
-                            <Button onClick={this.plan} className="btn">Plan</Button>
-                        </div>
-                    </Col>
-                </Row>
-            </CardBody>
-        </Card>
+            <div>
+            <Navbar light>
+                <NavbarBrand>Trip</NavbarBrand>
+                <NavbarToggler onClick={this.toggleCollapse}/>
+            </Navbar>
+                <Container>
+                    <Row>
+                        <Col>
+                        <Collapse isOpen={this.state.collapse}>
+                    <Card>
+                        <CardBody>
+                            <Container>
+                                <Row>
+                                    <Col>
+                                        <div>
+                                            <Label>Trip File</Label>
+                                            <Input type="file" title="input" onChange={this.fileOnChange}/>
+                                        </div>
+                                        <div>
+                                            <Label>Create Your Own Trip</Label>
+                                            <Input type="text"
+                                                onChange={this.updateTitle}
+                                                placeholder="Title"/>
+                                            <Form onSubmit={this.addPlace}>
+                                                <Label>Add New Place</Label>
+                                                <Input type="text"
+                                                       name="name"
+                                                       placeholder="Name"/>
+                                                <Input type="text"
+                                                       name="county"
+                                                       placeholder="County (optional)"/>
+                                                <Input type="number"
+                                                       name="id"
+                                                       placeholder="Id"/>
+                                                <Input type="number"
+                                                       name="latitude"
+                                                       step="0.01"
+                                                       placeholder="Latitude"/>
+                                                <Input type="number"
+                                                       name="longitude"
+                                                       step="0.01"
+                                                       placeholder="Longitude"/>
+                                                <Button className="btn" type="submit">Add Place</Button>
+                                            </Form>
+                                        </div>
+                                    </Col>
+                                </Row>
+                                    <Row>
+                                    <Col>
+                                        <div className="text-center">
+                                            <Button onClick={this.plan} className="btn">Plan</Button>
+                                        </div>
+                                    </Col>
+                                    </Row>
+                            </Container>
+                        </CardBody>
+                    </Card>
+                        </Collapse>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
         )
     }
 }
