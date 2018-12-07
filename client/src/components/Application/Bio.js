@@ -19,6 +19,7 @@ class Bio extends Component{
                     <h4>Meet the team!</h4>
                     <div>
                         <h5>Carson Dobiash</h5>
+                        <img src="https://i.imgur.com/VKfTxhf.jpg" width="175" height="175"/>
                         <p>
                             {"I am a junior Computer Science student at CSU. I\'m interested in front\
                               end development so this was a very exciting project! I hope you enjoy the site!"}
